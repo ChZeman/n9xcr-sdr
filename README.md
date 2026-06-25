@@ -13,7 +13,7 @@ waterfall and full-duplex audio. Each node is a standalone radio site; nodes can
 replicated and placed at different locations.
 
 - **Transmit span:** 550 kHz – 928 MHz (HF through 33 cm).
-- **Receive span:** to 6 GHz (the AntSDR ceiling) — a wide monitoring dividend on top of the ham bands.
+- **Receive span:** to 6 GHz (the AD9361 ceiling) — a wide monitoring dividend on top of the ham bands.
 - **Modes:** SSB / CW / AM / FM, the FT8/JS8/fldigi digital suite (run as the actual
   applications at the node), and digital voice (DMR / D-STAR / Fusion via an AMBE
   vocoder; M17 / FreeDV in software).
@@ -23,7 +23,7 @@ replicated and placed at different locations.
 | Span | Radio | Notes |
 |------|-------|-------|
 | 0.5 – 30 MHz | Hermes-Lite 2 (example HF radio) | HF, 5 W, PureSignal-capable |
-| 70 – 928 MHz (TX) / → 6 GHz (RX) | AntSDR E200 (AD9361) | 2 m, 222, 70 cm, 902; full-duplex |
+| 70 – 928 MHz (TX) / → 6 GHz (RX) | 7020-SDR (AD9361, onboard PA) | 2 m, 222, 70 cm, 902; full-duplex |
 | 6 m (50–54) | future SDRlab 122-16 swap | deferred; direct-sampling, real displayed freq |
 
 The only amateur band in the 30–70 MHz gap is 6 m, which the future HF-board swap
@@ -32,7 +32,7 @@ restores. The TX build is capped at **902 / 33 cm**; receive keeps reaching to 6
 ## Hardware at a glance
 
 - **HF exciter:** Hermes-Lite 2 (example; any HPSDR-class HF SDR works).
-- **VHF/UHF radio:** AntSDR E200, AD9361 version.
+- **VHF/UHF radio:** OpenSourceSDRLab 7020-SDR, AD9361 version (onboard PA); AntSDR E200 equivalent.
 - **Digital voice:** DVMEGA DVstick 30 (AMBE-3000).
 - **Reference:** single 10 MHz GPSDO per site (GPS-disciplined OCXO).
 - **TX finals:** NXP MRF101AN (2 m, 222) and Wolfspeed/MACOM CGH40120F GaN (70 cm, 902), 50 W per band.

@@ -1,6 +1,6 @@
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 416" role="img">
 <title>Transmit gain budget (level diagram)</title>
-<desc>Power rising from the AntSDR at 0 dBm through the PGA-103+ pre-driver to +19 dBm, the CGH40010 driver to +36 dBm (4 W), and the CGH40120F final to +49 dBm (80 W). Representative worst-case 902 MHz path.</desc>
+<desc>Power rising from the 7020-SDR core at 0 dBm through its onboard PA to +19 dBm, the CGH40010 driver to +36 dBm (4 W), and the CGH40120F final to +49 dBm (80 W). Representative worst-case 902 MHz path.</desc>
 <style>
 text{font-family:Arial,Helvetica,sans-serif}
 .t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:13px;font-weight:500;fill:#0F6E56}
@@ -18,12 +18,12 @@ text{font-family:Arial,Helvetica,sans-serif}
 <circle cx="430" cy="154" r="4" fill="#0F6E56"/>
 <circle cx="590" cy="80" r="4" fill="#0F6E56"/>
 
-<text class="ts" x="110" y="380" text-anchor="middle">AntSDR  0 dBm (1 mW)</text>
+<text class="ts" x="110" y="380" text-anchor="middle">7020-SDR core  0 dBm</text>
 <text class="ts" x="270" y="238" text-anchor="middle">+19 dBm (~80 mW)</text>
 <text class="ts" x="430" y="140" text-anchor="middle">+36 dBm (4 W)</text>
 <text class="ts" x="588" y="66" text-anchor="middle">+49 dBm (80 W)</text>
 
-<text class="th" x="190" y="322" text-anchor="middle">PGA-103+  +19 dB</text>
+<text class="th" x="190" y="322" text-anchor="middle">onboard PA  +19 dB</text>
 <text class="th" x="350" y="219" text-anchor="middle">CGH40010  +17 dB</text>
 <text class="th" x="512" y="125" text-anchor="middle">CGH40120F  +13 dB</text>
 

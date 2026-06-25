@@ -23,7 +23,7 @@ text{font-family:Arial,Helvetica,sans-serif}
 <line x1="200" y1="200" x2="200" y2="214" class="arr" marker-end="url(#arrow)"/>
 <g class="c-blue"><rect x="80" y="216" width="240" height="46" rx="8" stroke-width="0.5"/>
 <text class="th" x="200" y="233" text-anchor="middle" dominant-baseline="central">SDRs</text>
-<text class="ts" x="200" y="249" text-anchor="middle" dominant-baseline="central">HL2 - AntSDR E200 - DVstick 30</text></g>
+<text class="ts" x="200" y="249" text-anchor="middle" dominant-baseline="central">HL2 - 7020-SDR - DVstick 30</text></g>
 <line x1="200" y1="262" x2="200" y2="276" class="arr" marker-end="url(#arrow)"/>
 <g class="c-blue"><rect x="80" y="278" width="240" height="46" rx="8" stroke-width="0.5"/>
 <text class="th" x="200" y="295" text-anchor="middle" dominant-baseline="central">Node host</text>

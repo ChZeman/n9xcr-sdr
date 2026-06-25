@@ -6,12 +6,12 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 
 | Item | Part | Notes |
 |------|------|-------|
-| VHF/UHF SDR | AntSDR E200, AD9361 | Mouser `ANTSDR-AD9361-With-CASE-01` (board + AD9361 + 32 GB SD + case). Not the AD9363 SKU. |
+| VHF/UHF SDR | OpenSourceSDRLab 7020-SDR, AD9361 | AliExpress (OpenSourceSDRLab Store); AD9361 (not AD9363); onboard PGA-102+ PA (~+15–19 dBm) covers the pre-driver; runs plutosdr-fw / libiio. AntSDR E200 (Mouser `ANTSDR-AD9361-With-CASE-01`) is the equivalent alternative. |
 | HF SDR | Hermes-Lite 2 | example; any HPSDR-class HF SDR |
 | Digital-voice vocoder | DVMEGA DVstick 30 | AMBE-3000; ham dealer (e.g. GigaParts), not a component distributor |
 | Final, 2 m + 222 | NXP MRF101AN | 100 W LDMOS, 1.8–250 MHz; run at 50 W |
 | Final, 70 cm + 902 | Wolfspeed/MACOM CGH40120F | 120 W GaN, 28 V; one part both bands; run at 50 W |
-| Pre-driver | broadband MMIC, PGA-103+ class | ~22 dB, one part all bands |
+| Pre-driver | onboard PGA-102+ on the SDR | ~+15–19 dBm out; no separate board (discrete PGA-103+ optional if the onboard PA is bypassed) |
 | Driver | Wolfspeed/MACOM CGH40010 (F flange / P pill) | 10 W GaN (13 W PSAT), DC–6 GHz, 28 V; one part type, 4 builds (per band); runs ~30 % for linear |
 | TX band-select | Analog Devices ADRF5040 | silicon SP4T, nonreflective, 9 kHz–12 GHz, 3.3 V control; low-level switch ahead of the per-band chains |
 | RX preselector, 2 m | DCI-146-4H | 4-pole cavity, 144–148 |

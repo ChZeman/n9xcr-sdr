@@ -32,12 +32,12 @@ what runs back to the equipment room is data and power, not RF.
 ## Node-host placement
 
 The node-host PC does **not** need to sit in the outdoor enclosure — it belongs somewhere
-climate-controlled, serviceable, and UPS-backed, reaching the AntSDR over the local network (the
-AntSDR is a network device; SDRangel connects over IIO/Ethernet).
+climate-controlled, serviceable, and UPS-backed, reaching the SDR over the local network (the
+7020-SDR is a network device; SDRangel connects over libiio/Ethernet).
 
 What stays at the enclosure is anything hard-real-time, and that is all in hardware: the PA control
 wrapper does T-R sequencing, bias keying, and SWR/thermal/overcurrent foldback autonomously in
-microseconds, and PTT / band-select are keyed by the AntSDR's own GPIO. The host's role is
+microseconds, and PTT / band-select are keyed by the SDR's own GPIO. The host's role is
 supervisory only (read telemetry, reduce drive or inhibit TX on a sustained alarm) and tolerates
 network latency. A remote host needs a small local IO bridge at the enclosure to put the
 control-board alarm lines and PTT on the local network. The GPSDO stays at the enclosure (it

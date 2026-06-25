@@ -83,7 +83,7 @@ the rest.**
 | Item | At 50 W | At 80 W |
 |------|---------|---------|
 | Driver output (worst case, 902) | ~2.5 W | ~4 W — same 5–10 W driver, run harder |
-| Pre-driver, filters, control wrapper | — | unchanged |
+| Onboard PA, filters, control wrapper | — | unchanged |
 | 50 V LDMOS supply | ~2.5 A | ~5 A |
 | 28 V GaN supply | ~2.5 A | ~6 A |
 | LDMOS-band cooling | passive | passive, plus a temperature-controlled fan for sustained high duty |

@@ -30,7 +30,7 @@ protection circuit already produces.
 | PA heatsink temperature | thermal-foldback thermistor | free |
 | TX/RX state, band, PTT | control-wrapper logic | free |
 | Fault / foldback flags | control board (SWR, thermal, overcurrent) | free |
-| Drive level | AntSDR software setting | free (already in software) |
+| Drive level | SDR software setting | free (already in software) |
 | PA drain current | overcurrent-trip current sense | one value to surface |
 | PA supply voltage (50 V / 28 V rail) | ADC divider | one cheap sensor |
 | Enclosure / ambient temperature | second thermistor | one cheap sensor |

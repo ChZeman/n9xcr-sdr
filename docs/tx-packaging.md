@@ -1,7 +1,7 @@
 # TX chain packaging
 
 The transmit counterpart to `rx-frontend.md`: how to physically build and shield the transmit chain
-(pre-driver, band-select, and the four per-band bandpass → driver → final → low-pass chains). The
+(band-select and the four per-band bandpass → driver → final → low-pass chains). The
 signal design is in `tx-chain.md`; the thermal design is in `power-thermal.md`.
 
 ## The TX side can't dodge custom boards
@@ -15,7 +15,7 @@ custom boards either way; the only real question is how to package and shield th
 
 **Per-band PA modules (recommended for node one).** Build each band as its own module —
 bandpass → CGH40010 driver → final → LPF — on its own board in its own shielded, heatsinked box, fed
-by a shared pre-driver + ADRF5040 band-select board. Easy to build and bench-test one band at a time,
+by a shared ADRF5040 band-select board. Easy to build and bench-test one band at a time,
 easy to service (swap one band's module), and because the band-select means **only one PA is ever
 keyed at a time**, the modules share thermal and isolation budgets cleanly. This also matches how the
 reference boards come — one fabbed board per device.
@@ -30,7 +30,7 @@ The same two-layer model as `rx-frontend.md` (outer enclosure for ingress and co
 compartments for stage isolation) applies, with three TX-specific drivers that make it mandatory
 rather than optional:
 
-- **PA stability.** Pre-driver + driver + final is ~50 dB of gain on one band; if the output couples
+- **PA stability.** The SDR's onboard PA + driver + final is ~50 dB of gain on one band; if the output couples
   back to the input it *will* oscillate. Each stage goes in its own shielded compartment with input
   and output physically separated — this is the classic reason power-amp stages are
   compartmentalized.
@@ -53,6 +53,6 @@ machined box ridges, lids, and fences-first NanoVNA tuning) are identical to `rx
 
 ## Recommendation
 
-Build the first node as **per-band PA modules + a shared pre-driver / band-select board**, each PA in
+Build the first node as **per-band PA modules + a shared band-select board**, each PA in
 its own shielded, heatsinked box, with TX kept in its own enclosure away from RX. Treat a single
 integrated TX board as a later optimization once the design is proven and multiple nodes justify it.

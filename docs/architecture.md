@@ -21,7 +21,7 @@ and would melt a remote link; Opus audio is ~24 kbps.
 ## DSP engine
 
 Do not write a DSP stack from scratch — wrap **SDRangel headless** as each node's DSP brain.
-It already drives the Hermes-Lite 2 and the AntSDR under one API, has every mode native
+It already drives the Hermes-Lite 2 and the 7020-SDR under one API, has every mode native
 (SSB/AM/FM/CW, DMR/D-STAR/YSF/NXDN/M17/FreeDV, built-in FT8), uses an AMBE dongle for the
 proprietary vocoders and Codec2 for the open ones, and exposes a REST + WebSocket API the
 custom control surface can drive. The engine is a node implementation detail; the web stack
@@ -43,7 +43,7 @@ These are timing-critical and are never streamed as audio across the link:
 
 1. **Full-duplex audio UX** — hear receive while talking, phone-style, over the media transport.
 2. **True RF full-duplex** — the AD9361 is 2T2R with independent TX/RX local oscillators, so a
-   single AntSDR node can receive on one band while transmitting on another at the same time.
+   single SDR node can receive on one band while transmitting on another at the same time.
 
 ## Crossband and satellite capability
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 540" role="img">
 <title>VHF/UHF receive chain with part numbers</title>
-<desc>Three antennas (Tram tri-band, Comet SBB-224NMO, wideband discone) feed routing (triplexer, FM-trap and preamp), then a RX band-select, per-band preselectors (DCI-146-4H, Temwell helical, FreeWave EBF901), a bypassable LNA, into the AntSDR E200 receiver.</desc>
+<desc>Three antennas (Tram tri-band, Comet SBB-224NMO, wideband discone) feed routing (triplexer, FM-trap and preamp), then a RX band-select, per-band preselectors (DCI-146-4H, Temwell helical, FreeWave EBF901), a bypassable LNA, into the 7020-SDR receiver.</desc>
 <style>
 text{font-family:Arial,Helvetica,sans-serif}
 .t{font-size:14px;fill:#2C2C2A}
@@ -70,6 +70,6 @@ text{font-family:Arial,Helvetica,sans-serif}
 <line x1="340" y1="438" x2="340" y2="468" class="arr" marker-end="url(#arrow)"/>
 
 <g class="c-blue"><rect x="240" y="470" width="200" height="48" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="490" text-anchor="middle" dominant-baseline="central">AntSDR E200</text>
+<text class="th" x="340" y="490" text-anchor="middle" dominant-baseline="central">7020-SDR</text>
 <text class="ts" x="340" y="506" text-anchor="middle" dominant-baseline="central">RX -&gt; 6 GHz</text></g>
 </svg>
