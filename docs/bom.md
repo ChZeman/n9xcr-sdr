@@ -68,3 +68,16 @@ the −3.3 V rail from +3.3 V. Schematic: `diagrams/band-select-schematic.svg`.
   share a single ADM8829 −3.3 V rail.
 - No-build alternative: the `ADRF5040-EVALZ` populated eval board (~$282) — turnkey, but still needs
   external +3.3 V and −3.3 V applied.
+
+
+### Board: fab ADI's official gerbers (chosen)
+
+Rather than design a board from scratch or order the PCBWay community clone, fab ADI's **own**
+eval-board gerbers – the authoritative ADRF5040-EVALZ design.
+
+- **Gerbers:** <https://www.analog.com/media/en/technical-documentation/evaluation-documentation/gerber-files/ADRF5040_Gerbers.zip> (linked from the EVAL-ADRF5040 page). Verified contents: a 4-layer package (METAL-01–04) with soldermask / silkscreen / paste, NC drill, a fabrication-drawing PDF (material + stackup + dimensions), an IPC-2581 file, and an X-Y pick-and-place file.
+- **Fab:** PCBWay (handles Rogers). Upload the zip; it is **4-layer Rogers RO4350**, ENIG finish. The fab-drawing PDF in the package carries the stackup/material spec if they ask.
+- **Assembly:** use the included X-Y pick-and-place file for turnkey PCBA (PCBWay places the LFCSP – this removes the hand-reflow problem), or hand-populate. Assembly BOM = ADRF5040BCPZ + RF DC-block caps + 5 × SMA + test points.
+- **Tweak for our bands:** the eval's RF DC-blocks are 100 pF (fine up high, ~11 Ω at 144 MHz); populate ~1 nF C0G in those positions for clean low-band response.
+- **Still needs ±3.3 V:** the eval expects external +3.3 V *and* –3.3 V at its test points – it has **no** onboard negative generator, so pair it with the ADM8829 rail above (a small adjacent board, or a bench –3.3 V supply for bring-up).
+- Do **not** fab the PCBWay community clone of this board – its author flagged unresolved design issues and disabled ordering.
