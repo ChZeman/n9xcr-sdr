@@ -57,4 +57,6 @@ work is non-RF: node-host sizing and the head-end / web-UI software stack.
 - [`docs/telemetry.md`](docs/telemetry.md) — SWR protection, telemetry, and the path to the UI.
 - [`docs/power-thermal.md`](docs/power-thermal.md) — power headroom, thermal limits, and maximum safe output.
 - [`docs/boards.md`](docs/boards.md) — board source for every stage (fab vs buy).
+- [`docs/rx-frontend.md`](docs/rx-frontend.md) — receive front-end packaging (modules vs carrier vs integrated) and shielding.
+- [`docs/tx-packaging.md`](docs/tx-packaging.md) — transmit packaging, PA-stability / harmonic shielding, and enclosure-as-heatsink.
 - [`diagrams/`](diagrams/) — block diagrams, architecture, gain budget, control & telemetry, coverage ([`diagrams/README.md`](diagrams/README.md)).
