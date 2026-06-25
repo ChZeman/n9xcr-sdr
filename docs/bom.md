@@ -46,3 +46,25 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
   (e.g. Mitsubishi RA-series) — both are wrong for an all-mode linear station.
 - Whatever bundled filter ships on any amp board, verify harmonic suppression on an analyzer
   (−43 dBc required); do not assume.
+
+## Band-select build (ADRF5040)
+
+Parts for one band-select SP4T. The ADRF5040 needs **+3.3 V and −3.3 V** — the ADM8829 makes
+the −3.3 V rail from +3.3 V. Schematic: `diagrams/band-select-schematic.svg`.
+
+| Item | Part | Source (approx) | Notes |
+|------|------|-----------------|-------|
+| SP4T switch | **ADRF5040BCPZ** | Mouser / DigiKey ~$32 | order the BCPZ strip (MOQ 1); not the `-R7` reel, not the `-EVALZ` board |
+| −3.3 V generator | **ADM8829ARTZ-REEL7** | DigiKey ~$3 (cut-tape qty 1) | SOT-23-6 charge-pump inverter; +3.3 V in → −3.3 V out to VSS |
+| Charge-pump caps | 2 × 1 µF | with order | C1 flying (CAP+/CAP−), C2 reservoir (OUT→GND) |
+| Supply decoupling | 100 nF + bulk (1–10 µF) | with order | on VDD and VSS to GND |
+| RF DC-blocks | ~1 nF C0G × 5 | with order | RFC + RF1–RF4 |
+| PCB | 2-layer, FR-4 | JLCPCB (use PCBA to place the LFCSP) | FR-4 fine ≤ 928 MHz; ground via array under the exposed pad |
+| Connectors (standalone only) | SMA edge-launch × 5 | with order | omit if integrated onto the TX board |
+| Control | 2 × GPIO (V1/V2) | from control MCU | 3.3 V CMOS; nothing to buy |
+
+- The TX node uses **one** band-select; the RX front-end uses **two** more of the same ADRF5040
+  (switch–filter–switch), so a full build is **3** switches — the two co-located RX switches can
+  share a single ADM8829 −3.3 V rail.
+- No-build alternative: the `ADRF5040-EVALZ` populated eval board (~$282) — turnkey, but still needs
+  external +3.3 V and −3.3 V applied.
