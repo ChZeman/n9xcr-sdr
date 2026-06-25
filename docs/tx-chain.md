@@ -25,12 +25,12 @@ shared), so a band can be added later without touching the SDR or upstream stage
 
 ## Gain budget (50 W out = +47 dBm)
 
-| Band | Final | Final gain | AntSDR drive | Pre-driver out | Driver out | Final out |
-|------|-------|-----------:|-------------:|---------------:|-----------:|----------:|
-| 2 m  | LDMOS | 20 dB | −7 dBm | +12 dBm (15 mW) | +27 dBm (0.5 W) | 50 W |
-| 222  | LDMOS | 18 dB | −5 dBm | +14 dBm (24 mW) | +29 dBm (0.8 W) | 50 W |
-| 70 cm| LDMOS-class | 15 dB | −2 dBm | +17 dBm (48 mW) | +32 dBm (1.6 W) | 50 W |
-| 902  | GaN   | 13 dB |  0 dBm | +19 dBm (76 mW) | +34 dBm (2.5 W) | 50 W |
+| Band | Final | Final gain | SDR out (onboard PA) | Driver out | Final out |
+|------|-------|-----------:|---------------------:|-----------:|----------:|
+| 2 m  | LDMOS | 20 dB | +12 dBm (15 mW) | +27 dBm (0.5 W) | 50 W |
+| 222  | LDMOS | 18 dB | +14 dBm (24 mW) | +29 dBm (0.8 W) | 50 W |
+| 70 cm| LDMOS-class | 15 dB | +17 dBm (48 mW) | +32 dBm (1.6 W) | 50 W |
+| 902  | GaN   | 13 dB | +19 dBm (76 mW) | +34 dBm (2.5 W) | 50 W |
 
 Read-offs: the SDR's onboard PA delivers +12 to +19 dBm (set in software per band, so it never compresses). One driver class covers all bands.
 
