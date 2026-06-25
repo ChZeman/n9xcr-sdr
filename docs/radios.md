@@ -48,7 +48,7 @@ module's raw frequency output — poor short-term stability and phase noise.
 SDRlab 122-16** — a direct-sampling board (122.88 MS/s, 16-bit) whose first Nyquist zone
 (~61 MHz) reaches 6 m on the **real displayed frequency**, no transverter. Its 16-bit ADC also
 gives ~12 dB more HF dynamic range, and its Zynq-7020 matches the 7020-SDR for architectural
-symmetry. The catch is it wants a 122.88 MHz reference (vs the 7020-SDR's 10 MHz), so the swap
+symmetry. OpenSourceSDRLab offers a Red Pitaya-class board for this swap, the **TRX-duo** (dual 16-bit ADC, 10 kHz–60 MHz direct-sampling RX reaching 6 m, dual 14-bit DAC TX, Zynq-7010 + Gigabit Ethernet, network-native and headless). The catch is it wants a 122.88 MHz reference (vs the 7020-SDR's 10 MHz), so the swap
 adds a 122.88 MHz GPSDO output. Everything downstream of the exciter is unaffected — the swap
 is contained to: 6 m appears, add an HF milliwatt driver stage, and add the 122.88 MHz clock.
 

@@ -6,7 +6,7 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 
 | Item | Part | Notes |
 |------|------|-------|
-| VHF/UHF SDR | OpenSourceSDRLab 7020-SDR, AD9361 | AliExpress (OpenSourceSDRLab Store); AD9361 (not AD9363); onboard PGA-102+ PA (~+15–19 dBm) covers the pre-driver; runs plutosdr-fw / libiio. AntSDR E200 (Mouser `ANTSDR-AD9361-With-CASE-01`) is the equivalent alternative. |
+| VHF/UHF SDR | OpenSourceSDRLab 7020-SDR (PlutoSky R2), AD9361 + onboard PA | Buy direct from opensourcesdrlab.com (PlutoSky R2 7020) and select the **"9361 with PA"** variant (~$220) — not the "9363" variants, and not the $120 AD9363 "Professional Edition". Aluminum case is a separate ~$18 item (match the shell to a 9361-with-PA board). AliExpress "7020-SDR AD9361 with case" (~$200.71) is the cheaper equivalent — confirm the listing says *with PA*. AntSDR E200 (Mouser `ANTSDR-AD9361-With-CASE-01`) is the turnkey alternative. AD9361 not AD9363; onboard PGA-102+ PA (~+15–19 dBm) covers the pre-driver; runs plutosdr-fw / libiio. |
 | HF SDR | Hermes-Lite 2 | example; any HPSDR-class HF SDR |
 | Digital-voice vocoder | DVMEGA DVstick 30 | AMBE-3000; ham dealer (e.g. GigaParts), not a component distributor |
 | Final, 2 m + 222 | NXP MRF101AN | 100 W LDMOS, 1.8–250 MHz; run at 50 W |
