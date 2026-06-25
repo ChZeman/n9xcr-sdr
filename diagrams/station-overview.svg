@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 380" role="img">
+<title>Station architecture overview</title>
+<desc>A node site (antennas, RF front end, SDRs, node host) connects over the internet to a shared head-end (SFU and node-router) and a web UI. Only audio, FFT and decoded text cross the link; raw IQ stays on site. Other identical nodes federate to the same head-end.</desc>
+<style>
+text{font-family:Arial,Helvetica,sans-serif}
+.t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:14px;font-weight:500;fill:#2C2C2A}
+.c-blue rect{fill:#E6F1FB;stroke:#185FA5}.c-gray rect{fill:#F1EFE8;stroke:#888780}
+.c-purple rect{fill:#EEEDFE;stroke:#534AB7}
+.arr{stroke:#73726c;stroke-width:1.5;fill:none}
+</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<rect x="40" y="70" width="320" height="280" rx="10" fill="none" stroke="#888780" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text class="ts" x="52" y="88">Node site (one of many)</text>
+
+<g class="c-gray"><rect x="80" y="96" width="240" height="42" rx="8" stroke-width="0.5"/>
+<text class="th" x="200" y="110" text-anchor="middle" dominant-baseline="central">Antennas</text>
+<text class="ts" x="200" y="126" text-anchor="middle" dominant-baseline="central">TX bands + wideband RX</text></g>
+<line x1="200" y1="138" x2="200" y2="152" class="arr" marker-end="url(#arrow)"/>
+<g class="c-gray"><rect x="80" y="154" width="240" height="46" rx="8" stroke-width="0.5"/>
+<text class="th" x="200" y="171" text-anchor="middle" dominant-baseline="central">RF front end</text>
+<text class="ts" x="200" y="187" text-anchor="middle" dominant-baseline="central">PA - filters - control wrapper</text></g>
+<line x1="200" y1="200" x2="200" y2="214" class="arr" marker-end="url(#arrow)"/>
+<g class="c-blue"><rect x="80" y="216" width="240" height="46" rx="8" stroke-width="0.5"/>
+<text class="th" x="200" y="233" text-anchor="middle" dominant-baseline="central">SDRs</text>
+<text class="ts" x="200" y="249" text-anchor="middle" dominant-baseline="central">HL2 - AntSDR E200 - DVstick 30</text></g>
+<line x1="200" y1="262" x2="200" y2="276" class="arr" marker-end="url(#arrow)"/>
+<g class="c-blue"><rect x="80" y="278" width="240" height="46" rx="8" stroke-width="0.5"/>
+<text class="th" x="200" y="295" text-anchor="middle" dominant-baseline="central">Node host</text>
+<text class="ts" x="200" y="311" text-anchor="middle" dominant-baseline="central">SDRangel - apps - agent</text></g>
+
+<line x1="320" y1="300" x2="438" y2="238" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="362" y="250">internet</text>
+<text class="ts" x="362" y="264">audio / FFT / text only</text>
+
+<g class="c-gray" opacity="0.55"><rect x="440" y="150" width="210" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="545" y="166" text-anchor="middle" dominant-baseline="central">Node site 2 ... N</text>
+<text class="ts" x="545" y="182" text-anchor="middle" dominant-baseline="central">(identical, federated)</text></g>
+<line x1="545" y1="194" x2="545" y2="210" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-purple"><rect x="440" y="212" width="210" height="46" rx="8" stroke-width="0.5"/>
+<text class="th" x="545" y="229" text-anchor="middle" dominant-baseline="central">Head-end (VPS)</text>
+<text class="ts" x="545" y="245" text-anchor="middle" dominant-baseline="central">SFU + node-router</text></g>
+<line x1="545" y1="258" x2="545" y2="288" class="arr" marker-end="url(#arrow)"/>
+<g class="c-purple"><rect x="440" y="290" width="210" height="46" rx="8" stroke-width="0.5"/>
+<text class="th" x="545" y="307" text-anchor="middle" dominant-baseline="central">Web UI</text>
+<text class="ts" x="545" y="323" text-anchor="middle" dominant-baseline="central">waterfall - FD audio - control</text></g>
+</svg>

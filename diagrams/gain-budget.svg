@@ -1,0 +1,32 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 416" role="img">
+<title>Transmit gain budget (level diagram)</title>
+<desc>Power rising from the AntSDR at 0 dBm through the PGA-103+ pre-driver to +19 dBm, the CGH40010 driver to +36 dBm (4 W), and the CGH40120F final to +49 dBm (80 W). Representative worst-case 902 MHz path.</desc>
+<style>
+text{font-family:Arial,Helvetica,sans-serif}
+.t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:13px;font-weight:500;fill:#0F6E56}
+.axis{stroke:#c4c2bb;stroke-width:1;fill:none}.lvl{stroke:#0F6E56;stroke-width:2.5;fill:none}
+</style>
+<defs><marker id="ax" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#c4c2bb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<line x1="60" y1="360" x2="630" y2="360" class="axis"/>
+<line x1="60" y1="360" x2="60" y2="64" class="axis" marker-end="url(#ax)"/>
+<text class="ts" x="40" y="60" text-anchor="middle">dBm</text>
+
+<polyline class="lvl" points="110,360 270,252 430,154 590,80"/>
+<circle cx="110" cy="360" r="4" fill="#0F6E56"/>
+<circle cx="270" cy="252" r="4" fill="#0F6E56"/>
+<circle cx="430" cy="154" r="4" fill="#0F6E56"/>
+<circle cx="590" cy="80" r="4" fill="#0F6E56"/>
+
+<text class="ts" x="110" y="380" text-anchor="middle">AntSDR  0 dBm (1 mW)</text>
+<text class="ts" x="270" y="238" text-anchor="middle">+19 dBm (~80 mW)</text>
+<text class="ts" x="430" y="140" text-anchor="middle">+36 dBm (4 W)</text>
+<text class="ts" x="588" y="66" text-anchor="middle">+49 dBm (80 W)</text>
+
+<text class="th" x="190" y="322" text-anchor="middle">PGA-103+  +19 dB</text>
+<text class="th" x="350" y="219" text-anchor="middle">CGH40010  +17 dB</text>
+<text class="th" x="512" y="125" text-anchor="middle">CGH40120F  +13 dB</text>
+
+<text class="ts" x="340" y="402" text-anchor="middle">Representative 902 MHz path at 80 W; dBm into 50 ohm. Lower bands need less drive.</text>
+</svg>
+

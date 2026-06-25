@@ -57,4 +57,4 @@ work is non-RF: node-host sizing and the head-end / web-UI software stack.
 - [`docs/telemetry.md`](docs/telemetry.md) — SWR protection, telemetry, and the path to the UI.
 - [`docs/power-thermal.md`](docs/power-thermal.md) — power headroom, thermal limits, and maximum safe output.
 - [`docs/boards.md`](docs/boards.md) — board source for every stage (fab vs buy).
-- [`diagrams/`](diagrams/) — transmit and receive block diagrams.
+- [`diagrams/`](diagrams/) — block diagrams, architecture, gain budget, control & telemetry, coverage ([`diagrams/README.md`](diagrams/README.md)).
