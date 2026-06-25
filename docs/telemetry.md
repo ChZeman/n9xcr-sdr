@@ -32,7 +32,7 @@ protection circuit already produces.
 | Fault / foldback flags | control board (SWR, thermal, overcurrent) | free |
 | Drive level | AntSDR software setting | free (already in software) |
 | PA drain current | overcurrent-trip current sense | one value to surface |
-| PA supply voltage (48 V / 28 V rail) | ADC divider | one cheap sensor |
+| PA supply voltage (50 V / 28 V rail) | ADC divider | one cheap sensor |
 | Enclosure / ambient temperature | second thermistor | one cheap sensor |
 | GPSDO lock status | GPSDO lock output | one digital line |
 | Node / link health | node host | software, non-RF |

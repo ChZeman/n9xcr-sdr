@@ -40,7 +40,7 @@ band, so the SDR never compresses). One MMIC pre-driver and one driver class cov
 ## Why 50 W (not 100 W)
 
 100 W barely changes the gain budget (+3 dB everywhere) but roughly doubles the downstream
-physics: finals jump a device class, and dissipation/current roughly double (~110 W waste heat
+physics: finals jump a device class, and dissipation/current roughly double (~90 W waste heat
 per PA in a sealed outdoor enclosure → forced-air territory). The benefit is only +3 dB — half an
 S-unit at the far end. 50 W is the efficient,
 thermally-easy sweet spot: single-device finals, ~50–60 W dissipation per PA, ~100 W supply.
