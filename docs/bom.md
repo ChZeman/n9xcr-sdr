@@ -12,7 +12,8 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 | Final, 2 m + 222 | NXP MRF101AN | 100 W LDMOS, 1.8–250 MHz; run at 50 W |
 | Final, 70 cm + 902 | Wolfspeed/MACOM CGH40120F | 120 W GaN, 28 V; one part both bands; run at 50 W |
 | Pre-driver | broadband MMIC, PGA-103+ class | ~22 dB, one part all bands |
-| Driver | Wolfspeed/MACOM CGH40010 (F flange / P pill) | 10 W GaN (13 W PSAT), DC–6 GHz, 28 V; one part all bands; runs ~30 % for linear |
+| Driver | Wolfspeed/MACOM CGH40010 (F flange / P pill) | 10 W GaN (13 W PSAT), DC–6 GHz, 28 V; one part type, 4 builds (per band); runs ~30 % for linear |
+| TX band-select | Analog Devices ADRF5040 | silicon SP4T, nonreflective, 9 kHz–12 GHz, 3.3 V control; low-level switch ahead of the per-band chains |
 | RX preselector, 2 m | DCI-146-4H | 4-pole cavity, 144–148 |
 | RX preselector, 222 | Temwell helical | 222–225 |
 | RX preselector, 70 cm | Temwell helical | 420–450 |
@@ -30,7 +31,7 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 | Item | Candidate / status |
 |------|--------------------|
 | GPSDO unit | e.g. Leo Bodnar Mini Precision GPSDO — confirm frequency range |
-| T-R / sequencer / band-select relays | off-the-shelf control boards leading source |
+| T-R relays + sequencer | off-the-shelf control boards (W6PQL) — leading source |
 | Triplexer 2m/440/902 | sourcing risk — verify a real 900 MHz transmit-rated port |
 | Wideband RX antenna | discone-class to ~1.3 GHz — element TBD |
 | FM trap (88–108 band-stop) | commodity, unselected |

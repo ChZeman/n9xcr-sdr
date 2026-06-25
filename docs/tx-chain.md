@@ -10,7 +10,7 @@ amplifier stages with filtering placed where it belongs.
 AntSDR TX (~0 dBm, drive set in software, no ALC)
  → fixed pad (clean level + good 50 Ω load for the AD9361)
  → pre-driver MMIC (broadband gain block, ~+22 dB)
- → TX band-select relay (shared; routes to the active band)
+ → TX band-select (solid-state SP4T; routes to the active band)
  → low-level bandpass        ← cleans SDR noise/spurs/images BEFORE the gain
  → driver (~5–10 W linear, to ~1 GHz)
  → final PA (Class AB, ~100 W-class device backed off to 50 W)
@@ -22,7 +22,7 @@ The **low-level bandpass is mandatory**: the post-PA low-pass only cleans the hi
 PA's own harmonics) and does nothing about the AD9361's near-carrier noise, mixer spurs, LO
 leakage, and sideband images. Filter clean at low level, *then* amplify.
 
-Everything from the band-select relay down is **per-band** (pre-driver and SDR output are
+Everything from the band-select down is **per-band** (pre-driver and SDR output are
 shared), so a band can be added later without touching the SDR or upstream stages.
 
 ## Gain budget (50 W out = +47 dBm)
@@ -48,6 +48,7 @@ thermally-easy sweet spot: single-device finals, ~50–60 W dissipation per PA, 
 ## Devices
 
 - **Pre-driver:** broadband MMIC gain block, PGA-103+ class (~22 dB) — one part, all bands.
+- **TX band-select:** Analog Devices **ADRF5040** — silicon SP4T, nonreflective (9 kHz–12 GHz), ~0.5 dB loss and >50 dB isolation at HF/UHF, 33 dBm handling, 3.3 V logic. It switches at low level right after the pre-driver, so each band has its own bandpass, driver and final downstream — four chains. (A Skyworks SKY13xxx-class SP4T is a cheaper option where that isolation isn't needed.)
 - **Driver:** Wolfspeed/MACOM **CGH40010** GaN HEMT — 10 W (13 W typ PSAT), DC–6 GHz, 28 V, ~18–20 dB gain at VHF/UHF, Class AB linear. Available solder-down pill (CGH40010P) or screw-down flange (CGH40010F); one part covers all bands. At the ~4 W worst-case drive (902 at 80 W) it runs at ~30 % of rating for clean IMD, and it is family-matched to the CGH40120F final. (The 8 W CGH60008D fits electrically but ships as bare die — not hand-solderable — so it is not used.)
 - **Finals 2 m + 222:** NXP **MRF101AN** — 100 W LDMOS, 1.8–250 MHz, linear to ~100 W at
   100 mA Idq; at 50 W it loafs for clean IMD. Use a VHF-tuned board (NXP 136–174 MHz reference

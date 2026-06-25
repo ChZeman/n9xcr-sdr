@@ -13,7 +13,8 @@ Fabbing it removes the guesswork in matching and stability; it is not a from-scr
 | Stage | Device | Board / source | Buy or fab | Count |
 |-------|--------|----------------|-----------|------:|
 | Pre-driver | PGA-103+ | Mini-Circuits **TB-678-103+** eval board, or the datasheet "Recommended Application Circuit / Suggested PCB Layout" | buy eval, or fab | 1 (shared) |
-| Driver | CGH40010 | MACOM **CGH40010-AMP** reference amp (schematic + BOM, Rogers RO4350B 20 mil); the **CGH40010F-AMP** test board ships with the device installed | buy test board, or fab + retune | 1 shared *or* 4 per-band |
+| TX band-select | ADRF5040 | fab the ADI application/evaluation layout (silicon SP4T), or use the ADI eval board | fab, or eval | 1 (shared) |
+| Driver | CGH40010 | MACOM **CGH40010-AMP** reference amp (schematic + BOM, Rogers RO4350B 20 mil); the **CGH40010F-AMP** test board ships with the device installed | buy test board, or fab + retune | 4 (per band) |
 | Cleanup bandpass | — | small low-level bandpass ahead of each driver | fab / buy | per band |
 | Final, 2 m / 222 | MRF101AN | NXP **136–174 MHz reference circuit** (datasheet), retuned to band | fab + retune | 2 |
 | Final, 70 cm / 902 | CGH40120F | MACOM **0.8–1.3 GHz reference (03-000255)** for 902; broadband reference for 70 cm | fab + retune | 2 |
@@ -45,8 +46,6 @@ The only stages bought as finished ham-catalog boards.
   matching).
 - **Substrate:** the GaN reference boards specify Rogers RO4350B (low-loss). The MMIC pre-driver is
   fine on good FR-4 at these frequencies; the finals and driver benefit from RO4350B.
-- Where a board is "1 shared or 4 per-band" (the driver), the trade-off is in `tx-chain.md`: a
-  per-band bandpass really wants to sit ahead of the driver, which nudges toward per-band drivers,
-  while one shared broadband driver before the band-select saves three boards.
+- The split happens at the band-select: the pre-driver and band-select are shared and sit ahead of it, while the bandpass, driver, final and low-pass are per-band (built four times). Switching at low level keeps the band-select a small signal-level part and lets each band's bandpass clean the signal before it is amplified.
 - Verify harmonic suppression on any bundled or fabbed filter with an analyzer (the design target is
   −43 dBc or better); do not assume a board meets it.

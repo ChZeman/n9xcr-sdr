@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 612" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 656" role="img">
 <title>VHF/UHF transmit chain with part numbers</title>
-<desc>AntSDR E200 exciter, PGA-103+ pre-driver, CGH40010 driver, TX band-select, then per-band finals (MRF101AN for 2m and 222, CGH40120F for 70cm and 902) inside a control wrapper, per-band low-pass filters, out to antenna routing.</desc>
+<desc>AntSDR E200 exciter, PGA-103+ pre-driver, ADRF5040 SP4T band-select switching at low level, then four per-band chains each with a bandpass, CGH40010 driver, final (MRF101AN for 2m and 222, CGH40120F for 70cm and 902) inside the control wrapper, and a low-pass filter, out to antenna routing.</desc>
 <style>
 text{font-family:Arial,Helvetica,sans-serif}
 .t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:14px;font-weight:500;fill:#2C2C2A}
@@ -21,63 +21,95 @@ text{font-family:Arial,Helvetica,sans-serif}
 <line x1="340" y1="156" x2="340" y2="174" class="arr" marker-end="url(#arrow)"/>
 
 <g class="c-gray"><rect x="240" y="176" width="200" height="48" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="198" text-anchor="middle" dominant-baseline="central">Driver</text>
-<text class="ts" x="340" y="214" text-anchor="middle" dominant-baseline="central">CGH40010 - to ~4 W</text></g>
-<line x1="340" y1="224" x2="340" y2="242" class="arr" marker-end="url(#arrow)"/>
+<text class="th" x="340" y="198" text-anchor="middle" dominant-baseline="central">TX band-select</text>
+<text class="ts" x="340" y="214" text-anchor="middle" dominant-baseline="central">ADRF5040 SP4T</text></g>
 
-<g class="c-gray"><rect x="240" y="244" width="200" height="44" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="266" text-anchor="middle" dominant-baseline="central">TX band-select</text></g>
+<line x1="340" y1="224" x2="118" y2="246" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="224" x2="266" y2="246" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="224" x2="414" y2="246" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="224" x2="562" y2="246" class="arr" marker-end="url(#arrow)"/>
 
-<line x1="340" y1="288" x2="118" y2="334" class="arr" marker-end="url(#arrow)"/>
-<line x1="340" y1="288" x2="266" y2="334" class="arr" marker-end="url(#arrow)"/>
-<line x1="340" y1="288" x2="414" y2="334" class="arr" marker-end="url(#arrow)"/>
-<line x1="340" y1="288" x2="562" y2="334" class="arr" marker-end="url(#arrow)"/>
+<g class="c-gray"><rect x="50" y="248" width="130" height="52" rx="8" stroke-width="0.5"/>
+<text class="th" x="115" y="266" text-anchor="middle" dominant-baseline="central">2 m</text>
+<text class="ts" x="115" y="284" text-anchor="middle" dominant-baseline="central">BPF 144-148</text></g>
+<g class="c-gray"><rect x="200" y="248" width="130" height="52" rx="8" stroke-width="0.5"/>
+<text class="th" x="265" y="266" text-anchor="middle" dominant-baseline="central">222 MHz</text>
+<text class="ts" x="265" y="284" text-anchor="middle" dominant-baseline="central">BPF 222-225</text></g>
+<g class="c-gray"><rect x="350" y="248" width="130" height="52" rx="8" stroke-width="0.5"/>
+<text class="th" x="415" y="266" text-anchor="middle" dominant-baseline="central">70 cm</text>
+<text class="ts" x="415" y="284" text-anchor="middle" dominant-baseline="central">BPF 420-450</text></g>
+<g class="c-gray"><rect x="500" y="248" width="130" height="52" rx="8" stroke-width="0.5"/>
+<text class="th" x="565" y="266" text-anchor="middle" dominant-baseline="central">902 MHz</text>
+<text class="ts" x="565" y="284" text-anchor="middle" dominant-baseline="central">BPF 902-928</text></g>
 
-<text class="ts" x="44" y="320">Control wrapper</text>
-<rect x="40" y="326" width="600" height="84" rx="8" fill="none" stroke="#BA7517" stroke-width="0.8" stroke-dasharray="4 3"/>
+<line x1="115" y1="300" x2="115" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="265" y1="300" x2="265" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="415" y1="300" x2="415" y2="312" class="arr" marker-end="url(#arrow)"/>
+<line x1="565" y1="300" x2="565" y2="312" class="arr" marker-end="url(#arrow)"/>
 
-<g class="c-teal"><rect x="50" y="336" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="115" y="358" text-anchor="middle" dominant-baseline="central">2 m</text>
-<text class="ts" x="115" y="376" text-anchor="middle" dominant-baseline="central">MRF101AN</text></g>
-<g class="c-teal"><rect x="200" y="336" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="265" y="358" text-anchor="middle" dominant-baseline="central">222 MHz</text>
-<text class="ts" x="265" y="376" text-anchor="middle" dominant-baseline="central">MRF101AN</text></g>
-<g class="c-purple"><rect x="350" y="336" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="415" y="358" text-anchor="middle" dominant-baseline="central">70 cm</text>
-<text class="ts" x="415" y="376" text-anchor="middle" dominant-baseline="central">CGH40120F</text></g>
-<g class="c-purple"><rect x="500" y="336" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="565" y="358" text-anchor="middle" dominant-baseline="central">902 MHz</text>
-<text class="ts" x="565" y="376" text-anchor="middle" dominant-baseline="central">CGH40120F</text></g>
+<g class="c-gray"><rect x="50" y="314" width="130" height="48" rx="8" stroke-width="0.5"/>
+<text class="th" x="115" y="332" text-anchor="middle" dominant-baseline="central">Driver</text>
+<text class="ts" x="115" y="348" text-anchor="middle" dominant-baseline="central">CGH40010</text></g>
+<g class="c-gray"><rect x="200" y="314" width="130" height="48" rx="8" stroke-width="0.5"/>
+<text class="th" x="265" y="332" text-anchor="middle" dominant-baseline="central">Driver</text>
+<text class="ts" x="265" y="348" text-anchor="middle" dominant-baseline="central">CGH40010</text></g>
+<g class="c-gray"><rect x="350" y="314" width="130" height="48" rx="8" stroke-width="0.5"/>
+<text class="th" x="415" y="332" text-anchor="middle" dominant-baseline="central">Driver</text>
+<text class="ts" x="415" y="348" text-anchor="middle" dominant-baseline="central">CGH40010</text></g>
+<g class="c-gray"><rect x="500" y="314" width="130" height="48" rx="8" stroke-width="0.5"/>
+<text class="th" x="565" y="332" text-anchor="middle" dominant-baseline="central">Driver</text>
+<text class="ts" x="565" y="348" text-anchor="middle" dominant-baseline="central">CGH40010</text></g>
 
-<line x1="115" y1="392" x2="115" y2="424" class="arr" marker-end="url(#arrow)"/>
-<line x1="265" y1="392" x2="265" y2="424" class="arr" marker-end="url(#arrow)"/>
-<line x1="415" y1="392" x2="415" y2="424" class="arr" marker-end="url(#arrow)"/>
-<line x1="565" y1="392" x2="565" y2="424" class="arr" marker-end="url(#arrow)"/>
+<line x1="115" y1="362" x2="115" y2="382" class="arr" marker-end="url(#arrow)"/>
+<line x1="265" y1="362" x2="265" y2="382" class="arr" marker-end="url(#arrow)"/>
+<line x1="415" y1="362" x2="415" y2="382" class="arr" marker-end="url(#arrow)"/>
+<line x1="565" y1="362" x2="565" y2="382" class="arr" marker-end="url(#arrow)"/>
 
-<g class="c-gray"><rect x="50" y="426" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="115" y="448" text-anchor="middle" dominant-baseline="central">LPF</text>
-<text class="ts" x="115" y="466" text-anchor="middle" dominant-baseline="central">fc 165 MHz</text></g>
-<g class="c-gray"><rect x="200" y="426" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="265" y="448" text-anchor="middle" dominant-baseline="central">LPF</text>
-<text class="ts" x="265" y="466" text-anchor="middle" dominant-baseline="central">fc 250 MHz</text></g>
-<g class="c-gray"><rect x="350" y="426" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="415" y="448" text-anchor="middle" dominant-baseline="central">LPF</text>
-<text class="ts" x="415" y="466" text-anchor="middle" dominant-baseline="central">fc 500 MHz</text></g>
-<g class="c-gray"><rect x="500" y="426" width="130" height="56" rx="8" stroke-width="0.5"/>
-<text class="th" x="565" y="448" text-anchor="middle" dominant-baseline="central">LPF</text>
-<text class="ts" x="565" y="466" text-anchor="middle" dominant-baseline="central">fc 1010 MHz</text></g>
+<text class="ts" x="340" y="375" text-anchor="middle">Control wrapper</text>
+<rect x="40" y="380" width="600" height="66" rx="8" fill="none" stroke="#BA7517" stroke-width="0.8" stroke-dasharray="4 3"/>
 
-<line x1="115" y1="482" x2="115" y2="518" class="arr" marker-end="url(#arrow)"/>
-<line x1="265" y1="482" x2="265" y2="518" class="arr" marker-end="url(#arrow)"/>
-<line x1="415" y1="482" x2="415" y2="518" class="arr" marker-end="url(#arrow)"/>
-<line x1="565" y1="482" x2="565" y2="518" class="arr" marker-end="url(#arrow)"/>
+<g class="c-teal"><rect x="50" y="384" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="115" y="402" text-anchor="middle" dominant-baseline="central">Final</text>
+<text class="ts" x="115" y="420" text-anchor="middle" dominant-baseline="central">MRF101AN</text></g>
+<g class="c-teal"><rect x="200" y="384" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="265" y="402" text-anchor="middle" dominant-baseline="central">Final</text>
+<text class="ts" x="265" y="420" text-anchor="middle" dominant-baseline="central">MRF101AN</text></g>
+<g class="c-purple"><rect x="350" y="384" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="415" y="402" text-anchor="middle" dominant-baseline="central">Final</text>
+<text class="ts" x="415" y="420" text-anchor="middle" dominant-baseline="central">CGH40120F</text></g>
+<g class="c-purple"><rect x="500" y="384" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="565" y="402" text-anchor="middle" dominant-baseline="central">Final</text>
+<text class="ts" x="565" y="420" text-anchor="middle" dominant-baseline="central">CGH40120F</text></g>
 
-<g class="c-gray"><rect x="40" y="520" width="600" height="48" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="540" text-anchor="middle" dominant-baseline="central">To antenna routing</text>
-<text class="ts" x="340" y="556" text-anchor="middle" dominant-baseline="central">triplexer - whips (see rx-chain)</text></g>
+<line x1="115" y1="440" x2="115" y2="476" class="arr" marker-end="url(#arrow)"/>
+<line x1="265" y1="440" x2="265" y2="476" class="arr" marker-end="url(#arrow)"/>
+<line x1="415" y1="440" x2="415" y2="476" class="arr" marker-end="url(#arrow)"/>
+<line x1="565" y1="440" x2="565" y2="476" class="arr" marker-end="url(#arrow)"/>
 
-<rect class="c-teal" x="150" y="584" width="13" height="13" rx="3" stroke-width="0.5"/>
-<text class="ts" x="170" y="594">LDMOS final</text>
-<rect class="c-purple" x="320" y="584" width="13" height="13" rx="3" stroke-width="0.5"/>
-<text class="ts" x="340" y="594">GaN final</text>
+<g class="c-gray"><rect x="50" y="478" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="115" y="496" text-anchor="middle" dominant-baseline="central">LPF</text>
+<text class="ts" x="115" y="514" text-anchor="middle" dominant-baseline="central">fc 165 MHz</text></g>
+<g class="c-gray"><rect x="200" y="478" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="265" y="496" text-anchor="middle" dominant-baseline="central">LPF</text>
+<text class="ts" x="265" y="514" text-anchor="middle" dominant-baseline="central">fc 250 MHz</text></g>
+<g class="c-gray"><rect x="350" y="478" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="415" y="496" text-anchor="middle" dominant-baseline="central">LPF</text>
+<text class="ts" x="415" y="514" text-anchor="middle" dominant-baseline="central">fc 500 MHz</text></g>
+<g class="c-gray"><rect x="500" y="478" width="130" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="565" y="496" text-anchor="middle" dominant-baseline="central">LPF</text>
+<text class="ts" x="565" y="514" text-anchor="middle" dominant-baseline="central">fc 1010 MHz</text></g>
+
+<line x1="115" y1="534" x2="115" y2="570" class="arr" marker-end="url(#arrow)"/>
+<line x1="265" y1="534" x2="265" y2="570" class="arr" marker-end="url(#arrow)"/>
+<line x1="415" y1="534" x2="415" y2="570" class="arr" marker-end="url(#arrow)"/>
+<line x1="565" y1="534" x2="565" y2="570" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-gray"><rect x="40" y="572" width="600" height="48" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="592" text-anchor="middle" dominant-baseline="central">To antenna routing</text>
+<text class="ts" x="340" y="608" text-anchor="middle" dominant-baseline="central">triplexer - whips (see rx-chain)</text></g>
+
+<rect class="c-teal" x="150" y="630" width="13" height="13" rx="3" stroke-width="0.5"/>
+<text class="ts" x="170" y="640">LDMOS final</text>
+<rect class="c-purple" x="320" y="630" width="13" height="13" rx="3" stroke-width="0.5"/>
+<text class="ts" x="340" y="640">GaN final</text>
 </svg>
