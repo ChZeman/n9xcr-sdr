@@ -59,7 +59,7 @@ the −3.3 V rail from +3.3 V. Schematic: `diagrams/band-select-schematic.svg`.
 | Charge-pump caps | 2 × 1 µF | with order | C1 flying (CAP+/CAP−), C2 reservoir (OUT→GND) |
 | Supply decoupling | 100 nF + bulk (1–10 µF) | with order | on VDD and VSS to GND |
 | RF DC-blocks | ~1 nF C0G × 5 | with order | RFC + RF1–RF4 |
-| PCB | 2-layer, FR-4 | JLCPCB (use PCBA to place the LFCSP) | FR-4 fine ≤ 928 MHz; ground via array under the exposed pad |
+| PCB | **ADI EVAL-ADRF5040 official gerbers** (4-layer RO4350) | PCBWay (Rogers-capable); turnkey PCBA to place the LFCSP | proven ADI layout — see "Board: fab ADI gerbers" below; own 2-layer FR-4 is the cheaper alternative |
 | Connectors (standalone only) | SMA edge-launch × 5 | with order | omit if integrated onto the TX board |
 | Control | 2 × GPIO (V1/V2) | from control MCU | 3.3 V CMOS; nothing to buy |
 
