@@ -54,4 +54,6 @@ work is non-RF: node-host sizing and the head-end / web-UI software stack.
 - [`docs/antennas.md`](docs/antennas.md) — antenna plan and trade-offs.
 - [`docs/bom.md`](docs/bom.md) — consolidated part numbers.
 - [`docs/site-install.md`](docs/site-install.md) — outdoor deployment considerations.
+- [`docs/telemetry.md`](docs/telemetry.md) — SWR protection, telemetry, and the path to the UI.
+- [`docs/power-thermal.md`](docs/power-thermal.md) — power headroom, thermal limits, and maximum safe output.
 - [`diagrams/`](diagrams/) — transmit and receive block diagrams.
