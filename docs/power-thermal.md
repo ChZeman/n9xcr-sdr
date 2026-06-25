@@ -40,6 +40,44 @@ inside it (~58 W). An earlier worst-case estimate put LDMOS dissipation near 100
 lower efficiency than the datasheet supports. The real figure is better — but the LDMOS bands still
 have the least thermal margin at 80 W.
 
+## Continuous-duty rating
+
+The 80 W figure above is a **peak / low-duty** number. Continuous duty — 100 % key-down, no
+cool-down between overs — is a separate and lower rating, set purely by how fast heat leaves the
+sealed enclosure in the steady state. With the same linear efficiencies and a realistic worst-case
+passive budget (~45–55 W per PA in full sun, more when cooler or shaded):
+
+| Band | Device | Continuous-duty output (fanless) | Dissipated |
+|------|--------|---------------------------------:|-----------:|
+| 2 m / 222 | MRF101AN | ~50 W | ~46 W |
+| 70 cm / 902 | CGH40120F | ~60–65 W | ~43–47 W |
+
+So the all-band continuous figure lands right around the 50 W baseline — a bit higher (~60–65 W) on
+the GaN bands, which dissipate less per watt. This is not a coincidence: 50 W was chosen as the
+thermally-easy point, and it turns out to be essentially the fanless 100 %-duty rating.
+
+**Which modes care about the difference:**
+
+- **SSB (~20–25 % average) and CW (~40–50 %):** average dissipation is well below key-down, so the
+  full 80 W peak is fine — the heatsink never sees sustained 80 W of heat.
+- **FM, RTTY, AM, ATV, beacon carrier:** true 100 % duty — the continuous numbers above govern.
+- **FT8 / FT4:** each transmission is a multi-second full-power key-down, and back-to-back periods
+  approach steady state, so digital behaves as continuous duty for thermal purposes. For an
+  unattended, largely-digital station this is the rating that matters most.
+
+**What moves it:** the continuous rating is a property of the heatsink and worst-case ambient, not
+the device — a larger finned wall or a cooler/shaded mount pushes the LDMOS bands toward ~60–65 W
+and the GaN bands toward ~80 W; harsh sun pulls them down. The temperature-controlled fan on the
+LDMOS bands raises their steady-state budget enough to reach continuous 80 W. And thermal foldback
+enforces whatever the real limit is on the day: configure an 80 W ceiling and, during a long
+key-down, the wrapper trims output to the sustainable level as the sink heats — so the station
+self-limits to its true continuous-duty power instead of overheating.
+
+**Plan on ~50 W continuous as the safe all-band figure (~60–65 W on the GaN bands), treat 80 W as
+headroom for SSB/CW peaks and short digital, and let foldback — plus the optional LDMOS fan — cover
+the rest.**
+
+
 ## What it takes to support 80 W
 
 | Item | At 50 W | At 80 W |
