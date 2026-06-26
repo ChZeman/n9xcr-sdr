@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="920" viewBox="0 0 920 844" role="img">
 <title>Transmit signal chain - all band paths, with per-device working ranges</title>
-<desc>The full VHF/UHF transmit chain: a 7020-SDR exciter feeds the PE42512A SP12T band-select at low level, fanning out to all twelve ports. Each populated port is a band path - bandpass filter, CGH40010 driver, a power final, and a low-pass filter to a 50 W output. Every device box shows its technical working range: the BPF is tuned narrow to the band; the CGH40010 driver works DC to 6 GHz; the MRF101AN final 1.8 to 250 MHz and the CGH40120F final DC to 1.5 GHz are broadband and cover each slice and beyond; microwave finals for 13/9/5 cm are TBD; the LPF passes from DC up to its cutoff. The band-tuned BPF is what restricts each path to its band, not the wider band-select slice.</desc>
+<desc>The full VHF/UHF transmit chain: a 7020-SDR exciter feeds the PE42512A SP12T band-select at low level, fanning out to all twelve ports. Each populated port is a band path - bandpass filter, CGH40010 driver, a power final, and a low-pass filter to a 50 W output. Every device box shows its technical working range: the BPF is cut slice-wide to pass the whole port; the CGH40010 driver works DC to 6 GHz; the MRF101AN final 1.8 to 250 MHz and the CGH40120F final DC to 1.5 GHz are broadband and cover each slice and beyond; microwave finals for 13/9/5 cm are TBD; the LPF passes from DC up to its cutoff. The BPF and LPF pass the whole band-select slice; the legal band-limit is enforced in software (the node allowed-TX table), not in the filters.</desc>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L8 5L1 9" fill="none" stroke="#7a7972" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <style>text{font-family:Arial,Helvetica,sans-serif}.h1{font-size:17px;font-weight:700;fill:#2C2C2A}.h2{font-size:11px;fill:#56554f}.pin{font-size:12px;font-weight:700;fill:#2C2C2A}.sl{font-size:9px;fill:#7a7972}.bn{font-size:12px;font-weight:600;fill:#2C2C2A}.rg{font-size:8.5px;font-weight:600}.modb{font-size:10px;font-weight:600;fill:#2C2C2A}.rng{font-size:8.5px;fill:#56554f}.sp{font-size:10px;fill:#8a8980;font-style:italic}.cap{font-size:10px;fill:#6b6a64}.wire{stroke:#7a7972;stroke-width:1.4;fill:none}.sw{fill:#eef2ff;stroke:#4f46e5;stroke-width:1.6}.nb{stroke:#888780;stroke-width:1.1;stroke-dasharray:4 3;fill:none}</style>
 <text class="h1" x="20" y="30">Transmit signal chain – all band paths, with per-device working ranges</text>
-<text class="h2" x="20" y="50">Each box shows the device’s technical range. Note the BPF (band-tuned, narrow) is what pins a path to its band – the amps and LPF are far wider than the slice.</text>
+<text class="h2" x="20" y="50">Each box shows the device’s technical range. The BPF is cut slice-wide and the LPF cutoff sits just above the slice top, so every box passes the whole port – the legal band-limit is set in software, not the filters.</text>
 <rect x="40" y="74" width="120" height="34" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.4"/>
 <text class="modb" x="100" y="89" text-anchor="middle">7020-SDR exciter</text>
 <text class="sl" x="100" y="101" text-anchor="middle">onboard PA ~ +19 dBm</text>
@@ -24,7 +24,7 @@
 <line class="wire" x1="306" y1="153" x2="317" y2="153" marker-end="url(#ar)"/>
 <rect x="318" y="138" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="151" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="163" text-anchor="middle">5650–5925</text>
+<text class="rng" x="343" y="163" text-anchor="middle">4050–6075</text>
 <line class="wire" x1="368" y1="153" x2="375" y2="153" marker-end="url(#ar)"/>
 <rect x="376" y="138" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="151" text-anchor="middle">CGH40010</text>
@@ -36,7 +36,7 @@
 <line class="wire" x1="616" y1="153" x2="623" y2="153" marker-end="url(#ar)"/>
 <rect x="624" y="138" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="649" y="151" text-anchor="middle">LPF</text>
-<text class="rng" x="649" y="163" text-anchor="middle">≤6500</text>
+<text class="rng" x="649" y="163" text-anchor="middle">≤6330</text>
 <line class="wire" x1="674" y1="153" x2="695" y2="153" marker-end="url(#ar)"/>
 <rect x="696" y="138" width="86" height="30" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.1"/>
 <text class="modb" x="739" y="151" text-anchor="middle">RF out</text>
@@ -51,7 +51,7 @@
 <line class="wire" x1="306" y1="199" x2="317" y2="199" marker-end="url(#ar)"/>
 <rect x="318" y="184" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="197" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="209" text-anchor="middle">3300–3500</text>
+<text class="rng" x="343" y="209" text-anchor="middle">2700–4050</text>
 <line class="wire" x1="368" y1="199" x2="375" y2="199" marker-end="url(#ar)"/>
 <rect x="376" y="184" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="197" text-anchor="middle">CGH40010</text>
@@ -63,7 +63,7 @@
 <line class="wire" x1="616" y1="199" x2="623" y2="199" marker-end="url(#ar)"/>
 <rect x="624" y="184" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="649" y="197" text-anchor="middle">LPF</text>
-<text class="rng" x="649" y="209" text-anchor="middle">≤3900</text>
+<text class="rng" x="649" y="209" text-anchor="middle">≤4220</text>
 <line class="wire" x1="674" y1="199" x2="695" y2="199" marker-end="url(#ar)"/>
 <rect x="696" y="184" width="86" height="30" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.1"/>
 <text class="modb" x="739" y="197" text-anchor="middle">RF out</text>
@@ -78,7 +78,7 @@
 <line class="wire" x1="306" y1="245" x2="317" y2="245" marker-end="url(#ar)"/>
 <rect x="318" y="230" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="243" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="255" text-anchor="middle">2300–2450</text>
+<text class="rng" x="343" y="255" text-anchor="middle">1800–2700</text>
 <line class="wire" x1="368" y1="245" x2="375" y2="245" marker-end="url(#ar)"/>
 <rect x="376" y="230" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="243" text-anchor="middle">CGH40010</text>
@@ -90,7 +90,7 @@
 <line class="wire" x1="616" y1="245" x2="623" y2="245" marker-end="url(#ar)"/>
 <rect x="624" y="230" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="649" y="243" text-anchor="middle">LPF</text>
-<text class="rng" x="649" y="255" text-anchor="middle">≤2700</text>
+<text class="rng" x="649" y="255" text-anchor="middle">≤2810</text>
 <line class="wire" x1="674" y1="245" x2="695" y2="245" marker-end="url(#ar)"/>
 <rect x="696" y="230" width="86" height="30" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.1"/>
 <text class="modb" x="739" y="243" text-anchor="middle">RF out</text>
@@ -105,7 +105,7 @@
 <line class="wire" x1="306" y1="291" x2="317" y2="291" marker-end="url(#ar)"/>
 <rect x="318" y="276" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="289" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="301" text-anchor="middle">1240–1300</text>
+<text class="rng" x="343" y="301" text-anchor="middle">1200–1800</text>
 <line class="wire" x1="368" y1="291" x2="375" y2="291" marker-end="url(#ar)"/>
 <rect x="376" y="276" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="289" text-anchor="middle">CGH40010</text>
@@ -117,7 +117,7 @@
 <line class="wire" x1="616" y1="291" x2="623" y2="291" marker-end="url(#ar)"/>
 <rect x="624" y="276" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="649" y="289" text-anchor="middle">LPF</text>
-<text class="rng" x="649" y="301" text-anchor="middle">≤1440</text>
+<text class="rng" x="649" y="301" text-anchor="middle">≤1875</text>
 <line class="wire" x1="674" y1="291" x2="695" y2="291" marker-end="url(#ar)"/>
 <rect x="696" y="276" width="86" height="30" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.1"/>
 <text class="modb" x="739" y="289" text-anchor="middle">RF out</text>
@@ -132,7 +132,7 @@
 <line class="wire" x1="306" y1="337" x2="317" y2="337" marker-end="url(#ar)"/>
 <rect x="318" y="322" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="335" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="347" text-anchor="middle">902–928</text>
+<text class="rng" x="343" y="347" text-anchor="middle">800–1200</text>
 <line class="wire" x1="368" y1="337" x2="375" y2="337" marker-end="url(#ar)"/>
 <rect x="376" y="322" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="335" text-anchor="middle">CGH40010</text>
@@ -144,7 +144,7 @@
 <line class="wire" x1="616" y1="337" x2="623" y2="337" marker-end="url(#ar)"/>
 <rect x="624" y="322" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="649" y="335" text-anchor="middle">LPF</text>
-<text class="rng" x="649" y="347" text-anchor="middle">≤1010</text>
+<text class="rng" x="649" y="347" text-anchor="middle">≤1250</text>
 <line class="wire" x1="674" y1="337" x2="695" y2="337" marker-end="url(#ar)"/>
 <rect x="696" y="322" width="86" height="30" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.1"/>
 <text class="modb" x="739" y="335" text-anchor="middle">RF out</text>
@@ -165,7 +165,7 @@
 <line class="wire" x1="306" y1="429" x2="317" y2="429" marker-end="url(#ar)"/>
 <rect x="318" y="414" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="427" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="439" text-anchor="middle">420–450</text>
+<text class="rng" x="343" y="439" text-anchor="middle">355–533</text>
 <line class="wire" x1="368" y1="429" x2="375" y2="429" marker-end="url(#ar)"/>
 <rect x="376" y="414" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="427" text-anchor="middle">CGH40010</text>
@@ -177,7 +177,7 @@
 <line class="wire" x1="616" y1="429" x2="623" y2="429" marker-end="url(#ar)"/>
 <rect x="624" y="414" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="649" y="427" text-anchor="middle">LPF</text>
-<text class="rng" x="649" y="439" text-anchor="middle">≤500</text>
+<text class="rng" x="649" y="439" text-anchor="middle">≤555</text>
 <line class="wire" x1="674" y1="429" x2="695" y2="429" marker-end="url(#ar)"/>
 <rect x="696" y="414" width="86" height="30" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.1"/>
 <text class="modb" x="739" y="427" text-anchor="middle">RF out</text>
@@ -198,7 +198,7 @@
 <line class="wire" x1="306" y1="521" x2="317" y2="521" marker-end="url(#ar)"/>
 <rect x="318" y="506" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="519" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="531" text-anchor="middle">222–225</text>
+<text class="rng" x="343" y="531" text-anchor="middle">158–237</text>
 <line class="wire" x1="368" y1="521" x2="375" y2="521" marker-end="url(#ar)"/>
 <rect x="376" y="506" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="519" text-anchor="middle">CGH40010</text>
@@ -225,7 +225,7 @@
 <line class="wire" x1="306" y1="567" x2="317" y2="567" marker-end="url(#ar)"/>
 <rect x="318" y="552" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="565" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="577" text-anchor="middle">144–148</text>
+<text class="rng" x="343" y="577" text-anchor="middle">105–158</text>
 <line class="wire" x1="368" y1="567" x2="375" y2="567" marker-end="url(#ar)"/>
 <rect x="376" y="552" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="565" text-anchor="middle">CGH40010</text>
@@ -252,7 +252,7 @@
 <line class="wire" x1="306" y1="613" x2="317" y2="613" marker-end="url(#ar)"/>
 <rect x="318" y="598" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="343" y="611" text-anchor="middle">BPF</text>
-<text class="rng" x="343" y="623" text-anchor="middle">70.0–70.5</text>
+<text class="rng" x="343" y="623" text-anchor="middle">70–105</text>
 <line class="wire" x1="368" y1="613" x2="375" y2="613" marker-end="url(#ar)"/>
 <rect x="376" y="598" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="418" y="611" text-anchor="middle">CGH40010</text>
@@ -264,7 +264,7 @@
 <line class="wire" x1="616" y1="613" x2="623" y2="613" marker-end="url(#ar)"/>
 <rect x="624" y="598" width="50" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
 <text class="modb" x="649" y="611" text-anchor="middle">LPF</text>
-<text class="rng" x="649" y="623" text-anchor="middle">≤80</text>
+<text class="rng" x="649" y="623" text-anchor="middle">≤110</text>
 <line class="wire" x1="674" y1="613" x2="695" y2="613" marker-end="url(#ar)"/>
 <rect x="696" y="598" width="86" height="30" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.1"/>
 <text class="modb" x="739" y="611" text-anchor="middle">RF out</text>
@@ -276,14 +276,14 @@
 <rect x="234" y="644" width="440" height="30" rx="6" fill="#F4F2EC" stroke="#cfcdc5" stroke-width="1" stroke-dasharray="4 3"/>
 <text class="sp" x="248" y="663">low-level 50 Ω dummy / TX-inhibit park – cold-switch target</text>
 <text class="cap" x="690" y="126" font-weight="700" fill="#888780">node boundary →</text>
-<text class="rng" x="343" y="126" text-anchor="middle" font-weight="700">BPF (band)</text>
+<text class="rng" x="343" y="126" text-anchor="middle" font-weight="700">BPF (slice)</text>
 <text class="rng" x="418" y="126" text-anchor="middle" font-weight="700">driver</text>
 <text class="rng" x="542" y="126" text-anchor="middle" font-weight="700">final</text>
 <text class="rng" x="649" y="126" text-anchor="middle" font-weight="700">LPF (≤fc)</text>
-<text class="cap" x="20" y="706"><tspan font-weight="700">Reading the ranges.</tspan> BPF = band-tuned passband (narrow). Driver CGH40010 = DC–6 GHz. Final MRF101AN = 1.8–250 MHz, CGH40120F = DC–1.5 GHz – both broadband.</text>
+<text class="cap" x="20" y="706"><tspan font-weight="700">Reading the ranges.</tspan> BPF = slice-wide cleanup passband. Driver CGH40010 = DC–6 GHz. Final MRF101AN = 1.8–250 MHz, CGH40120F = DC–1.5 GHz – both broadband.</text>
 <text class="cap" x="20" y="721">LPF passes DC up to its cutoff fc (~1.1x the band top); it is a valid harmonic filter only in the ~1.5:1 window just below fc.</text>
-<text class="cap" x="20" y="740"><tspan font-weight="700">So for RF8 (2 m):</tspan> the driver, final and LPF would all pass the entire 105–158 slice, but the BPF passes only 144–148 – that band-tuned BPF is what keeps the path on 2 m.</text>
-<text class="cap" x="20" y="755">The band-select slice is routing granularity only: wider than the BPF, far narrower than the amplifiers (which is why one final serves several bands).</text>
+<text class="cap" x="20" y="740"><tspan font-weight="700">So for RF8 (2 m):</tspan> BPF, driver, final and LPF all pass the entire 105–158 slice – the software allowed-TX table is what holds emission to the licensed segment (144–148, plus any authorized MARS/CAP adjacent to it).</text>
+<text class="cap" x="20" y="755">The band-select slice, the slice-wide BPF and the LPF all pass the full port; the software allowed-TX table sets the legal band (one final still serves several bands).</text>
 <text class="h2" x="20" y="780" font-weight="700">Final by frequency:</text>
 <rect x="150" y="770" width="12" height="12" rx="3" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
 <text class="cap" x="167" y="780">MRF101AN LDMOS, 1.8–250 MHz</text>

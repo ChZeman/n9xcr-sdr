@@ -42,8 +42,12 @@ General references only, not legal allocations - bandplans change and differ nat
 - **Band-select (PE42512A SP12T).** No change. Its 12 ports are fixed 1.5:1 sub-octave slices
   spanning 4 m-5.8 GHz; whatever band you build lands in the slice that contains it (the port map
   in [`bom.md`](bom.md) shows which). Populate only the ports you build.
-- **BPF / LPF.** Region-specific. [`filters.md`](filters.md) gives the synthesis method plus a US/R2
-  worked set; recompute fc and the L/C (or resonator) values for your passbands.
+- **BPF / LPF (per slice, not per band).** The TX filters are built to pass the **whole 1.5:1
+  slice** of each populated port, not the ham band alone: a slice-wide cleanup BPF and an LPF whose
+  cutoff sits just above the slice top. The legal band-limit is enforced in software (see below), so
+  the hardware can reach any segment your authorization allows (ham + adjacent MARS/CAP). Region-
+  specific: [`filters.md`](filters.md) gives the synthesis method plus a US/R2 worked set; recompute
+  fc and the L/C (or resonator) values for your slices. (RX preselectors stay narrow — different job.)
 - **Driver.** No change - the CGH40010 is flat DC-6 GHz.
 - **Finals.** Chosen by **frequency range, not country**:
   - MRF101AN (LDMOS, ~1.8-250 MHz) covers 4 m / 2 m / 222 and the R1 equivalents.
@@ -52,6 +56,22 @@ General references only, not legal allocations - bandplans change and differ nat
 - **Antennas + output routing.** Entirely site/region-specific. The published chain ends at the
   LPF (see [`tx-chain.svg`](../diagrams/tx-chain.svg)); how you route to antennas, a combiner, a
   switch, or a dummy load is your call.
+
+## Band-limiting is in software, not the filters
+
+Because the TX filters pass the whole band-select slice, the **node's allowed-TX frequency table is
+the only thing that keeps emissions inside your legal allocation** — it is therefore safety-critical
+and must be **fail-closed**: deny by default, permit only the segments you enumerate, and fall to the
+cold-switch park (RF7, a 50 Ω dummy / TX-inhibit) on any fault or out-of-table tune.
+
+This is deliberate. It lets one build serve operators with different authority — a plain amateur
+licence, or a licence plus **MARS / CAP** privileges to work the assigned segments adjacent to the
+ham bands (e.g. CAP VHF just above 2 m) — by editing a software table rather than re-cutting filters.
+It is also the correct place for the limit to live: under Part 97 (and under MARS/CAP rules) the named
+control operator bears responsibility for every emission, so the gate belongs with the operator's
+enumerated, signed-off frequency list, not baked into a passband. Populate that table only with
+segments you are licensed/authorized to use, and confirm against your national band plan and any
+MARS/CAP frequency assignment — those assignments are the legal authority, not this repo.
 
 ## Power limits and RF exposure
 
