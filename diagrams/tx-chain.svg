@@ -292,4 +292,9 @@
 <rect x="518" y="770" width="12" height="12" rx="3" fill="#FBF3E7" stroke="#9a7b3c" stroke-width="1"/>
 <text class="cap" x="535" y="780">microwave final TBD (13 / 9 / 5 cm)</text>
 <text class="cap" x="20" y="800">Band-box colour = IARU region availability (R1 blue / all-region teal / R2 purple / varies grey). Ports loss-tiered (RF1/RF12 lowest loss). See docs/regions.md, filters.md.</text>
+<text class="cap" x="20" y="822">Blue-outlined BPF boxes (built bands: 2 m / 222 / 70 cm / 902) link to a per-band schematic + BOM — open this SVG raw or in an SVG viewer; on GitHub use the links in diagrams/README.md.</text>
+<a href="bpf-902-schematic.svg" target="_blank"><title>Open 902 BPF schematic + BOM</title><rect x="318" y="322" width="50" height="30" rx="5" fill="transparent" stroke="#185FA5" stroke-width="1.8"/></a>
+<a href="bpf-70cm-schematic.svg" target="_blank"><title>Open 70 cm BPF schematic + BOM</title><rect x="318" y="414" width="50" height="30" rx="5" fill="transparent" stroke="#185FA5" stroke-width="1.8"/></a>
+<a href="bpf-222-schematic.svg" target="_blank"><title>Open 222 BPF schematic + BOM</title><rect x="318" y="506" width="50" height="30" rx="5" fill="transparent" stroke="#185FA5" stroke-width="1.8"/></a>
+<a href="bpf-2m-schematic.svg" target="_blank"><title>Open 2 m BPF schematic + BOM</title><rect x="318" y="552" width="50" height="30" rx="5" fill="transparent" stroke="#185FA5" stroke-width="1.8"/></a>
 </svg>

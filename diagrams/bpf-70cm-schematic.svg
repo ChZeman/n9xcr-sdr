@@ -1,0 +1,109 @@
+<svg viewBox="0 0 860 624" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style>text{font-family:Arial,Helvetica,sans-serif}.h1{font-size:17px;font-weight:700;fill:#2C2C2A}.h2{font-size:11px;fill:#56554f}.w{stroke:#2C2C2A;stroke-width:1.6;fill:none}.gnd{stroke:#7a7972;stroke-width:1.4}.lbl{font-size:11px;font-weight:600;fill:#2C2C2A}.val{font-size:10px;fill:#56554f}.sec{font-size:10px;font-weight:700;fill:#6b6a64}.port{font-size:11px;font-weight:700;fill:#2C2C2A}.cap2{font-size:10px;fill:#6b6a64}.th{font-size:10px;font-weight:700;fill:#2C2C2A}.td{font-size:10px;fill:#2C2C2A}.div{stroke:#888780;stroke-width:1.1;stroke-dasharray:4 3}.box{fill:#F1EFE8;stroke:#888780;stroke-width:1.1}</style>
+<text class="h1" x="30" y="34">TX cleanup bandpass – 70 cm (RF4, slice 355–533 MHz)</text>
+<text class="h2" x="30" y="52">Slice-wide highpass+lowpass cascade, 50 Ω, low level (~80 mW). Ham band 420–450. Values are tuning start points, not final.</text>
+<text class="port" x="30" y="174">RF IN</text>
+<text class="port" x="798" y="174">RF OUT</text>
+<line x1="70" y1="170" x2="150" y2="170" class="w"/>
+<line x1="150" y1="170" x2="206" y2="170" class="w"/>
+<line x1="206" y1="161" x2="206" y2="179" class="w"/><line x1="214" y1="161" x2="214" y2="179" class="w"/>
+<line x1="214" y1="170" x2="270" y2="170" class="w"/>
+<text class="lbl" x="210" y="152" text-anchor="middle">C1</text>
+<text class="val" x="210" y="164" text-anchor="middle">6.5 pF</text>
+<line x1="270" y1="170" x2="326" y2="170" class="w"/>
+<line x1="326" y1="161" x2="326" y2="179" class="w"/><line x1="334" y1="161" x2="334" y2="179" class="w"/>
+<line x1="334" y1="170" x2="390" y2="170" class="w"/>
+<text class="lbl" x="330" y="152" text-anchor="middle">C2</text>
+<text class="val" x="330" y="164" text-anchor="middle">6.5 pF</text>
+<line x1="390" y1="170" x2="470" y2="170" class="w"/>
+<line x1="470" y1="170" x2="509" y2="170" class="w"/>
+<path d="M509 170 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0" class="w"/>
+<line x1="551" y1="170" x2="590" y2="170" class="w"/>
+<text class="lbl" x="530" y="152" text-anchor="middle">L4</text>
+<text class="val" x="530" y="164" text-anchor="middle">20 nH</text>
+<line x1="590" y1="170" x2="629" y2="170" class="w"/>
+<path d="M629 170 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0" class="w"/>
+<line x1="671" y1="170" x2="710" y2="170" class="w"/>
+<text class="lbl" x="650" y="152" text-anchor="middle">L5</text>
+<text class="val" x="650" y="164" text-anchor="middle">20 nH</text>
+<line x1="710" y1="170" x2="790" y2="170" class="w"/>
+<line x1="140" y1="300" x2="720" y2="300" class="gnd"/>
+<line x1="150" y1="170" x2="150" y2="300" class="w"/>
+<path d="M150 182 a7 7 0 0 1 0 35.3 a7 7 0 0 1 0 35.3 a7 7 0 0 1 0 35.3" class="w"/>
+<line x1="145" y1="300" x2="155" y2="306" class="gnd"/>
+<text class="lbl" x="164" y="233">L1</text>
+<text class="val" x="164" y="246">20 nH</text>
+<line x1="270" y1="170" x2="270" y2="300" class="w"/>
+<path d="M270 182 a7 7 0 0 1 0 35.3 a7 7 0 0 1 0 35.3 a7 7 0 0 1 0 35.3" class="w"/>
+<line x1="265" y1="300" x2="275" y2="306" class="gnd"/>
+<text class="lbl" x="284" y="233">L2</text>
+<text class="val" x="284" y="246">11 nH</text>
+<line x1="390" y1="170" x2="390" y2="300" class="w"/>
+<path d="M390 182 a7 7 0 0 1 0 35.3 a7 7 0 0 1 0 35.3 a7 7 0 0 1 0 35.3" class="w"/>
+<line x1="385" y1="300" x2="395" y2="306" class="gnd"/>
+<text class="lbl" x="404" y="233">L3</text>
+<text class="val" x="404" y="246">20 nH</text>
+<line x1="470" y1="170" x2="470" y2="300" class="w"/>
+<line x1="461" y1="231" x2="479" y2="231" class="w"/><line x1="461" y1="239" x2="479" y2="239" class="w"/>
+<line x1="465" y1="300" x2="475" y2="306" class="gnd"/>
+<text class="lbl" x="484" y="233">C3</text>
+<text class="val" x="484" y="246">6.8 pF</text>
+<line x1="590" y1="170" x2="590" y2="300" class="w"/>
+<line x1="581" y1="231" x2="599" y2="231" class="w"/><line x1="581" y1="239" x2="599" y2="239" class="w"/>
+<line x1="585" y1="300" x2="595" y2="306" class="gnd"/>
+<text class="lbl" x="604" y="233">C4</text>
+<text class="val" x="604" y="246">12 pF</text>
+<line x1="710" y1="170" x2="710" y2="300" class="w"/>
+<line x1="701" y1="231" x2="719" y2="231" class="w"/><line x1="701" y1="239" x2="719" y2="239" class="w"/>
+<line x1="705" y1="300" x2="715" y2="306" class="gnd"/>
+<text class="lbl" x="724" y="233">C5</text>
+<text class="val" x="724" y="246">6.8 pF</text>
+<line x1="430" y1="120" x2="430" y2="310" class="div"/>
+<text class="sec" x="270" y="118" text-anchor="middle">HIGHPASS (lower edge)</text>
+<text class="sec" x="590" y="118" text-anchor="middle">LOWPASS (upper edge)</text>
+<rect class="box" x="30" y="360" width="800" height="248" rx="6"/>
+<text class="h1" x="44" y="384" style="font-size:13px">Bill of materials (one board)</text>
+<text class="th" x="44" y="402">Ref</text>
+<text class="th" x="150" y="402">Value</text>
+<text class="th" x="300" y="402">Type</text>
+<text class="th" x="560" y="402">Qty</text>
+<text class="th" x="720" y="402">Pkg</text>
+<line x1="40" y1="408" x2="820" y2="408" class="div"/>
+<text class="td" x="44" y="424">L1, L3, L4, L5</text>
+<text class="td" x="150" y="424">20 nH</text>
+<text class="td" x="300" y="424">inductor air-wound</text>
+<text class="td" x="560" y="424">4</text>
+<text class="td" x="720" y="424">0603</text>
+<text class="td" x="44" y="441">L2</text>
+<text class="td" x="150" y="441">11 nH</text>
+<text class="td" x="300" y="441">inductor air-wound</text>
+<text class="td" x="560" y="441">1</text>
+<text class="td" x="720" y="441">0603</text>
+<text class="td" x="44" y="458">C1, C2</text>
+<text class="td" x="150" y="458">6.5 pF</text>
+<text class="td" x="300" y="458">cap C0G/NP0</text>
+<text class="td" x="560" y="458">2</text>
+<text class="td" x="720" y="458">0603</text>
+<text class="td" x="44" y="475">C3, C5</text>
+<text class="td" x="150" y="475">6.8 pF</text>
+<text class="td" x="300" y="475">cap C0G/NP0</text>
+<text class="td" x="560" y="475">2</text>
+<text class="td" x="720" y="475">0603</text>
+<text class="td" x="44" y="492">C4</text>
+<text class="td" x="150" y="492">12 pF</text>
+<text class="td" x="300" y="492">cap C0G/NP0</text>
+<text class="td" x="560" y="492">1</text>
+<text class="td" x="720" y="492">0603</text>
+<text class="td" x="44" y="509">J1, J2</text>
+<text class="td" x="150" y="509">SMA</text>
+<text class="td" x="300" y="509">edge-launch SMA jack</text>
+<text class="td" x="560" y="509">2</text>
+<text class="td" x="720" y="509">-</text>
+<text class="td" x="44" y="526">PCB</text>
+<text class="td" x="150" y="526">-</text>
+<text class="td" x="300" y="526">FR-4 (or copper-clad build)</text>
+<text class="td" x="560" y="526">1</text>
+<text class="td" x="720" y="526">-</text>
+<text class="cap2" x="44" y="582">Caps C0G/NP0, 0603; hit odd values by paralleling or a trimmer on one element.</text>
+<text class="cap2" x="44" y="598">Inductors air-wound or Coilcraft 0603. All values are NanoVNA/SA tuning start points, not final.</text>
+</svg>
