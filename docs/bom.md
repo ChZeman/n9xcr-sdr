@@ -66,21 +66,29 @@ no -3.3 V rail, and **no RF DC-block caps** (every RF pin sits at 0 VDC). Schema
 | PCB | small custom 2-layer (or 4-layer) board | JLCPCB / PCBWay | lay out from the SnapEDA/SnapMagic **PE42512A-X** footprint+symbol (KiCad/Altium/PADS/Eagle). The pSemi eval Gerbers are a 12-SMA *characterization* board - reference only, not the node board. |
 | Connectors (standalone only) | SMA/edge-launch as needed | with order | omit if integrated onto the TX board |
 
-**Port map** (loss-tiered; RF1/RF12 are lowest-loss -> highest bands). **BUILT** = one of the four real bands.
+**Port map** - each port is a 1.5:1 sub-octave slice spanning 4 m (70 MHz) to 5 cm (5.8 GHz); the
+amateur band that lands in each slice is tagged. Loss-tiered: RF1/RF12 (lowest loss) carry the
+highest bands. Populate only the ports you build - each band is a full chain (BPF -> driver -> final
+-> LPF); the switch only routes.
 
-| Port | Band | | Port | Band |
-|------|------|-|------|------|
-| RF1 | 4050-6075 MHz | | RF7 | 50 Ohm dummy load (low-level park) |
-| RF2 | 1800-2700 MHz | | RF8 | 105-158 MHz - **2 m (BUILT)** |
-| RF3 | 800-1200 MHz | | RF9 | 237-355 MHz - **222 (BUILT)** |
-| RF4 | 355-533 MHz - **70 cm (BUILT)** | | RF10 | 533-800 MHz - **902 (BUILT)** |
-| RF5 | 158-237 MHz | | RF11 | 1200-1800 MHz |
-| RF6 | 70-105 MHz | | RF12 | 2700-4050 MHz |
+| Port | Loss rank | Slice (MHz) | Amateur band |
+|------|-----------|-------------|--------------|
+| RF1 | 1 (lowest) | 4050-6075 | 5 cm (5.65-5.925 GHz) |
+| RF12 | 1 | 2700-4050 | 9 cm (3.3-3.5 GHz) |
+| RF2 | 2 | 1800-2700 | 13 cm (2.3-2.45 GHz) |
+| RF11 | 2 | 1200-1800 | 23 cm (1240-1300) |
+| RF3 | 3 | 800-1200 | 33 cm (902-928) |
+| RF10 | 3 | 533-800 | - none |
+| RF4 | 4 | 355-533 | 70 cm (420-450) |
+| RF9 | 4 | 237-355 | - none |
+| RF5 | 5 | 158-237 | 1.25 m (222-225) |
+| RF8 | 5 | 105-158 | 2 m (144-148) |
+| RF6 | 6 | 70-105 | 4 m (70-70.5) |
+| RF7 | 6 (highest) | dummy / spare | low-level 50 Ohm test / park |
 
-- The four **BUILT** bands (2 m / 222 / 70 cm / 902) land on RF8 / RF9 / RF4 / RF10, all in the
-  sub-1 dB loss tier. The other ports are 1.5:1 sub-octave slices that would tile the full
-  70 MHz-6 GHz span - design completeness, not a build. Each real band is still a whole chain
-  (BPF -> driver -> final -> LPF); the switch only routes.
+- Spans 4 m (70 MHz) to 5 cm (5.8 GHz) - the AD9361 TX range; 6 m and below ride the HF SDR.
+- RF9 (237-355) and RF10 (533-800) slices have no current amateur allocation - spare. RF7 = low-level
+  dummy / park.
 - **Decode (LS=0, bits V4 V3 V2 V1):** RF1 `0000`, RF2 `1000`, RF3 `0100`, RF4 `1100`, RF5 `0010`,
   RF6 `1010`, RF7 `0110`, RF8 `1110`, RF9 `0001`, RF10 `1001`, RF11 `0101`, RF12 `1101`;
   all-isolated **park** (TX-inhibit) = `0011`.
