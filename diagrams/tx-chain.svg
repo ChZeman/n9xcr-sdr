@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 584" role="img">
 <title>VHF/UHF transmit chain with part numbers</title>
-<desc>7020-SDR exciter with onboard PA providing pre-driver-level output, ADRF5040 SP4T band-select switching at low level, then four per-band chains each with a bandpass, CGH40010 driver, final (MRF101AN for 2m and 222, CGH40120F for 70cm and 902) inside the control wrapper, and a low-pass filter, out to antenna routing.</desc>
+<desc>7020-SDR exciter with onboard PA providing pre-driver-level output, PE42512A SP12T band-select switching at low level (4 of 12 ports populated), then four per-band chains each with a bandpass, CGH40010 driver, final (MRF101AN for 2m and 222, CGH40120F for 70cm and 902) inside the control wrapper, and a low-pass filter, out to antenna routing.</desc>
 <style>
 text{font-family:Arial,Helvetica,sans-serif}
 .t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:14px;font-weight:500;fill:#2C2C2A}
@@ -17,7 +17,7 @@ text{font-family:Arial,Helvetica,sans-serif}
 
 <g class="c-gray"><rect x="240" y="108" width="200" height="48" rx="8" stroke-width="0.5"/>
 <text class="th" x="340" y="126" text-anchor="middle" dominant-baseline="central">TX band-select</text>
-<text class="ts" x="340" y="142" text-anchor="middle" dominant-baseline="central">ADRF5040 SP4T</text></g>
+<text class="ts" x="340" y="142" text-anchor="middle" dominant-baseline="central">PE42512A SP12T</text></g>
 
 <line x1="340" y1="156" x2="116" y2="178" class="arr" marker-end="url(#arrow)"/>
 <line x1="340" y1="156" x2="266" y2="178" class="arr" marker-end="url(#arrow)"/>
