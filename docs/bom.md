@@ -50,6 +50,15 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
   (e.g. Mitsubishi RA-series) — both are wrong for an all-mode linear station.
 - Whatever bundled filter ships on any amp board, verify harmonic suppression on an analyzer
   (−43 dBc required); do not assume.
+- **DigiKey single-sourcing.** DigiKey-stocked: the active devices (CGH40010F driver, CGH40120F +
+  MRF101AN finals — both finals confirmed in stock, MACOM/Wolfspeed; PE42512A switch) and all
+  passives / connectors / enclosures (Hammond) / PSUs (Mean Well), including the **BPF parts** (high-Q
+  C0G/NP0 caps — Johanson / Murata GJM-GQM / KYOCERA AVX / Knowles; Coilcraft chip inductors or magnet
+  wire; edge-launch SMA). **Not on DigiKey — order direct / ham-dealer:** 7020-SDR (opensourcesdrlab /
+  AliExpress), DVstick 30 (GigaParts), antennas (Tram / Comet), GPSDO (Leo Bodnar), W6PQL control /
+  sequencer / SWR boards, RX cavities (DCI / Temwell / FreeWave). **Custom PCBs** (band-select, BPF
+  boards) go to a fab house (JLCPCB / PCBWay), not DigiKey — or build the BPFs on copper-clad
+  (copper-clad stock is on DigiKey).
 
 ## Band-select build (PE42512A - TX)
 
