@@ -3,7 +3,7 @@
 Block and reference diagrams for the station design. Each SVG is self-contained (inline styles) and
 renders on its own in a browser; GitHub shows them in the file view.
 
-> Bands shown in these diagrams are the US / IARU R2 example (2 m / 222 / 70 cm / 902); see [`../docs/regions.md`](../docs/regions.md) to adapt.
+> Most diagrams below use the US / IARU R2 example bands (2 m / 222 / 70 cm / 902). **`band-coverage.svg`** and **`port-modules.svg`** instead show every band across all IARU regions. See [`../docs/regions.md`](../docs/regions.md) to adapt.
 
 | File | What it shows |
 |------|---------------|
@@ -14,7 +14,8 @@ renders on its own in a browser; GitHub shows them in the file view.
 | `gain-budget.svg` | Level diagram of the transmit gain budget (dBm at each stage) for the worst-case 902 MHz / 80 W path. |
 | `control-wrapper.svg` | The PA control / protection subsystem: T/R sequencing, gate-bias keying, SWR and thermal foldback, overcurrent trip, the sensors and fan, and the software-ALC tie-back to the node host. |
 | `telemetry.svg` | The telemetry path from PA sensing through the local IO bridge and LAN to the web-UI tiles — with the reminder that hard-real-time protection is autonomous and not on this path. |
-| `band-coverage.svg` | Conceptual coverage map: the four TX bands, receive to 6 GHz, the HF exciter, and the wideband RX antenna. |
+| `band-coverage.svg` | Every amateur band the node can transmit on (4 m–5.8 GHz) on a log-frequency axis, colour-tagged by IARU region availability (all regions / R2-only / R1-only / varies); plus receive to 6 GHz. |
+| `port-modules.svg` | All 12 PE42512A ports and the module on each: per-port band + region, then BPF → CGH40010 driver → final (MRF101AN / CGH40120F / µwave TBD, by frequency) → LPF → 50 W out; the two spare slices and the dummy/park port are shown too. |
 | `band-select-schematic.svg` | Functional schematic of the TX band selector: PE42512A SP12T on a single 3.3 V supply (VSS_EXT->GND, internal -V gen), no DC-blocks, V1-V4 + LS control, the loss-tiered 12-port band map, and the all-isolated park (TX-inhibit) state. |
 
 **Color conventions:** blue = SDR / digital, teal = LDMOS, purple = GaN (and head-end / UI), gray =

@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 776" role="img">
+<title>Band-select fan-out: all 12 ports and the module on each</title>
+<desc>The PE42512A SP12T band-select switched at exciter level fans out to twelve ports. Each populated port carries a band module: bandpass filter, CGH40010 driver, a power final chosen by frequency (MRF101AN LDMOS for 4 m/2 m/1.25 m, CGH40120F GaN for 70 cm/33 cm/23 cm, a microwave final TBD for 13 cm/9 cm/5 cm), then a low-pass filter to the antenna. Two slices have no amateur allocation (spare) and one port is a low-level dummy/park. Build only the ports your region allocates.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L8 5L1 9" fill="none" stroke="#7a7972" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif}.h1{font-size:17px;font-weight:700;fill:#2C2C2A}.h2{font-size:11px;fill:#56554f}.pin{font-size:12px;font-weight:700;fill:#2C2C2A}.sl{font-size:9px;fill:#7a7972}.bn{font-size:12px;font-weight:600;fill:#2C2C2A}.rg{font-size:8.5px;font-weight:600}.mod{font-size:10px;fill:#2C2C2A}.modb{font-size:10px;font-weight:600;fill:#2C2C2A}.sp{font-size:10px;fill:#8a8980;font-style:italic}.cap{font-size:10px;fill:#6b6a64}.wire{stroke:#7a7972;stroke-width:1.4;fill:none}.sw{fill:#eef2ff;stroke:#4f46e5;stroke-width:1.6}</style>
+<text class="h1" x="20" y="30">Band-select fan-out – all 12 ports and the module on each</text>
+<text class="h2" x="20" y="50">PE42512A SP12T, switched at exciter level (cold). Driver CGH40010 (DC–6 GHz) is common; the final is picked by frequency; BPF/LPF passbands per your region (filters.md).</text>
+<rect x="40" y="74" width="120" height="34" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text class="modb" x="100" y="89" text-anchor="middle">7020-SDR exciter</text>
+<text class="sl" x="100" y="101" text-anchor="middle">~ +19 dBm (80 mW)</text>
+<line class="wire" x1="100" y1="108" x2="100" y2="128"/>
+<rect class="sw" x="40" y="128" width="120" height="552" rx="8"/>
+<text x="100" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#4f46e5">PE42512A</text>
+<text x="100" y="164" text-anchor="middle" font-size="10" fill="#6366f1">SP12T band-select</text>
+<line class="wire" x1="160" y1="151" x2="178" y2="151"/>
+<circle cx="160" cy="151" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="150">RF1</text>
+<text class="sl" x="184" y="162">4050–6075</text>
+<rect x="248" y="135" width="74" height="32" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+<text class="bn" x="285" y="149" text-anchor="middle">5 cm</text>
+<text class="rg" x="285" y="161" text-anchor="middle" fill="#0F6E56">R1·R2·R3</text>
+<line class="wire" x1="322" y1="151" x2="329" y2="151" marker-end="url(#ar)"/>
+<rect x="330" y="136" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="154" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="151" x2="389" y2="151" marker-end="url(#ar)"/>
+<rect x="390" y="136" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="150" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="161" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="151" x2="481" y2="151" marker-end="url(#ar)"/>
+<rect x="482" y="136" width="150" height="30" rx="5" fill="#FBF3E7" stroke="#9a7b3c" stroke-width="1.1"/>
+<text class="modb" x="557" y="150" text-anchor="middle">final TBD</text>
+<text class="sl" x="557" y="161" text-anchor="middle">µwave</text>
+<line class="wire" x1="632" y1="151" x2="639" y2="151" marker-end="url(#ar)"/>
+<rect x="640" y="136" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="154" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="151" x2="699" y2="151" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="150">RF out</text>
+<text class="sl" x="704" y="162">50 W</text>
+<line class="wire" x1="160" y1="197" x2="178" y2="197"/>
+<circle cx="160" cy="197" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="196">RF12</text>
+<text class="sl" x="184" y="208">2700–4050</text>
+<rect x="248" y="181" width="74" height="32" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1.2"/>
+<text class="bn" x="285" y="195" text-anchor="middle">9 cm</text>
+<text class="rg" x="285" y="207" text-anchor="middle" fill="#888780">varies</text>
+<line class="wire" x1="322" y1="197" x2="329" y2="197" marker-end="url(#ar)"/>
+<rect x="330" y="182" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="200" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="197" x2="389" y2="197" marker-end="url(#ar)"/>
+<rect x="390" y="182" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="196" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="207" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="197" x2="481" y2="197" marker-end="url(#ar)"/>
+<rect x="482" y="182" width="150" height="30" rx="5" fill="#FBF3E7" stroke="#9a7b3c" stroke-width="1.1"/>
+<text class="modb" x="557" y="196" text-anchor="middle">final TBD</text>
+<text class="sl" x="557" y="207" text-anchor="middle">µwave</text>
+<line class="wire" x1="632" y1="197" x2="639" y2="197" marker-end="url(#ar)"/>
+<rect x="640" y="182" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="200" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="197" x2="699" y2="197" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="196">RF out</text>
+<text class="sl" x="704" y="208">50 W</text>
+<line class="wire" x1="160" y1="243" x2="178" y2="243"/>
+<circle cx="160" cy="243" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="242">RF2</text>
+<text class="sl" x="184" y="254">1800–2700</text>
+<rect x="248" y="227" width="74" height="32" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+<text class="bn" x="285" y="241" text-anchor="middle">13 cm</text>
+<text class="rg" x="285" y="253" text-anchor="middle" fill="#0F6E56">R1·R2·R3</text>
+<line class="wire" x1="322" y1="243" x2="329" y2="243" marker-end="url(#ar)"/>
+<rect x="330" y="228" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="246" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="243" x2="389" y2="243" marker-end="url(#ar)"/>
+<rect x="390" y="228" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="242" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="253" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="243" x2="481" y2="243" marker-end="url(#ar)"/>
+<rect x="482" y="228" width="150" height="30" rx="5" fill="#FBF3E7" stroke="#9a7b3c" stroke-width="1.1"/>
+<text class="modb" x="557" y="242" text-anchor="middle">final TBD</text>
+<text class="sl" x="557" y="253" text-anchor="middle">µwave</text>
+<line class="wire" x1="632" y1="243" x2="639" y2="243" marker-end="url(#ar)"/>
+<rect x="640" y="228" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="246" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="243" x2="699" y2="243" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="242">RF out</text>
+<text class="sl" x="704" y="254">50 W</text>
+<line class="wire" x1="160" y1="289" x2="178" y2="289"/>
+<circle cx="160" cy="289" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="288">RF11</text>
+<text class="sl" x="184" y="300">1200–1800</text>
+<rect x="248" y="273" width="74" height="32" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+<text class="bn" x="285" y="287" text-anchor="middle">23 cm</text>
+<text class="rg" x="285" y="299" text-anchor="middle" fill="#0F6E56">R1·R2·R3</text>
+<line class="wire" x1="322" y1="289" x2="329" y2="289" marker-end="url(#ar)"/>
+<rect x="330" y="274" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="292" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="289" x2="389" y2="289" marker-end="url(#ar)"/>
+<rect x="390" y="274" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="288" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="299" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="289" x2="481" y2="289" marker-end="url(#ar)"/>
+<rect x="482" y="274" width="150" height="30" rx="5" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.1"/>
+<text class="modb" x="557" y="288" text-anchor="middle">CGH40120F</text>
+<text class="sl" x="557" y="299" text-anchor="middle">GaN</text>
+<line class="wire" x1="632" y1="289" x2="639" y2="289" marker-end="url(#ar)"/>
+<rect x="640" y="274" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="292" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="289" x2="699" y2="289" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="288">RF out</text>
+<text class="sl" x="704" y="300">50 W</text>
+<line class="wire" x1="160" y1="335" x2="178" y2="335"/>
+<circle cx="160" cy="335" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="334">RF3</text>
+<text class="sl" x="184" y="346">800–1200</text>
+<rect x="248" y="319" width="74" height="32" rx="5" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text class="bn" x="285" y="333" text-anchor="middle">33 cm</text>
+<text class="rg" x="285" y="345" text-anchor="middle" fill="#534AB7">R2</text>
+<line class="wire" x1="322" y1="335" x2="329" y2="335" marker-end="url(#ar)"/>
+<rect x="330" y="320" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="338" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="335" x2="389" y2="335" marker-end="url(#ar)"/>
+<rect x="390" y="320" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="334" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="345" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="335" x2="481" y2="335" marker-end="url(#ar)"/>
+<rect x="482" y="320" width="150" height="30" rx="5" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.1"/>
+<text class="modb" x="557" y="334" text-anchor="middle">CGH40120F</text>
+<text class="sl" x="557" y="345" text-anchor="middle">GaN</text>
+<line class="wire" x1="632" y1="335" x2="639" y2="335" marker-end="url(#ar)"/>
+<rect x="640" y="320" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="338" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="335" x2="699" y2="335" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="334">RF out</text>
+<text class="sl" x="704" y="346">50 W</text>
+<line class="wire" x1="160" y1="381" x2="178" y2="381"/>
+<circle cx="160" cy="381" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="380">RF10</text>
+<text class="sl" x="184" y="392">533–800</text>
+<rect x="248" y="366" width="470" height="30" rx="6" fill="#F4F2EC" stroke="#cfcdc5" stroke-width="1" stroke-dasharray="4 3"/>
+<text class="sp" x="262" y="385">spare – this 1.5:1 slice has no amateur allocation; leave unpopulated</text>
+<line class="wire" x1="160" y1="427" x2="178" y2="427"/>
+<circle cx="160" cy="427" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="426">RF4</text>
+<text class="sl" x="184" y="438">355–533</text>
+<rect x="248" y="411" width="74" height="32" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+<text class="bn" x="285" y="425" text-anchor="middle">70 cm</text>
+<text class="rg" x="285" y="437" text-anchor="middle" fill="#0F6E56">R1·R2·R3</text>
+<line class="wire" x1="322" y1="427" x2="329" y2="427" marker-end="url(#ar)"/>
+<rect x="330" y="412" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="430" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="427" x2="389" y2="427" marker-end="url(#ar)"/>
+<rect x="390" y="412" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="426" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="437" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="427" x2="481" y2="427" marker-end="url(#ar)"/>
+<rect x="482" y="412" width="150" height="30" rx="5" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.1"/>
+<text class="modb" x="557" y="426" text-anchor="middle">CGH40120F</text>
+<text class="sl" x="557" y="437" text-anchor="middle">GaN</text>
+<line class="wire" x1="632" y1="427" x2="639" y2="427" marker-end="url(#ar)"/>
+<rect x="640" y="412" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="430" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="427" x2="699" y2="427" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="426">RF out</text>
+<text class="sl" x="704" y="438">50 W</text>
+<line class="wire" x1="160" y1="473" x2="178" y2="473"/>
+<circle cx="160" cy="473" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="472">RF9</text>
+<text class="sl" x="184" y="484">237–355</text>
+<rect x="248" y="458" width="470" height="30" rx="6" fill="#F4F2EC" stroke="#cfcdc5" stroke-width="1" stroke-dasharray="4 3"/>
+<text class="sp" x="262" y="477">spare – this 1.5:1 slice has no amateur allocation; leave unpopulated</text>
+<line class="wire" x1="160" y1="519" x2="178" y2="519"/>
+<circle cx="160" cy="519" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="518">RF5</text>
+<text class="sl" x="184" y="530">158–237</text>
+<rect x="248" y="503" width="74" height="32" rx="5" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.2"/>
+<text class="bn" x="285" y="517" text-anchor="middle">1.25 m</text>
+<text class="rg" x="285" y="529" text-anchor="middle" fill="#534AB7">R2</text>
+<line class="wire" x1="322" y1="519" x2="329" y2="519" marker-end="url(#ar)"/>
+<rect x="330" y="504" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="522" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="519" x2="389" y2="519" marker-end="url(#ar)"/>
+<rect x="390" y="504" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="518" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="529" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="519" x2="481" y2="519" marker-end="url(#ar)"/>
+<rect x="482" y="504" width="150" height="30" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.1"/>
+<text class="modb" x="557" y="518" text-anchor="middle">MRF101AN</text>
+<text class="sl" x="557" y="529" text-anchor="middle">LDMOS</text>
+<line class="wire" x1="632" y1="519" x2="639" y2="519" marker-end="url(#ar)"/>
+<rect x="640" y="504" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="522" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="519" x2="699" y2="519" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="518">RF out</text>
+<text class="sl" x="704" y="530">50 W</text>
+<line class="wire" x1="160" y1="565" x2="178" y2="565"/>
+<circle cx="160" cy="565" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="564">RF8</text>
+<text class="sl" x="184" y="576">105–158</text>
+<rect x="248" y="549" width="74" height="32" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
+<text class="bn" x="285" y="563" text-anchor="middle">2 m</text>
+<text class="rg" x="285" y="575" text-anchor="middle" fill="#0F6E56">R1·R2·R3</text>
+<line class="wire" x1="322" y1="565" x2="329" y2="565" marker-end="url(#ar)"/>
+<rect x="330" y="550" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="568" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="565" x2="389" y2="565" marker-end="url(#ar)"/>
+<rect x="390" y="550" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="564" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="575" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="565" x2="481" y2="565" marker-end="url(#ar)"/>
+<rect x="482" y="550" width="150" height="30" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.1"/>
+<text class="modb" x="557" y="564" text-anchor="middle">MRF101AN</text>
+<text class="sl" x="557" y="575" text-anchor="middle">LDMOS</text>
+<line class="wire" x1="632" y1="565" x2="639" y2="565" marker-end="url(#ar)"/>
+<rect x="640" y="550" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="568" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="565" x2="699" y2="565" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="564">RF out</text>
+<text class="sl" x="704" y="576">50 W</text>
+<line class="wire" x1="160" y1="611" x2="178" y2="611"/>
+<circle cx="160" cy="611" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="610">RF6</text>
+<text class="sl" x="184" y="622">70–105</text>
+<rect x="248" y="595" width="74" height="32" rx="5" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.2"/>
+<text class="bn" x="285" y="609" text-anchor="middle">4 m</text>
+<text class="rg" x="285" y="621" text-anchor="middle" fill="#185FA5">R1</text>
+<line class="wire" x1="322" y1="611" x2="329" y2="611" marker-end="url(#ar)"/>
+<rect x="330" y="596" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="356" y="614" text-anchor="middle">BPF</text>
+<line class="wire" x1="382" y1="611" x2="389" y2="611" marker-end="url(#ar)"/>
+<rect x="390" y="596" width="84" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="432" y="610" text-anchor="middle">CGH40010</text>
+<text class="sl" x="432" y="621" text-anchor="middle">driver</text>
+<line class="wire" x1="474" y1="611" x2="481" y2="611" marker-end="url(#ar)"/>
+<rect x="482" y="596" width="150" height="30" rx="5" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.1"/>
+<text class="modb" x="557" y="610" text-anchor="middle">MRF101AN</text>
+<text class="sl" x="557" y="621" text-anchor="middle">LDMOS</text>
+<line class="wire" x1="632" y1="611" x2="639" y2="611" marker-end="url(#ar)"/>
+<rect x="640" y="596" width="52" height="30" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.1"/>
+<text class="modb" x="666" y="614" text-anchor="middle">LPF</text>
+<line class="wire" x1="692" y1="611" x2="699" y2="611" marker-end="url(#ar)"/>
+<text class="modb" x="704" y="610">RF out</text>
+<text class="sl" x="704" y="622">50 W</text>
+<line class="wire" x1="160" y1="657" x2="178" y2="657"/>
+<circle cx="160" cy="657" r="2.4" fill="#4f46e5"/>
+<text class="pin" x="184" y="656">RF7</text>
+<text class="sl" x="184" y="668">park</text>
+<rect x="248" y="642" width="470" height="30" rx="6" fill="#F4F2EC" stroke="#cfcdc5" stroke-width="1" stroke-dasharray="4 3"/>
+<text class="sp" x="262" y="661">low-level 50 Ω dummy / TX-inhibit park – cold-switch target</text>
+<text class="h2" x="20" y="710" font-weight="700">Final by frequency:</text>
+<rect x="150" y="700" width="12" height="12" rx="3" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text class="cap" x="167" y="710">MRF101AN LDMOS  (4 m / 2 m / 1.25 m)</text>
+<rect x="388" y="700" width="12" height="12" rx="3" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text class="cap" x="405" y="710">CGH40120F GaN  (70 cm / 33 cm / 23 cm)</text>
+<rect x="637" y="700" width="12" height="12" rx="3" fill="#FBF3E7" stroke="#9a7b3c" stroke-width="1"/>
+<text class="cap" x="654" y="710">microwave final TBD  (13 cm / 9 cm / 5 cm)</text>
+<text class="cap" x="20" y="730">Band-box colour = IARU region availability (R1 blue / all-region teal / R2 purple / varies grey), matching band-coverage.svg.</text>
+<text class="cap" x="20" y="746">Ports are loss-tiered (RF1/RF12 lowest loss = highest bands). Spare slices and the dummy stay unpopulated. Build only your region’s bands. See docs/regions.md.</text>
+</svg>
