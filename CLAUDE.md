@@ -36,6 +36,20 @@ See `diagrams/tx-chain.svg`.
   from the SnapEDA `PE42512A-X` footprint. The 12 ports are fixed 1.5:1 sub-octave slices spanning
   4 m-5.8 GHz; populate the slices your region allocates. (The RX path keeps 2x ADRF5040 SP4T +
   shared ADM8829 -3.3 V.)
+- **Filters spec'd per slice (full port range), band-limiting moved to software.** The hardware is
+  built to transmit the FULL 1.5:1 slice of each populated port; the legal band-limit is enforced only
+  in the node's allowed-TX frequency table. So the per-port BPF is **slice-wide** (cleans the AD9361's
+  out-of-slice images / LO leakage / harmonics, no longer pins the band) and the per-port LPF cutoff
+  sits just above the **slice top**, not ~1.1x the ham-band top. Motivation: a licensed op with
+  MARS/CAP authority can work the assigned segments adjacent to each ham band (e.g. CAP VHF ~148-150
+  just above 2 m) without the hardware fencing them out. One sub-octave LPF holds >=43 dBc 2nd-harmonic
+  over the top ~97% of a 1.5:1 slice; the bottom-few-MHz under-margin sliver sits below the lowest
+  allocation in every slice (and the slice-wide BPF's upper skirt covers it), so it is clean everywhere
+  an op is actually authorized to key. Raising LPF fc to the slice top trades a little ham-band harmonic
+  margin (70 cm ~64->~58 dB at 432) but stays well past -43 dBc. NOTE: with hardware no longer fencing
+  bands, the software allowed-TX table is now SAFETY-CRITICAL -> must be FAIL-CLOSED (deny by default,
+  permit only enumerated authorized segments; RF7 cold-switch park = safe state on fault/out-of-table).
+  RX preselectors stay narrow (separate job: front-end protection + crossband isolation).
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;
@@ -60,6 +74,11 @@ See `diagrams/tx-chain.svg`.
   the US/R2 worked example.
 - **BOM + PCB:** finish the consolidated Mouser / DigiKey BOM; order the custom PE42512A band-select
   board (DigiKey `1046-PE42512A-XCT-ND`, Cut Tape).
+- **Propagate the per-slice / software-limit decision into the deep docs.** `filters.md` LPF table +
+  usable-window table re-derived for slice-top fc (4 m/70 cm/33 cm/23 cm/13 cm/9 cm cutoffs rise);
+  `tx-chain.svg` BPF boxes relabelled band->slice and the "band-tuned BPF restricts each path" caption
+  corrected (band-limit now lives in software); `regions.md` BPF/LPF guidance reworded. Currently only
+  the decision log (this file) reflects it.
 - **Deferred (non-RF):** node-host sizing; head-end / web-UI software stack.
 
 ## Repo layout
