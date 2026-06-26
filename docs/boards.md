@@ -13,7 +13,7 @@ Fabbing it removes the guesswork in matching and stability; it is not a from-scr
 | Stage | Device | Board / source | Buy or fab | Count |
 |-------|--------|----------------|-----------|------:|
 | Pre-driver | onboard (PGA-102+) | on the 7020-SDR — no board to fab or buy | — | 0 |
-| TX band-select | ADRF5040 | fab the ADI application/evaluation layout (silicon SP4T), or use the ADI eval board | fab, or eval | 1 (shared) |
+| TX band-select | PE42512A | **custom board to be laid out** from the SnapEDA/SnapMagic `PE42512A-X` footprint — no usable eval/breakout exists (the pSemi eval is a 12-SMA characterization fixture). See `bom.md` "Band-select build". | fab (custom, **not started**) | 1 (shared) |
 | Driver | CGH40010 | MACOM **CGH40010-AMP** reference amp (schematic + BOM, Rogers RO4350B 20 mil); the **CGH40010F-AMP** test board ships with the device installed | buy test board, or fab + retune | 4 (per band) |
 | Cleanup bandpass | — | small low-level bandpass ahead of each driver | fab / buy | per band |
 | Final, 2 m / 222 | MRF101AN | NXP **136–174 MHz reference circuit** (datasheet), retuned to band | fab + retune | 2 |
@@ -49,3 +49,25 @@ The only stages bought as finished ham-catalog boards.
 - The split happens at the band-select: the SDR (with its onboard PA) and the band-select are shared and sit ahead of it, while the bandpass, driver, final and low-pass are per-band (built four times). Switching at low level keeps the band-select a small signal-level part and lets each band's bandpass clean the signal before it is amplified.
 - Verify harmonic suppression on any bundled or fabbed filter with an analyzer (the design target is
   −43 dBc or better); do not assume a board meets it.
+
+## Connectors
+
+Split the connector families by role, not by convenience:
+
+- **Internal, low-level interconnects (switch → BPF, and the inter-stage hops):** **SMA**. The
+  band-select runs at the ~+19 dBm / 80 mW exciter level, so power handling is irrelevant here — what
+  matters is a true 50 Ω match, shielding (spurs are cleaned *before* the gain, so inter-path
+  isolation counts), and frequency headroom past the highest band. SMA gives all three, is threaded/
+  secure for a permanent node, and is compact enough to fan out 12 ports. Use **edge-launch SMA jacks**
+  with short **RG402 / .141 semi-rigid** jumpers (lower leakage and repeatable geometry vs flexible
+  RG316; loss is a non-issue at these lengths/levels, so optimize for shielding).
+- **50 W output / antenna feed:** **N** — robust, weatherproof, good past 11 GHz. Keeping it a
+  different family from the internal SMA also physically prevents cross-patching a low-level port into
+  the antenna.
+- **Avoid:** UHF / PL-259 (not constant-impedance; useless above ~300 MHz, so wrong for 2 m and up)
+  and BNC (marginal past ~1 GHz). TNC is acceptable where threaded robustness is wanted, but bulkier
+  than SMA for a dense switch board.
+- **Integration endgame:** if the per-band modules later move onto a common motherboard instead of
+  separate boxes with jumpers, switch the internal hops to **SMP / SMPM blind-mate push-on** — they
+  mate without torque (a real win across 12 ports), stay compact, and run well past the bands. SMA
+  jumpers are the right starting point; SMP/SMPM is the upgrade path.

@@ -33,6 +33,7 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 
 | Item | Candidate / status |
 |------|--------------------|
+| **PE42512A band-select PCB** | **custom board still to be designed** — lay out from the SnapEDA/SnapMagic `PE42512A-X` footprint against `diagrams/band-select-schematic.svg`; FR-4 2-layer through 928 MHz (4-layer only if >1 GHz ports are populated); no usable eval/breakout exists. **Not started** — deferred to a later layout pass. |
 | GPSDO unit | e.g. Leo Bodnar Mini Precision GPSDO — confirm frequency range |
 | T-R relays + sequencer | off-the-shelf control boards (W6PQL) — leading source |
 | Triplexer 2m/440/902 | sourcing risk — verify a real 900 MHz transmit-rated port |
