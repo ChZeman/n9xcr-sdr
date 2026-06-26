@@ -101,7 +101,30 @@ the driver); the post-final LPF backstops the harmonics.
 Practical path = **hybrid**: catalog SMT where a wide part lands on the band (222 cleanly, 70 cm for
 the ham segment), fab a lumped-LC bandpass (or an HP+LP cascade) where it doesn't (2 m, 902). Fabbing
 all four is the alternative if one design method and true slice-wide everywhere is worth more than
-skipping two tuning jobs. Decision pending.
+skipping two tuning jobs.
+
+**Decided: fab all four** as lumped-LC bandpass — one design method and true slice-wide on every band,
+accepting four tuning jobs over catalog drop-ins on 222 / 70 cm.
+
+## Tuning bench (TX filters)
+
+Both the LPF bank and the BPFs are fabbed and tuned, so they share a bench. The right instrument is a
+**VNA, not a bare spectrum analyzer** — an SA is a receiver (power vs frequency at its input), so it
+needs a source swept *through* the filter; an SA + tracking generator gives only scalar S21 and stays
+blind on the **match**. A VNA gives S21 + S11 in one calibrated sweep, which is what bandpass tuning
+needs (place the passband *and* land the reflection nulls on each resonator). The project's reference
+instrument is a **NanoVNA**.
+
+- **Passband + match tuning:** a ~1.5 GHz-class NanoVNA covers all four bands and their matches (even
+  the 902 slice top ~1.2 GHz). Sufficient for tuning.
+- **Harmonic-suppression verification:** reaches 2× the band — 2 m → ~288 MHz (easy), but **902 →
+  ~1804 MHz**, past a 1.5 GHz NanoVNA. Use a 3–6 GHz VNA (LiteVNA-class) or a spectrum analyzer for it.
+- **Kit:** VNA + its SOLT cal standards (calibrate at the SMA reference plane or UHF readings are
+  fiction) + short SMA leads/fixture (edge-launch, short at UHF) + non-metallic tuning tools + fine
+  soldering (iron + hot air) for swapping/paralleling caps and spreading/squeezing air-wound inductors.
+- **Keep an SA on the bench anyway** for the system-level −43 dBc harmonic check on the final + LPF
+  *at power* (through proper attenuation) — a different job from tuning the small-signal passives, and
+  at frequencies a 1.5 GHz NanoVNA can't reach.
 
 ## RX preselectors
 
