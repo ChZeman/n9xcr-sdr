@@ -108,23 +108,31 @@ accepting four tuning jobs over catalog drop-ins on 222 / 70 cm.
 
 ## Tuning bench (TX filters)
 
-Both the LPF bank and the BPFs are fabbed and tuned, so they share a bench. The right instrument is a
-**VNA, not a bare spectrum analyzer** — an SA is a receiver (power vs frequency at its input), so it
-needs a source swept *through* the filter; an SA + tracking generator gives only scalar S21 and stays
-blind on the **match**. A VNA gives S21 + S11 in one calibrated sweep, which is what bandpass tuning
-needs (place the passband *and* land the reflection nulls on each resonator). The project's reference
-instrument is a **NanoVNA**.
+Both the LPF bank and the BPFs are fabbed and tuned, so they share a bench. Tuning needs **transmission**
+(S21 — passband, IL, ripple, skirts) and ideally the **match** (S11 / return loss). Two equivalent
+benches:
 
-- **Passband + match tuning:** a ~1.5 GHz-class NanoVNA covers all four bands and their matches (even
-  the 902 slice top ~1.2 GHz). Sufficient for tuning.
-- **Harmonic-suppression verification:** reaches 2× the band — 2 m → ~288 MHz (easy), but **902 →
-  ~1804 MHz**, past a 1.5 GHz NanoVNA. Use a 3–6 GHz VNA (LiteVNA-class) or a spectrum analyzer for it.
-- **Kit:** VNA + its SOLT cal standards (calibrate at the SMA reference plane or UHF readings are
-  fiction) + short SMA leads/fixture (edge-launch, short at UHF) + non-metallic tuning tools + fine
-  soldering (iron + hot air) for swapping/paralleling caps and spreading/squeezing air-wound inductors.
-- **Keep an SA on the bench anyway** for the system-level −43 dBc harmonic check on the final + LPF
-  *at power* (through proper attenuation) — a different job from tuning the small-signal passives, and
-  at frequencies a 1.5 GHz NanoVNA can't reach.
+- **SA + tracking generator (+ a return-loss bridge for the match) — preferred here.** The TG gives
+  scalar S21 directly; a cheap return-loss bridge (or directional coupler) adds scalar return loss, and
+  is worth it for the multi-resonator BPFs (watch each resonator's RL null drop in) though skippable for
+  the simple LPFs. Key edge: SA+TG dynamic range (80–100+ dB) actually *shows* the deep −43 dBc / 60–70 dB
+  stopband — a NanoVNA can't. Tuning is low-level (TG output), so no power needed.
+- **NanoVNA — the cheap alternative.** Vector S21 + S11 in one calibrated sweep, but ~70 dB dynamic
+  range, so it tunes passbands fine but can't display the deep stopband floor.
+
+Either places the passbands; for deep-rejection verification the SA+TG wins (within its frequency limit).
+
+- **Frequency reach needed:** for *tuning*, the instrument must reach the passbands — up to ~1.2 GHz
+  for the 902 slice. For *harmonic verification*, it must reach 2× the band — 2 m → ~288 MHz (easy)
+  through 70 cm fine, but **902 → ~1804 MHz**. A ~1.5 GHz instrument tunes everything but can't see the
+  902 harmonic; that needs a ≥~2 GHz reach (3–6 GHz VNA / LiteVNA-class, or an SA that goes there).
+- **Kit:** SA + tracking generator (preferred) + a **return-loss bridge** (cheap, for the BPF match)
+  + cal/normalization references (thru for S21; open/short/load for the bridge — at the SMA reference
+  plane or UHF readings are fiction) + short SMA leads/fixture (edge-launch, short at UHF) + non-metallic
+  tuning tools + fine soldering (iron + hot air) for swapping/paralleling caps and spreading/squeezing
+  air-wound inductors. A NanoVNA substitutes for the SA+TG+bridge but loses the deep-stopband visibility.
+- **At-power spectral check** is a separate, later job: confirm the final + LPF hit −43 dBc *at power*
+  (SA through proper attenuation) — not part of small-signal filter tuning.
 
 ## RX preselectors
 
