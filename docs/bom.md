@@ -13,7 +13,8 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 | Final, 70 cm + 902 | Wolfspeed/MACOM CGH40120F | 120 W GaN, 28 V; one part both bands; run at 50 W |
 | Pre-driver | onboard PGA-102+ on the SDR | ~+15–19 dBm out; no separate board (discrete PGA-103+ optional if the onboard PA is bypassed) |
 | Driver | Wolfspeed/MACOM CGH40010 (F flange / P pill) | 10 W GaN (13 W PSAT), DC–6 GHz, 28 V; one part type, 4 builds (per band); runs ~30 % for linear |
-| TX band-select | Analog Devices ADRF5040 | silicon SP4T, nonreflective, 9 kHz–12 GHz, 3.3 V control; low-level switch ahead of the per-band chains |
+| TX band-select | pSemi PE42512A (UltraCMOS SP12T) | silicon SP12T, absorptive, 9 kHz-8 GHz, **single 3.3 V supply** (internal -V gen; VSS_EXT->GND), 4-bit V1-V4 + LS control; low-level switch ahead of the per-band chains. Order code `PE42512A-X` (DigiKey, ~$15-20). Base PE42512 is EOL - buy ~4 spares. See "Band-select build (PE42512A)" below. |
+| RX front-end switches | Analog Devices ADRF5040 (x2) | SP4T switch-filter-switch in the RX preselector carrier (unchanged); needs +3.3 V & -3.3 V via a shared ADM8829. See `rx-frontend.svg`. |
 | RX preselector, 2 m | DCI-146-4H | 4-pole cavity, 144–148 |
 | RX preselector, 222 | Temwell helical | 222–225 |
 | RX preselector, 70 cm | Temwell helical | 420–450 |
@@ -47,37 +48,79 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 - Whatever bundled filter ships on any amp board, verify harmonic suppression on an analyzer
   (−43 dBc required); do not assume.
 
-## Band-select build (ADRF5040)
+## Band-select build (PE42512A - TX)
 
-Parts for one band-select SP4T. The ADRF5040 needs **+3.3 V and −3.3 V** — the ADM8829 makes
-the −3.3 V rail from +3.3 V. Schematic: `diagrams/band-select-schematic.svg`.
+Parts for the one TX band-select SP12T. Unlike the ADRF5040, the PE42512A is **single-supply** -
+tie VSS_EXT (pin 10) to GND and its internal negative-voltage generator does the rest. No ADM8829,
+no -3.3 V rail, and **no RF DC-block caps** (every RF pin sits at 0 VDC). Schematic:
+`diagrams/band-select-schematic.svg`.
 
 | Item | Part | Source (approx) | Notes |
 |------|------|-----------------|-------|
-| SP4T switch | **ADRF5040BCPZ** | Mouser / DigiKey ~$32 | order the BCPZ strip (MOQ 1); not the `-R7` reel, not the `-EVALZ` board |
-| −3.3 V generator | **ADM8829ARTZ-REEL7** | DigiKey ~$3 (cut-tape qty 1) | SOT-23-6 charge-pump inverter; +3.3 V in → −3.3 V out to VSS |
-| Charge-pump caps | 2 × 1 µF | with order | C1 flying (CAP+/CAP−), C2 reservoir (OUT→GND) |
-| Supply decoupling | 100 nF + bulk (1–10 µF) | with order | on VDD and VSS to GND |
-| RF DC-blocks | ~1 nF C0G × 5 | with order | RFC + RF1–RF4 |
-| PCB | **ADI EVAL-ADRF5040 official gerbers** (4-layer RO4350) | PCBWay (Rogers-capable); turnkey PCBA to place the LFCSP | proven ADI layout — see "Board: fab ADI gerbers" below; own 2-layer FR-4 is the cheaper alternative |
-| Connectors (standalone only) | SMA edge-launch × 5 | with order | omit if integrated onto the TX board |
-| Control | 2 × GPIO (V1/V2) | from control MCU | 3.3 V CMOS; nothing to buy |
+| SP12T switch | **PE42512A-X** | DigiKey (`PE42512A-X`, 500/T&R) ~$15-20 | active "A" revision; base PE42512 is discontinued. Buy ~4 spares - pSemi is phasing out its broadband-switch line. Confirm DigiKey "Part Status: Active". |
+| Supply decoupling | 0.1 uF + 1 uF to GND | with order | on VDD (3.3 V, IDD ~200 uA) |
+| VSS_EXT (pin 10) | tie -> GND | - | normal mode = internal -V gen ON; ~5 MHz spur is irrelevant at VHF/UHF. Bypass mode (-3.0 V) optional for spur-free, unused. |
+| LS (pin 32) | tie -> GND | - | selects the LS=0 decode map; grounding LS also improves IL/isolation. Internal 1 MOhm pull-up makes a floating LS read high - tie it deliberately. |
+| Control | 4 x GPIO (V1-V4) | from control MCU | 3.3 V CMOS; nothing to buy |
+| RF DC-blocks | **none** | - | not required (RF ports at 0 VDC) |
+| PCB | small custom 2-layer (or 4-layer) board | JLCPCB / PCBWay | lay out from the SnapEDA/SnapMagic **PE42512A-X** footprint+symbol (KiCad/Altium/PADS/Eagle). The pSemi eval Gerbers are a 12-SMA *characterization* board - reference only, not the node board. |
+| Connectors (standalone only) | SMA/edge-launch as needed | with order | omit if integrated onto the TX board |
 
-- The TX node uses **one** band-select; the RX front-end uses **two** more of the same ADRF5040
-  (switch–filter–switch), so a full build is **3** switches — the two co-located RX switches can
-  share a single ADM8829 −3.3 V rail.
-- No-build alternative: the `ADRF5040-EVALZ` populated eval board (~$282) — turnkey, but still needs
-  external +3.3 V and −3.3 V applied.
+**Port map** (loss-tiered; RF1/RF12 are lowest-loss -> highest bands). **BUILT** = one of the four real bands.
 
+| Port | Band | | Port | Band |
+|------|------|-|------|------|
+| RF1 | 4050-6075 MHz | | RF7 | 50 Ohm dummy load (low-level park) |
+| RF2 | 1800-2700 MHz | | RF8 | 105-158 MHz - **2 m (BUILT)** |
+| RF3 | 800-1200 MHz | | RF9 | 237-355 MHz - **222 (BUILT)** |
+| RF4 | 355-533 MHz - **70 cm (BUILT)** | | RF10 | 533-800 MHz - **902 (BUILT)** |
+| RF5 | 158-237 MHz | | RF11 | 1200-1800 MHz |
+| RF6 | 70-105 MHz | | RF12 | 2700-4050 MHz |
 
-### Board: fab ADI's official gerbers (chosen)
+- The four **BUILT** bands (2 m / 222 / 70 cm / 902) land on RF8 / RF9 / RF4 / RF10, all in the
+  sub-1 dB loss tier. The other ports are 1.5:1 sub-octave slices that would tile the full
+  70 MHz-6 GHz span - design completeness, not a build. Each real band is still a whole chain
+  (BPF -> driver -> final -> LPF); the switch only routes.
+- **Decode (LS=0, bits V4 V3 V2 V1):** RF1 `0000`, RF2 `1000`, RF3 `0100`, RF4 `1100`, RF5 `0010`,
+  RF6 `1010`, RF7 `0110`, RF8 `1110`, RF9 `0001`, RF10 `1001`, RF11 `0101`, RF12 `1101`;
+  all-isolated **park** (TX-inhibit) = `0011`.
+- Cold-switch only (no TX during a band change); hot-switch limit is 20 dBm above 100 MHz and the
+  exciter is ~+19 dBm - another reason the band-select sits *before* the drivers.
 
-Rather than design a board from scratch or order the PCBWay community clone, fab ADI's **own**
-eval-board gerbers – the authoritative ADRF5040-EVALZ design.
+### Why PE42512A over the ADRF5040 (TX path)
 
-- **Gerbers:** <https://www.analog.com/media/en/technical-documentation/evaluation-documentation/gerber-files/ADRF5040_Gerbers.zip> (linked from the EVAL-ADRF5040 page). Verified contents: a 4-layer package (METAL-01–04) with soldermask / silkscreen / paste, NC drill, a fabrication-drawing PDF (material + stackup + dimensions), an IPC-2581 file, and an X-Y pick-and-place file.
-- **Fab:** PCBWay (handles Rogers). Upload the zip; it is **4-layer Rogers RO4350**, ENIG finish. The fab-drawing PDF in the package carries the stackup/material spec if they ask.
-- **Assembly:** use the included X-Y pick-and-place file for turnkey PCBA (PCBWay places the LFCSP – this removes the hand-reflow problem), or hand-populate. Assembly BOM = ADRF5040BCPZ + RF DC-block caps + 5 × SMA + test points.
-- **Tweak for our bands:** the eval's RF DC-blocks are 100 pF (fine up high, ~11 Ω at 144 MHz); populate ~1 nF C0G in those positions for clean low-band response.
-- **Still needs ±3.3 V:** the eval expects external +3.3 V *and* –3.3 V at its test points – it has **no** onboard negative generator, so pair it with the ADM8829 rail above (a small adjacent board, or a bench –3.3 V supply for bring-up).
-- Do **not** fab the PCBWay community clone of this board – its author flagged unresolved design issues and disabled ordering.
+- **Single supply** - internal -V generator, so no ADM8829 and no -3.3 V rail.
+- **No DC-block caps** (RF ports at 0 VDC).
+- **8 GHz coverage** - never the band limit again; covers any future band the AD9361 could TX.
+- Trade-offs: 4 control bits vs 2, a custom board (the ADI eval-gerber path is dropped), and EOL
+  risk (mitigated by buying spares now). RF penalty at <1 GHz is negligible (<1 dB IL, 40-60 dB iso).
+
+The RX front-end is **unchanged** - still 2 x ADRF5040 SP4T (switch-filter-switch) with a shared
+ADM8829 -3.3 V rail; see `rx-frontend.svg`. The ADRF5040 + ADM8829 sourcing is retained below for it.
+
+### Board: custom PE42512A layout (chosen)
+
+The ADI ADRF5040 eval-gerber fab path is **dropped** for the TX band-select (PCBWay's CAM kept
+rejecting the old `.pho`-format files, and it was a 12-SMA characterization board anyway). Instead,
+lay out a small custom board:
+
+- **Footprint/symbol:** SnapEDA / SnapMagic `PE42512A-X` (verified; exports to KiCad, Altium, PADS,
+  Eagle, OrCAD): <https://www.snapeda.com/parts/PE42512A-X/pSemi/view-part/>
+- **Reference only:** pSemi publishes eval-board Gerbers + Schematic/B.O.M. on the PE42512 product
+  page, but that board is a 12-SMA de-embedding fixture - copy its RF ground/transition style, do
+  not fab it as the node board.
+- **Stackup:** FR-4 2-layer is fine to 928 MHz for the real bands; go 4-layer / controlled-impedance
+  only if the speculative >1 GHz ports are ever populated.
+- Generate clean RS-274X Gerbers straight from the EDA tool - no `.pho` / old-format headache.
+
+### RX-only: ADRF5040 + ADM8829 sourcing (retained)
+
+The RX front-end's two SP4Ts still use these parts (one shared -3.3 V rail for the co-located pair):
+
+| Item | Part | Source (approx) | Notes |
+|------|------|-----------------|-------|
+| SP4T switch | **ADRF5040BCPZ** | Mouser / DigiKey ~$32 | strip (MOQ 1); not `-R7` reel, not `-EVALZ` |
+| -3.3 V generator | **ADM8829ARTZ-REEL7** | DigiKey ~$3 | SOT-23-6 charge-pump inverter; +3.3 V in -> -3.3 V out to VSS |
+| Charge-pump caps | 2 x 1 uF | with order | C1 flying, C2 reservoir |
+| Supply decoupling | 100 nF + bulk (1-10 uF) | with order | on VDD and VSS to GND |
+| RF DC-blocks | ~1 nF C0G x 5 (each switch) | with order | RFC + RF1-RF4 |

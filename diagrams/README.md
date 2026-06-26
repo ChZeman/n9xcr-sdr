@@ -13,7 +13,7 @@ renders on its own in a browser; GitHub shows them in the file view.
 | `control-wrapper.svg` | The PA control / protection subsystem: T/R sequencing, gate-bias keying, SWR and thermal foldback, overcurrent trip, the sensors and fan, and the software-ALC tie-back to the node host. |
 | `telemetry.svg` | The telemetry path from PA sensing through the local IO bridge and LAN to the web-UI tiles — with the reminder that hard-real-time protection is autonomous and not on this path. |
 | `band-coverage.svg` | Conceptual coverage map: the four TX bands, receive to 6 GHz, the HF exciter, and the wideband RX antenna. |
-| `band-select-schematic.svg` | Functional schematic of the TX band selector: ADRF5040 SP4T + ADM8829 −3.3 V charge-pump rail, RF DC-blocks, supply decoupling, and 2-bit V1/V2 control. |
+| `band-select-schematic.svg` | Functional schematic of the TX band selector: PE42512A SP12T on a single 3.3 V supply (VSS_EXT->GND, internal -V gen), no DC-blocks, V1-V4 + LS control, the loss-tiered 12-port band map, and the all-isolated park (TX-inhibit) state. |
 
 **Color conventions:** blue = SDR / digital, teal = LDMOS, purple = GaN (and head-end / UI), gray =
 passive / structural, amber dashed = control-wrapper boundary and sense/control lines.
