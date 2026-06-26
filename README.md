@@ -5,6 +5,8 @@ maintained by N9XCR and written to be general enough for others to follow and ad
 **only** the radio / RF / signal-path design — no infrastructure, server, or
 network-operations material.
 
+> **Region-agnostic.** Amateur allocations differ by country / IARU region. This design's band-select spans 4 m - 5.8 GHz; build the slices your country allows. The worked example throughout is the US / IARU Region 2 set (2 m / 222 / 70 cm / 902) - see [`docs/regions.md`](docs/regions.md) to adapt it to Region 1 or 3.
+
 ## Concept
 
 A federation of independent, self-contained SDR nodes that each dial home over the
@@ -12,7 +14,7 @@ internet to a shared head-end, presented through a single web control surface wi
 waterfall and full-duplex audio. Each node is a standalone radio site; nodes can be
 replicated and placed at different locations.
 
-- **Transmit span:** 550 kHz – 928 MHz (HF through 33 cm).
+- **Transmit span (example build):** 550 kHz - 928 MHz (HF through 33 cm). The VHF/UHF band-select itself spans 4 m - 5.8 GHz; populate the slices your region allocates.
 - **Receive span:** to 6 GHz (the AD9361 ceiling) — a wide monitoring dividend on top of the ham bands.
 - **Modes:** SSB / CW / AM / FM, the FT8/JS8/fldigi digital suite (run as the actual
   applications at the node), and digital voice (DMR / D-STAR / Fusion via an AMBE
@@ -23,11 +25,11 @@ replicated and placed at different locations.
 | Span | Radio | Notes |
 |------|-------|-------|
 | 0.5 – 30 MHz | Hermes-Lite 2 (example HF radio) | HF, 5 W, PureSignal-capable |
-| 70 – 928 MHz (TX) / → 6 GHz (RX) | 7020-SDR (AD9361, onboard PA) | 2 m, 222, 70 cm, 902; full-duplex |
+| 70 - 928 MHz (TX) / to 6 GHz (RX) | 7020-SDR (AD9361, onboard PA) | example US/R2: 2 m / 222 / 70 cm / 902; full-duplex |
 | 6 m (50–54) | future SDRlab 122-16 swap | deferred; direct-sampling, real displayed freq |
 
 The only amateur band in the 30–70 MHz gap is 6 m, which the future HF-board swap
-restores. The TX build is capped at **902 / 33 cm**; receive keeps reaching to 6 GHz.
+restores. The example TX build is capped at **902 / 33 cm**; the band-select reaches 5.8 GHz, and receive keeps reaching to 6 GHz.
 
 ## Hardware at a glance
 
@@ -35,7 +37,7 @@ restores. The TX build is capped at **902 / 33 cm**; receive keeps reaching to 6
 - **VHF/UHF radio:** OpenSourceSDRLab 7020-SDR, AD9361 version (onboard PA); AntSDR E200 equivalent.
 - **Digital voice:** DVMEGA DVstick 30 (AMBE-3000).
 - **Reference:** single 10 MHz GPSDO per site (GPS-disciplined OCXO).
-- **TX finals:** NXP MRF101AN (2 m, 222) and Wolfspeed/MACOM CGH40120F GaN (70 cm, 902), 50 W per band.
+- **TX finals:** NXP MRF101AN (LDMOS ~1.8-250 MHz - covers 4 m / 2 m / 222) and Wolfspeed/MACOM CGH40120F (GaN, UHF to ~1.3 GHz - covers 70 cm / 902 / 23 cm), 50 W per band; higher bands need region-appropriate finals.
 
 See [`docs/bom.md`](docs/bom.md) for the consolidated part list.
 
@@ -47,6 +49,7 @@ work is non-RF: node-host sizing and the head-end / web-UI software stack.
 
 ## Documents
 
+- [`docs/regions.md`](docs/regions.md) - adapting bands / filters / finals / antennas to your IARU region.
 - [`docs/architecture.md`](docs/architecture.md) — node and federation concept, full-duplex, crossband, satellite.
 - [`docs/radios.md`](docs/radios.md) — the radios, clocking, and the 6 m path.
 - [`docs/tx-chain.md`](docs/tx-chain.md) — transmit gain budget, stages, and control wrapper.

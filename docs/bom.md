@@ -2,6 +2,8 @@
 
 Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still needs a part picked.
 
+> **Region note:** the bands, filters, and antennas below are the US / IARU Region 2 worked example. The design is region-agnostic - see [`regions.md`](regions.md) to adapt bands, filters, finals, and antennas to Region 1 or 3.
+
 ## Firm
 
 | Item | Part | Notes |
@@ -9,8 +11,8 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 | VHF/UHF SDR | OpenSourceSDRLab 7020-SDR (PlutoSky R2), AD9361 + onboard PA | Buy direct from opensourcesdrlab.com (PlutoSky R2 7020) and select the **"9361 with PA"** variant (~$220) — not the "9363" variants, and not the $120 AD9363 "Professional Edition". Aluminum case is a separate ~$18 item (match the shell to a 9361-with-PA board). AliExpress "7020-SDR AD9361 with case" (~$200.71) is the cheaper equivalent — confirm the listing says *with PA*. AntSDR E200 (Mouser `ANTSDR-AD9361-With-CASE-01`) is the turnkey alternative. AD9361 not AD9363; onboard PGA-102+ PA (~+15–19 dBm) covers the pre-driver; runs plutosdr-fw / libiio. |
 | HF SDR | Hermes-Lite 2 | example; any HPSDR-class HF SDR |
 | Digital-voice vocoder | DVMEGA DVstick 30 | AMBE-3000; ham dealer (e.g. GigaParts), not a component distributor |
-| Final, 2 m + 222 | NXP MRF101AN | 100 W LDMOS, 1.8–250 MHz; run at 50 W |
-| Final, 70 cm + 902 | Wolfspeed/MACOM CGH40120F | 120 W GaN, 28 V; one part both bands; run at 50 W |
+| Final, VHF / low-UHF (ex: 4 m / 2 m / 222) | NXP MRF101AN | 100 W LDMOS, 1.8–250 MHz; run at 50 W |
+| Final, UHF (ex: 70 cm / 902 / 23 cm) | Wolfspeed/MACOM CGH40120F | 120 W GaN, 28 V; one part both bands; run at 50 W |
 | Pre-driver | onboard PGA-102+ on the SDR | ~+15–19 dBm out; no separate board (discrete PGA-103+ optional if the onboard PA is bypassed) |
 | Driver | Wolfspeed/MACOM CGH40010 (F flange / P pill) | 10 W GaN (13 W PSAT), DC–6 GHz, 28 V; one part type, 4 builds (per band); runs ~30 % for linear |
 | TX band-select | pSemi PE42512A (UltraCMOS SP12T) | silicon SP12T, absorptive, 9 kHz-8 GHz, **single 3.3 V supply** (internal -V gen; VSS_EXT->GND), 4-bit V1-V4 + LS control; low-level switch ahead of the per-band chains. Order code `PE42512A-X` (DigiKey, ~$15-20). Base PE42512 is EOL - buy ~4 spares. See "Band-select build (PE42512A)" below. |

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 660" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 680" role="img">
 <title>VHF/UHF transmit chain ending at per-band low-pass filters (node boundary)</title>
-<desc>7020-SDR exciter with onboard PA feeds the PE42512A SP12T band-select, switching at low level (~80 mW) to one of four per-band chains: bandpass, CGH40010 driver, MRF101AN (2m, 222) or CGH40120F (70cm, 902) final inside the control wrapper, and a low-pass filter. The chain ends at four per-band 50 W RF outputs; how those outputs are routed - direct to antennas, through a triplexer, a switch, or a dummy load with RF-exposure lockout - is defined per station, not by the node design.</desc>
+<desc>7020-SDR exciter with onboard PA feeds the PE42512A SP12T band-select, switching at low level (~80 mW) to one of four per-band chains: bandpass, CGH40010 driver, MRF101AN (2m, 222) or CGH40120F (70cm, 902) final inside the control wrapper, and a low-pass filter. The chain ends at four per-band 50 W RF outputs; how those outputs are routed - direct to antennas, through a triplexer, a switch, or a dummy load with RF-exposure lockout - is defined per station, not by the node design. Bands shown are the US / IARU R2 example; the band-select covers 4 m-5.8 GHz, so populate your region's slices.</desc>
 <style>
 text{font-family:Arial,Helvetica,sans-serif}
 .t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:14px;font-weight:500;fill:#2C2C2A}
@@ -121,4 +121,5 @@ text{font-family:Arial,Helvetica,sans-serif}
 <text class="ts" x="220" y="644">LDMOS final</text>
 <rect class="c-purple" x="340" y="634" width="13" height="13" rx="3" stroke-width="0.5"/>
 <text class="ts" x="360" y="644">GaN final</text>
+<text class="ts" x="340" y="668" text-anchor="middle">Bands shown = US / IARU R2 example; band-select covers 4 m-5.8 GHz (see docs/regions.md)</text>
 </svg>

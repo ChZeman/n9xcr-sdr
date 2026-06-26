@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 352" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 372" role="img">
 <title>Band coverage map</title>
-<desc>Transmit bands 2 m, 222, 70 cm and 902 (LDMOS and GaN); receive to 6 GHz; HF exciter 0.5 to 30 MHz; wideband receive antenna roughly 50 MHz to 1.3 GHz. 6 m is a future HF-board swap. Conceptual, not to scale.</desc>
+<desc>Transmit bands 2 m, 222, 70 cm and 902 (LDMOS and GaN); receive to 6 GHz; HF exciter 0.5 to 30 MHz; wideband receive antenna roughly 50 MHz to 1.3 GHz. 6 m is a future HF-board swap. Conceptual, not to scale. Transmit bands shown are the US / IARU R2 example; allocations differ by region.</desc>
 <style>
 text{font-family:Arial,Helvetica,sans-serif}
 .t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:14px;font-weight:500;fill:#2C2C2A}
@@ -45,4 +45,5 @@ text{font-family:Arial,Helvetica,sans-serif}
 <text class="ts" x="486" y="330">LDMOS</text>
 <rect class="c-purple" x="552" y="320" width="12" height="12" rx="3" stroke-width="0.5"/>
 <text class="ts" x="568" y="330">GaN</text>
+<text class="ts" x="12" y="360">Transmit bands = US / IARU R2 example; allocations differ by region (docs/regions.md).</text>
 </svg>

@@ -3,6 +3,8 @@
 Block and reference diagrams for the station design. Each SVG is self-contained (inline styles) and
 renders on its own in a browser; GitHub shows them in the file view.
 
+> Bands shown in these diagrams are the US / IARU R2 example (2 m / 222 / 70 cm / 902); see [`../docs/regions.md`](../docs/regions.md) to adapt.
+
 | File | What it shows |
 |------|---------------|
 | `station-overview.svg` | Whole-station architecture: a node site (antennas → RF front end → SDRs → node host) dialing home to a shared head-end and web UI, with raw IQ staying on site and other nodes federating. |

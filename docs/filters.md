@@ -5,6 +5,8 @@ Two different filters do two different jobs: a **transmit harmonic low-pass** on
 protection + crossband isolation). They are kept separate so the preselector adds no insertion
 loss to the 50 W transmit path and no noise figure penalty isn't forced onto a shared part.
 
+> **Region note:** the passbands and cutoffs below are the US / IARU R2 worked example (2 m / 222 / 70 cm / 902). The synthesis method applies to any allocation - recompute fc and the L/C (or resonator) values for your bands. See [`regions.md`](regions.md).
+
 ## TX low-pass bank
 
 Per-band sub-octave low-pass filters: each ham band's second harmonic lands ~1.7–1.9× the
