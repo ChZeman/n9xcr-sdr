@@ -1,11 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 584" role="img">
-<title>VHF/UHF transmit chain with part numbers</title>
-<desc>7020-SDR exciter with onboard PA providing pre-driver-level output, PE42512A SP12T band-select switching at low level (4 of 12 ports populated), then four per-band chains each with a bandpass, CGH40010 driver, final (MRF101AN for 2m and 222, CGH40120F for 70cm and 902) inside the control wrapper, and a low-pass filter, out to antenna routing.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 690" role="img">
+<title>VHF/UHF transmit chain: low-level band-select in, power output switch out</title>
+<desc>7020-SDR exciter with onboard PA feeds the PE42512A SP12T band-select, which switches at low level (~80 mW) to one of four per-band chains (bandpass, CGH40010 driver, MRF101AN or CGH40120F final inside the control wrapper, low-pass filter). The four chains then converge on a separate power-rated output antenna/dummy-load switch (50 W) that selects the Tram tri-band antenna for 2m/70cm/902 via a triplexer, the Comet 222 whip, or a 50 ohm dummy load, and carries the RF-exposure maintenance lockout. One band is live at a time, set by the band-select.</desc>
 <style>
 text{font-family:Arial,Helvetica,sans-serif}
 .t{font-size:14px;fill:#2C2C2A}.ts{font-size:12px;fill:#444441}.th{font-size:14px;font-weight:500;fill:#2C2C2A}
 .c-blue rect{fill:#E6F1FB;stroke:#185FA5}.c-gray rect{fill:#F1EFE8;stroke:#888780}
 .c-teal rect{fill:#E1F5EE;stroke:#0F6E56}.c-purple rect{fill:#EEEDFE;stroke:#534AB7}
+.c-coral rect{fill:#FAECE7;stroke:#993C1D}
 .arr{stroke:#73726c;stroke-width:1.5;fill:none}
 </style>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
@@ -15,14 +16,15 @@ text{font-family:Arial,Helvetica,sans-serif}
 <text class="ts" x="340" y="78" text-anchor="middle" dominant-baseline="central">onboard PA - ~+15-19 dBm</text></g>
 <line x1="340" y1="92" x2="340" y2="106" class="arr" marker-end="url(#arrow)"/>
 
-<g class="c-gray"><rect x="240" y="108" width="200" height="48" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="126" text-anchor="middle" dominant-baseline="central">TX band-select</text>
-<text class="ts" x="340" y="142" text-anchor="middle" dominant-baseline="central">PE42512A SP12T</text></g>
+<g class="c-gray"><rect x="240" y="108" width="200" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="124" text-anchor="middle" dominant-baseline="central">TX band-select</text>
+<text class="ts" x="340" y="140" text-anchor="middle" dominant-baseline="central">PE42512A SP12T</text>
+<text class="ts" x="340" y="155" text-anchor="middle" dominant-baseline="central">low level - ~80 mW</text></g>
 
-<line x1="340" y1="156" x2="116" y2="178" class="arr" marker-end="url(#arrow)"/>
-<line x1="340" y1="156" x2="266" y2="178" class="arr" marker-end="url(#arrow)"/>
-<line x1="340" y1="156" x2="414" y2="178" class="arr" marker-end="url(#arrow)"/>
-<line x1="340" y1="156" x2="562" y2="178" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="164" x2="116" y2="178" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="164" x2="266" y2="178" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="164" x2="414" y2="178" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="164" x2="562" y2="178" class="arr" marker-end="url(#arrow)"/>
 
 <g class="c-gray"><rect x="50" y="180" width="130" height="52" rx="8" stroke-width="0.5"/>
 <text class="th" x="115" y="198" text-anchor="middle" dominant-baseline="central">2 m</text>
@@ -94,17 +96,34 @@ text{font-family:Arial,Helvetica,sans-serif}
 <text class="th" x="565" y="428" text-anchor="middle" dominant-baseline="central">LPF</text>
 <text class="ts" x="565" y="446" text-anchor="middle" dominant-baseline="central">fc 1010 MHz</text></g>
 
-<line x1="115" y1="466" x2="115" y2="502" class="arr" marker-end="url(#arrow)"/>
-<line x1="265" y1="466" x2="265" y2="502" class="arr" marker-end="url(#arrow)"/>
-<line x1="415" y1="466" x2="415" y2="502" class="arr" marker-end="url(#arrow)"/>
-<line x1="565" y1="466" x2="565" y2="502" class="arr" marker-end="url(#arrow)"/>
+<line x1="115" y1="466" x2="115" y2="500" class="arr" marker-end="url(#arrow)"/>
+<line x1="265" y1="466" x2="265" y2="500" class="arr" marker-end="url(#arrow)"/>
+<line x1="415" y1="466" x2="415" y2="500" class="arr" marker-end="url(#arrow)"/>
+<line x1="565" y1="466" x2="565" y2="500" class="arr" marker-end="url(#arrow)"/>
 
-<g class="c-gray"><rect x="40" y="504" width="600" height="48" rx="8" stroke-width="0.5"/>
-<text class="th" x="340" y="524" text-anchor="middle" dominant-baseline="central">To antenna routing</text>
-<text class="ts" x="340" y="540" text-anchor="middle" dominant-baseline="central">triplexer - whips (see rx-chain)</text></g>
+<g class="c-coral"><rect x="40" y="502" width="600" height="62" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="520" text-anchor="middle" dominant-baseline="central">Output antenna / dummy-load switch</text>
+<text class="ts" x="340" y="538" text-anchor="middle" dominant-baseline="central">power-rated 50 W - antenna select + RF-exposure maintenance lockout</text>
+<text class="ts" x="340" y="553" text-anchor="middle" dominant-baseline="central">one band live at a time - TBD power SP4T / SP6T coax relay</text></g>
 
-<rect class="c-teal" x="150" y="562" width="13" height="13" rx="3" stroke-width="0.5"/>
-<text class="ts" x="170" y="572">LDMOS final</text>
-<rect class="c-purple" x="320" y="562" width="13" height="13" rx="3" stroke-width="0.5"/>
-<text class="ts" x="340" y="572">GaN final</text>
+<line x1="150" y1="564" x2="150" y2="588" class="arr" marker-end="url(#arrow)"/>
+<line x1="340" y1="564" x2="340" y2="588" class="arr" marker-end="url(#arrow)"/>
+<line x1="530" y1="564" x2="530" y2="588" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-gray"><rect x="60" y="590" width="180" height="54" rx="8" stroke-width="0.5"/>
+<text class="th" x="150" y="608" text-anchor="middle" dominant-baseline="central">Tram tri-band NMO</text>
+<text class="ts" x="150" y="626" text-anchor="middle" dominant-baseline="central">2m/70cm/902 (triplexer)</text></g>
+<g class="c-gray"><rect x="250" y="590" width="180" height="54" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="608" text-anchor="middle" dominant-baseline="central">Comet 222 whip</text>
+<text class="ts" x="340" y="626" text-anchor="middle" dominant-baseline="central">222 MHz</text></g>
+<g class="c-coral"><rect x="440" y="590" width="180" height="54" rx="8" stroke-width="0.5"/>
+<text class="th" x="530" y="608" text-anchor="middle" dominant-baseline="central">50 ohm dummy load</text>
+<text class="ts" x="530" y="626" text-anchor="middle" dominant-baseline="central">test + maintenance lockout</text></g>
+
+<rect class="c-teal" x="120" y="662" width="13" height="13" rx="3" stroke-width="0.5"/>
+<text class="ts" x="140" y="672">LDMOS final</text>
+<rect class="c-purple" x="250" y="662" width="13" height="13" rx="3" stroke-width="0.5"/>
+<text class="ts" x="270" y="672">GaN final</text>
+<rect class="c-coral" x="360" y="662" width="13" height="13" rx="3" stroke-width="0.5"/>
+<text class="ts" x="380" y="672">power output / 50 W</text>
 </svg>
