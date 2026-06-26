@@ -74,11 +74,6 @@ See `diagrams/tx-chain.svg`.
   the US/R2 worked example.
 - **BOM + PCB:** finish the consolidated Mouser / DigiKey BOM; order the custom PE42512A band-select
   board (DigiKey `1046-PE42512A-XCT-ND`, Cut Tape).
-- **Propagate the per-slice / software-limit decision into the deep docs.** `filters.md` LPF table +
-  usable-window table re-derived for slice-top fc (4 m/70 cm/33 cm/23 cm/13 cm/9 cm cutoffs rise);
-  `tx-chain.svg` BPF boxes relabelled band->slice and the "band-tuned BPF restricts each path" caption
-  corrected (band-limit now lives in software); `regions.md` BPF/LPF guidance reworded. Currently only
-  the decision log (this file) reflects it.
 - **Deferred (non-RF):** node-host sizing; head-end / web-UI software stack.
 
 ## Repo layout
