@@ -69,6 +69,40 @@ bottom (e.g. 105–113 on 2 m, 355–380 on 70 cm, 800–856 on 902) always sits
 in its window, inside or just under the 60 dBc region. The software allowed-TX table is what keeps
 operation inside the clean part of the slice.
 
+## TX cleanup bandpass (per slice)
+
+The low-level bandpass sits at the band-select output (~+19 dBm / 80 mW), ahead of the driver. Its
+job is to limit the AD9361's wideband noise and far spurs/images **before** the gain — not to sharpen
+the band edges (near-carrier LO leakage and the I/Q image are an SDR-calibration problem, not a
+filtering one). It is spec'd **slice-wide** (~1.5:1) so it never fences the band; software sets the
+legal limit. Its real unique value is the **high-pass edge** (killing sub-slice noise/spurs feeding
+the driver); the post-final LPF backstops the harmonics.
+
+**Catalog vs fab — two Mini-Circuits routes evaluated:**
+
+- **LTCC ceramic bandpass (BFCN series) — not a fit.** The family only runs ~950 MHz–13.2 GHz (nothing
+  for 2 m / 222 / 70 cm), and the parts are narrow channel filters (single-digit-% to ~20 % BW), far
+  narrower than a 1.5:1 slice.
+- **Lumped-element SMT bandpass (BPF- series) — the right family.** Lumped-LC, shielded SMD, 50 Ω,
+  rated 0.08–5 W (our 80 mW is trivial), and it reaches down to VHF. Most BPF-A/B/C parts are *also*
+  narrow channel filters, but a few **wide** variants (BPF-AM / BPF-BY) span a useful fraction of a
+  slice. They don't land on the 1.5:1 slices exactly, so a catalog part means accepting its passband
+  (usually ham-band-plus — fine, since MARS/CAP sits within a few MHz of the band).
+
+**Per-slice candidates (US/R2 worked bands):**
+
+| Slice (band) | Catalog candidate | Fit |
+|--------------|-------------------|-----|
+| 2 m, 105–158 (144–148) | none wide | falls in a gap between narrow parts (BPF-A122 ~120, BPF-A175 ~175) — **fab LC** |
+| 222, 158–237 (222–225) | **BPF-BY250+** (150–350 MHz) | covers the whole slice — drop-in ✓ |
+| 70 cm, 355–533 (420–450) | **BPF-AM585+** (420–750 MHz) | covers the ham band + above; misses 355–420 — band-OK, not full-slice |
+| 902, 800–1200 (902–928) | none wide (only narrow BPF-A800 795–805) | **fab LC** |
+
+Practical path = **hybrid**: catalog SMT where a wide part lands on the band (222 cleanly, 70 cm for
+the ham segment), fab a lumped-LC bandpass (or an HP+LP cascade) where it doesn't (2 m, 902). Fabbing
+all four is the alternative if one design method and true slice-wide everywhere is worth more than
+skipping two tuning jobs. Decision pending.
+
 ## RX preselectors
 
 A preselector is a bandpass with both skirts real, doing double duty: protecting the wide-open
