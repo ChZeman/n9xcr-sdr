@@ -106,6 +106,41 @@ skipping two tuning jobs.
 **Decided: fab all four** as lumped-LC bandpass — one design method and true slice-wide on every band,
 accepting four tuning jobs over catalog drop-ins on 222 / 70 cm.
 
+### Synthesized values (HP + LP cascade)
+
+Each BPF = a **highpass section** (sets the lower slice edge) cascaded with a **lowpass section** (sets
+the upper edge) — the right topology for a wide ~1.5:1 passband; the LP half reuses the LPF-bank
+synthesis, the HP half is its dual. 5-element 0.1 dB Chebyshev sections, shunt-first: HP = L1 C2 L3 C4
+L5, LP = C1 L2 C3 L4 C5; corners at the slice edges. L in nH, C in pF — **starting points to VNA/SA-tune,
+not a final BOM.**
+
+| Band (slice MHz) | HP: L1 / C2 / L3 / C4 / L5 | LP: C1 / L2 / C3 / L4 / C5 |
+|---|---|---|
+| 2 m (105–158) | 66 / 22 / 38 / 22 / 66 | 23 / 69 / 40 / 69 / 23 |
+| 222 (158–237) | 44 / 15 / 26 / 15 / 44 | 15 / 46 / 27 / 46 / 15 |
+| 70 cm (355–533) | 20 / 6.5 / 11 / 6.5 / 20 | 6.8 / 20 / 12 / 20 / 6.8 |
+| 902 (800–1200) | 8.7 / 2.9 / 5.0 / 2.9 / 8.7 | 3.0 / 9.1 / 5.2 / 9.1 / 3.0 |
+
+Parts per filter: **5 inductors + 5 capacitors** (20 L + 20 C across all four). Caps high-Q C0G/NP0
+(porcelain / ATC-100B-class at 902), 0603 through 450 MHz / 0402 at 902 — parallel standards for odd
+values, or a trimmer on one element to ease tuning. Inductors air-wound for the tuned build
+(spread/squeeze to tune, ~1 turn at 902) or high-Q chip (Coilcraft) for a finalized board. Low-level
+(~80 mW) so no power-rating concern.
+
+A slice is only 1.5:1 wide, so the HP and LP sections **interact** — expect ~1–2 dB midband loss and
+softer corners (fine for a cleanup filter). In tuning, nudge the HP corner ~10 % low and LP ~10 % high
+to keep the slice flat.
+
+### Premade PCBs
+
+**None exist for these specific slice-wide filters** — they're a custom layout, like the band-select
+board: a small 50 Ω through-line with shunt-to-ground and series pads; FR-4 is fine through 902; fab at
+JLCPCB / PCBWay. Ugly / Manhattan construction on copper-clad is the common — and for tuning, preferred —
+alternative, since parts can be physically moved. Off-the-shelf options don't fit: ham BPF kits
+(QRP-Labs etc.) are HF / narrow-ham-band only, and finished commercial connectorized BPFs exist for
+2 m (144–148) and 70 cm (430–450) but are narrow (they re-fence the band, defeating slice-wide), big
+N-connector boxes, with no common 222 or 902 equivalent.
+
 ## Tuning bench (TX filters)
 
 Both the LPF bank and the BPFs are fabbed and tuned, so they share a bench. Tuning needs **transmission**
