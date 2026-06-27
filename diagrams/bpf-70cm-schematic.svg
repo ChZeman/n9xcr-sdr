@@ -1,32 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1248" viewBox="0 0 860 624" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-<title>TX cleanup bandpass – 70 cm (RF4, slice 355–533 MHz)</title>
+<title>TX cleanup bandpass – 70 cm (RF4, slice 355–533 MHz) – tunable build</title>
 <style>text{font-family:Arial,Helvetica,sans-serif}.h1{font-size:17px;font-weight:700;fill:#2C2C2A}.h2{font-size:11px;fill:#56554f}.w{stroke:#2C2C2A;stroke-width:1.6;fill:none}.gnd{stroke:#7a7972;stroke-width:1.4}.lbl{font-size:11px;font-weight:600;fill:#2C2C2A}.val{font-size:10px;fill:#56554f}.sec{font-size:10px;font-weight:700;fill:#6b6a64}.port{font-size:11px;font-weight:700;fill:#2C2C2A}.cap2{font-size:10px;fill:#6b6a64}.th{font-size:10px;font-weight:700;fill:#2C2C2A}.td{font-size:10px;fill:#2C2C2A}.div{stroke:#888780;stroke-width:1.1;stroke-dasharray:4 3}.box{fill:#F1EFE8;stroke:#888780;stroke-width:1.1}</style>
 <text class="h1" x="30" y="34">TX cleanup bandpass – 70 cm (RF4, slice 355–533 MHz)</text>
-<text class="h2" x="30" y="52">Slice-wide highpass+lowpass cascade, 50 Ω, low level (~80 mW). Ham band 420–450. Values are tuning start points, not final.</text>
+<text class="h2" x="30" y="52">Tunable build: trimmer caps + air-wound inductors, 50 Ω, low level (~80 mW). Ham band 420–450. Values are tuning targets.</text>
 <text class="port" x="30" y="174">RF IN</text>
 <text class="port" x="798" y="174">RF OUT</text>
 <line x1="70" y1="170" x2="150" y2="170" class="w"/>
 <line x1="150" y1="170" x2="206" y2="170" class="w"/>
-<line x1="206" y1="161" x2="206" y2="179" class="w"/><line x1="214" y1="161" x2="214" y2="179" class="w"/>
+<line x1="206" y1="161" x2="206" y2="179" class="w"/><line x1="214" y1="161" x2="214" y2="179" class="w"/><line x1="200" y1="180" x2="220" y2="160" class="w"/><path d="M220 160 l-6 1 l3 5 z" fill="#2C2C2A"/>
 <line x1="214" y1="170" x2="270" y2="170" class="w"/>
-<text class="lbl" x="210" y="152" text-anchor="middle">C1</text>
-<text class="val" x="210" y="164" text-anchor="middle">6.5 pF</text>
+<text class="lbl" x="210" y="150" text-anchor="middle">C1</text>
+<text class="val" x="210" y="162" text-anchor="middle">6.5 pF</text>
 <line x1="270" y1="170" x2="326" y2="170" class="w"/>
-<line x1="326" y1="161" x2="326" y2="179" class="w"/><line x1="334" y1="161" x2="334" y2="179" class="w"/>
+<line x1="326" y1="161" x2="326" y2="179" class="w"/><line x1="334" y1="161" x2="334" y2="179" class="w"/><line x1="320" y1="180" x2="340" y2="160" class="w"/><path d="M340 160 l-6 1 l3 5 z" fill="#2C2C2A"/>
 <line x1="334" y1="170" x2="390" y2="170" class="w"/>
-<text class="lbl" x="330" y="152" text-anchor="middle">C2</text>
-<text class="val" x="330" y="164" text-anchor="middle">6.5 pF</text>
+<text class="lbl" x="330" y="150" text-anchor="middle">C2</text>
+<text class="val" x="330" y="162" text-anchor="middle">6.5 pF</text>
 <line x1="390" y1="170" x2="470" y2="170" class="w"/>
 <line x1="470" y1="170" x2="509" y2="170" class="w"/>
 <path d="M509 170 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0" class="w"/>
 <line x1="551" y1="170" x2="590" y2="170" class="w"/>
-<text class="lbl" x="530" y="152" text-anchor="middle">L4</text>
-<text class="val" x="530" y="164" text-anchor="middle">20 nH</text>
+<text class="lbl" x="530" y="150" text-anchor="middle">L4</text>
+<text class="val" x="530" y="162" text-anchor="middle">20 nH</text>
 <line x1="590" y1="170" x2="629" y2="170" class="w"/>
 <path d="M629 170 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0 a7 7 0 0 1 14 0" class="w"/>
 <line x1="671" y1="170" x2="710" y2="170" class="w"/>
-<text class="lbl" x="650" y="152" text-anchor="middle">L5</text>
-<text class="val" x="650" y="164" text-anchor="middle">20 nH</text>
+<text class="lbl" x="650" y="150" text-anchor="middle">L5</text>
+<text class="val" x="650" y="162" text-anchor="middle">20 nH</text>
 <line x1="710" y1="170" x2="790" y2="170" class="w"/>
 <line x1="140" y1="300" x2="720" y2="300" class="gnd"/>
 <line x1="150" y1="170" x2="150" y2="300" class="w"/>
@@ -45,17 +45,17 @@
 <text class="lbl" x="404" y="233">L3</text>
 <text class="val" x="404" y="246">20 nH</text>
 <line x1="470" y1="170" x2="470" y2="300" class="w"/>
-<line x1="461" y1="231" x2="479" y2="231" class="w"/><line x1="461" y1="239" x2="479" y2="239" class="w"/>
+<line x1="461" y1="231" x2="479" y2="231" class="w"/><line x1="461" y1="239" x2="479" y2="239" class="w"/><line x1="460" y1="245" x2="480" y2="225" class="w"/><path d="M480 225 l-6 1 l3 5 z" fill="#2C2C2A"/>
 <line x1="465" y1="300" x2="475" y2="306" class="gnd"/>
 <text class="lbl" x="484" y="233">C3</text>
 <text class="val" x="484" y="246">6.8 pF</text>
 <line x1="590" y1="170" x2="590" y2="300" class="w"/>
-<line x1="581" y1="231" x2="599" y2="231" class="w"/><line x1="581" y1="239" x2="599" y2="239" class="w"/>
+<line x1="581" y1="231" x2="599" y2="231" class="w"/><line x1="581" y1="239" x2="599" y2="239" class="w"/><line x1="580" y1="245" x2="600" y2="225" class="w"/><path d="M600 225 l-6 1 l3 5 z" fill="#2C2C2A"/>
 <line x1="585" y1="300" x2="595" y2="306" class="gnd"/>
 <text class="lbl" x="604" y="233">C4</text>
 <text class="val" x="604" y="246">12 pF</text>
 <line x1="710" y1="170" x2="710" y2="300" class="w"/>
-<line x1="701" y1="231" x2="719" y2="231" class="w"/><line x1="701" y1="239" x2="719" y2="239" class="w"/>
+<line x1="701" y1="231" x2="719" y2="231" class="w"/><line x1="701" y1="239" x2="719" y2="239" class="w"/><line x1="700" y1="245" x2="720" y2="225" class="w"/><path d="M720 225 l-6 1 l3 5 z" fill="#2C2C2A"/>
 <line x1="705" y1="300" x2="715" y2="306" class="gnd"/>
 <text class="lbl" x="724" y="233">C5</text>
 <text class="val" x="724" y="246">6.8 pF</text>
@@ -63,48 +63,40 @@
 <text class="sec" x="270" y="118" text-anchor="middle">HIGHPASS (lower edge)</text>
 <text class="sec" x="590" y="118" text-anchor="middle">LOWPASS (upper edge)</text>
 <rect class="box" x="30" y="360" width="800" height="248" rx="6"/>
-<text class="h1" x="44" y="384" style="font-size:13px">Bill of materials (one board)</text>
-<text class="th" x="44" y="402">Ref</text>
-<text class="th" x="150" y="402">Value</text>
-<text class="th" x="300" y="402">Type</text>
-<text class="th" x="560" y="402">Qty</text>
-<text class="th" x="720" y="402">Pkg</text>
-<line x1="40" y1="408" x2="820" y2="408" class="div"/>
-<text class="td" x="44" y="424">L1, L3, L4, L5</text>
-<text class="td" x="150" y="424">20 nH</text>
-<text class="td" x="300" y="424">inductor air-wound</text>
-<text class="td" x="560" y="424">4</text>
-<text class="td" x="720" y="424">0603</text>
-<text class="td" x="44" y="441">L2</text>
-<text class="td" x="150" y="441">11 nH</text>
-<text class="td" x="300" y="441">inductor air-wound</text>
-<text class="td" x="560" y="441">1</text>
-<text class="td" x="720" y="441">0603</text>
-<text class="td" x="44" y="458">C1, C2</text>
-<text class="td" x="150" y="458">6.5 pF</text>
-<text class="td" x="300" y="458">cap C0G/NP0</text>
-<text class="td" x="560" y="458">2</text>
-<text class="td" x="720" y="458">0603</text>
-<text class="td" x="44" y="475">C3, C5</text>
-<text class="td" x="150" y="475">6.8 pF</text>
-<text class="td" x="300" y="475">cap C0G/NP0</text>
-<text class="td" x="560" y="475">2</text>
-<text class="td" x="720" y="475">0603</text>
-<text class="td" x="44" y="492">C4</text>
-<text class="td" x="150" y="492">12 pF</text>
-<text class="td" x="300" y="492">cap C0G/NP0</text>
-<text class="td" x="560" y="492">1</text>
-<text class="td" x="720" y="492">0603</text>
-<text class="td" x="44" y="509">J1, J2</text>
-<text class="td" x="150" y="509">SMA</text>
-<text class="td" x="300" y="509">edge-launch SMA jack</text>
-<text class="td" x="560" y="509">2</text>
-<text class="td" x="720" y="509">-</text>
-<text class="td" x="44" y="526">PCB</text>
-<text class="td" x="150" y="526">-</text>
-<text class="td" x="300" y="526">FR-4 (or copper-clad build)</text>
-<text class="td" x="560" y="526">1</text>
-<text class="td" x="720" y="526">-</text>
-<text class="cap2" x="44" y="582">Caps C0G/NP0, 0603; hit odd values by paralleling or a trimmer on one element.</text>
-<text class="cap2" x="44" y="598">Inductors air-wound or Coilcraft 0603. All values are NanoVNA/SA tuning start points, not final. DigiKey PNs in docs/bom.md.</text>
+<text class="h1" x="44" y="384" style="font-size:13px">Bill of materials (one board, tunable)</text>
+<text class="th" x="44" y="404">Ref</text>
+<text class="th" x="190" y="404">Value (target)</text>
+<text class="th" x="300" y="404">Type / part</text>
+<text class="th" x="760" y="404">Qty</text>
+<line x1="40" y1="410" x2="820" y2="410" class="div"/>
+<text class="td" x="44" y="426">L1, L3, L4, L5</text>
+<text class="td" x="190" y="426">20 nH</text>
+<text class="td" x="300" y="426">air-wound Cu (tunable by turns)</text>
+<text class="td" x="760" y="426">4</text>
+<text class="td" x="44" y="443">L2</text>
+<text class="td" x="190" y="443">11 nH</text>
+<text class="td" x="300" y="443">air-wound Cu (tunable by turns)</text>
+<text class="td" x="760" y="443">1</text>
+<text class="td" x="44" y="460">C1, C2, C3, C5</text>
+<text class="td" x="190" y="460">~6.6 pF</text>
+<text class="td" x="300" y="460">trimmer 0.8–10 pF (Johanson 5201)</text>
+<text class="td" x="760" y="460">4</text>
+<text class="td" x="44" y="477">C4</text>
+<text class="td" x="190" y="477">12 pF</text>
+<text class="td" x="300" y="477">trimmer 1–20 pF (Johanson 5502)</text>
+<text class="td" x="760" y="477">1</text>
+<text class="td" x="44" y="494">—</text>
+<text class="td" x="190" y="494">—</text>
+<text class="td" x="300" y="494">silver-plated Cu wire ~20 AWG (air-cores)</text>
+<text class="td" x="760" y="494">1</text>
+<text class="td" x="44" y="511">J1, J2</text>
+<text class="td" x="190" y="511">SMA</text>
+<text class="td" x="300" y="511">Amphenol 901-10513-1 edge-launch</text>
+<text class="td" x="760" y="511">2</text>
+<text class="td" x="44" y="528">PCB</text>
+<text class="td" x="190" y="528">—</text>
+<text class="td" x="300" y="528">FR-4 (or copper-clad)</text>
+<text class="td" x="760" y="528">1</text>
+<text class="cap2" x="44" y="584">Caps = Knowles Johanson Giga-Trim sapphire piston trimmers (Q&gt;3000); pick a range that centers the target.</text>
+<text class="cap2" x="44" y="600">Air-wound inductors tuned by turn spacing (no good variable inductor exists at UHF). DigiKey PNs: docs/bom.md.</text>
 </svg>

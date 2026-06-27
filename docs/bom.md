@@ -145,38 +145,32 @@ The RX front-end's two SP4Ts still use these parts (one shared -3.3 V rail for t
 | Supply decoupling | 100 nF + bulk (1-10 uF) | with order | on VDD and VSS to GND |
 | RF DC-blocks | ~1 nF C0G x 5 (each switch) | with order | RFC + RF1-RF4 |
 
-## BPF passives — DigiKey sourcing
+## BPF passives — DigiKey sourcing (tunable build)
 
-All four BPF boards build from DigiKey (the PCB itself is the only fab item). Because the L/C values
-are **tune-to-fit start points**, the smartest buy is **assortment kits**, not exact singletons — you
-*will* swap values on the VNA/SA. A Coilcraft chip-inductor kit + a Johanson 0402 RF high-Q cap kit
-(50 pcs each of 2.0–4.7 pF, etc., which brackets every 902 value) covers most of the bench tuning;
-a C0G 0603 assortment does the same for 2 m / 222 / 70 cm.
+The BPF boards are built **tunable**, so each filter is dialed in on the VNA/SA without swapping fixed
+parts. Best parts for that:
 
-Series (all DigiKey-stocked):
+- **Tuning caps → Knowles Johanson Giga-Trim sapphire piston trimmers** (Q>3000 @ 250 MHz, sapphire
+  dielectric, near-zero tuning noise, DigiKey-stocked, simple numeric PNs). Pick a range that centers
+  the target value: `5802` (0.35–3.5 pF), `5761` (0.6–6 pF), `5201` (0.8–10 pF), `5502` (1–20 pF),
+  `5602` (1–30 pF). Values above ~30 pF (only the 2 m C4 ≈ 40 pF) use a fixed high-Q C0G (33 pF, e.g.
+  Murata `GRM18`) in parallel with a `5201` (0.8–10 pF) trimmer.
+- **Inductors → air-wound**, silver-plated Cu (~20 AWG; DigiKey stocks the wire), wound to the target
+  and tuned by turn spacing. This is both the highest-Q option and the only good *tunable* inductor at
+  UHF — ferrite slug-tuned variable inductors are unusable above VHF (eddy-current loss). Fixed
+  Coilcraft `0603HP` / `0402` chip inductors remain the non-tunable alternative.
+- **Connectors:** Amphenol RF `901-10513-1` edge-launch SMA jack (0.062″ PCB), ×2 per board.
+- **Board:** custom FR-4 (JLCPCB / PCBWay) or copper-clad.
 
-- **Inductors (2 m / 222 / 70 cm):** Coilcraft **0603HP** high-Q ceramic, base PN `0603HP-<value>`
-  (full order code adds tol/term/pkg, e.g. `0603HP-68NXJLW` = ±5%). **902:** Coilcraft **0402** high-Q
-  (`0402DC`/`0402HP-<value>`). Air-wound alternative: enameled magnet wire (DigiKey stocks it, ~24 AWG)
-  wound to value — exact and tunable by turn spacing.
-- **Caps (2 m / 222 / 70 cm):** C0G/NP0 0603, ≥50 V — e.g. Murata **GRM18** (22 pF = `GRM1885C1H220JA01`)
-  or KEMET **C0603C…G**; pick the value on DigiKey's C0G parametric.
-- **Caps (902, high-Q):** Johanson **S-series** 0402 NP0 (legacy R07S / new QSCF GPN), ultra-low ESR —
-  select the exact value on DigiKey's Johanson high-Q filter (PN encoding is intricate and mid-GPN-
-  transition, so pick by value, don't hand-code). Alt: Kyocera-AVX Accu-P or ATC 600S porcelain.
-- **Connectors:** Amphenol RF **901-10513-1** edge-launch SMA jack (0.062″ PCB), ×2 per board (budget
-  alt `132357-11`).
-- **Board:** custom FR-4 (JLCPCB / PCBWay) or copper-clad — not a DigiKey line.
+Per board (targets from filters.md; trimmer range chosen to center each value):
 
-Per-board (nearest-E24 mapping; L = Coilcraft 0603HP base PN, C = value to pick in the C0G / high-Q series):
+| Board | Trimmer caps (Johanson PN) | Air-wound inductors (target) |
+|-------|----------------------------|------------------------------|
+| **2 m** | C1,C2,C3,C5 ~22 pF → `5602`; C4 ~40 pF → 33 pF C0G + `5201` | L1,L3 66 nH; L2 38 nH; L4,L5 69 nH |
+| **222** | C1,C2,C3,C5 15 pF → `5602`; C4 27 pF → `5602` | L1,L3 44 nH; L2 26 nH; L4,L5 46 nH |
+| **70 cm** | C1,C2,C3,C5 ~6.6 pF → `5201`; C4 12 pF → `5502` | L1,L3 20 nH; L2 11 nH; L4,L5 20 nH |
+| **902** | C1,C2,C3,C5 ~3.0 pF → `5761`; C4 ~5.2 pF → `5201` | L1,L3 8.7 nH; L2 5.0 nH; L4,L5 9.1 nH |
 
-| Board | Inductors | Capacitors |
-|-------|-----------|------------|
-| **2 m** | `0603HP-68N` ×4 (L1,L3,L4,L5), `0603HP-39N` ×1 (L2) | 22 pF ×4 (C1,C2,C3,C5), 39 pF ×1 (C4) |
-| **222** | `0603HP-43N` ×2 (L1,L3), `0603HP-27N` ×1 (L2), `0603HP-47N` ×2 (L4,L5) | 15 pF ×4 (C1,C2,C3,C5), 27 pF ×1 (C4) |
-| **70 cm** | `0603HP-20N` ×4 (L1,L3,L4,L5), `0603HP-11N` ×1 (L2) | 6.8 pF ×4 (C1,C2,C3,C5), 12 pF ×1 (C4) |
-| **902** | 0402 high-Q: 9.1 nH ×4 (L1,L3,L4,L5), 5.1 nH ×1 (L2) | Johanson 0402: 3.0 pF ×4 (C1,C2,C3,C5), 5.1 pF ×1 (C4) |
-
-Quantities are one board each; tune-to-fit means order a couple of neighbors per value (±1 E24 step).
-Confirm exact stock / voltage / tolerance at order time. (The computed, pre-rounding values live in
-[`filters.md`](filters.md).)
+Five trimmers + five air-wound inductors per board. Trimmers are bigger and pricier than chip parts,
+so if you'd rather tune only the critical resonators, fix the rest as high-Q C0G/porcelain and trim
+two or three — but the all-tunable build above gives the most adjustment latitude.
