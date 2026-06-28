@@ -16,10 +16,10 @@ are ±5 % (`…XJRW`) — choose **Cut Tape** at DigiKey; use `…XGRW` for ±2 
 | `0603DC-47NXJRW` | 47 nH | 2 | 222 L4,L5 |
 | `0603DC-20NXJRW` | 20 nH | 4 | 70 cm L1,L3,L4,L5 |
 | `0603DC-11NXJRW` | 11 nH | 1 | 70 cm L2 |
-| `0402DC-9N1XJRW` | 9.1 nH | 4 | 902 L1,L3,L4,L5 |
-| `0402DC-5N1XJRW` | 5.1 nH | 1 | 902 L2 |
+| `0402DC-9N0XJRW` | 9.0 nH | 4 | 902 L1,L3,L4,L5 |
+| `0402DC-5N0XJRW` | 5.0 nH | 1 | 902 L2 |
 
-20 inductors. (902 air-wound is the higher-Q alternative; the 0402DC parts are the chip option.)
+20 inductors. The 0402DC ±5 % grid uses whole-tenth values, so 902 uses `9N0`/`5N0` (the `9N1`/`5N1` values exist only as ±2 % `…XGRW`). Air-wound is the higher-Q alternative at 902.
 
 ## Trim caps — Knowles Johanson Mfg, sapphire Giga-Trim (qty 1)
 
