@@ -70,7 +70,7 @@ no -3.3 V rail, and **no RF DC-block caps** (every RF pin sits at 0 VDC). Schema
 | Item | Part | Source (approx) | Notes |
 |------|------|-----------------|-------|
 | SP12T switch | **PE42512A-X** | DigiKey (`PE42512A-X`) ~$5-12 (verify on page) | active "A" revision; base PE42512 is discontinued. Buy +2-4 spares - pSemi is phasing out its broadband-switch line; QFN is hard to rework. Confirm "Part Status: Active". |
-| Supply decoupling | 0.1 uF `GRM155R71H104KE14J` + 1 uF `GRM188R61E105KA12D` | DigiKey | on VDD (3.3 V, IDD ~200 uA); optional 10 uF `GRM21BR61E106KA73L` bulk |
+| Supply decoupling | 0.1 uF `GRM155R71H104KE14J` + 1 uF `CC0603KRX5R8BB105` | DigiKey | on VDD (3.3 V, IDD ~200 uA); optional 10 uF `CC0805KKX5R8BB106` bulk. 1/10 uF are Yageo (the Murata equivalents were marketplace / long-lead listings). |
 | VSS_EXT (pin 10) | tie -> GND | - | normal mode = internal -V gen ON; ~5 MHz spur is irrelevant at VHF/UHF. Bypass mode (-3.0 V) optional for spur-free, unused. |
 | LS (pin 32) | tie -> GND | - | selects the LS=0 decode map; grounding LS also improves IL/isolation. Internal 1 MOhm pull-up makes a floating LS read high - tie it deliberately. |
 | Control | V1-V4 + 4x 10k pull-down `RC0402FR-0710KL`, LS->GND via 0 Ohm `RC0402JR-070RL`, 1x6 header | DigiKey | 3.3 V CMOS direct (no level shifter). **MCU off-board** = the enclosure control/monitor board (telemetry + sequencing + band select), never an on-board ESP32 (2.4 GHz radio beside the 13/9 cm ports). |

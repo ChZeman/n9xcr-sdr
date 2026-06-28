@@ -18,8 +18,8 @@ internal −V generator); the spur-free **bypass-mode** option is at the end. Th
 | Ref | Value | DigiKey PN | Qty | Note |
 |-----|-------|-----------|----:|------|
 | C1 | 0.1 µF X7R 0402 50 V | `GRM155R71H104KE14J` | 1 | At the VDD pin. |
-| C2 | 1 µF X5R 0603 25 V | `GRM188R61E105KA12D` | 1 | ∥ C1. |
-| C3 | 10 µF X5R 0805 25 V | `GRM21BR61E106KA73L` | 1 | Optional rail bulk (IDD ≈ 200 µA, so generous). |
+| C2 | 1 µF X5R 0603 25 V | `CC0603KRX5R8BB105` | 1 | ∥ C1. Yageo, DigiKey-direct cut-tape. |
+| C3 | 10 µF X5R 0805 25 V | `CC0805KKX5R8BB106` | 1 | Optional rail bulk. Yageo, DigiKey-direct cut-tape (25 V; 16 V `CC0805KRX5R7BB106` is a fine fallback). |
 
 ## Control interface — V1–V4 from an off-board 3.3 V MCU (no level shifter)
 
@@ -59,7 +59,7 @@ Normal mode runs the internal −V charge pump, which can drop a small spur onto
 kill it, disable the pump by feeding **VSS_EXT a clean −3.3 V** instead of grounding it:
 
 - **Easiest:** borrow the −3.3 V already generated on the RX side (the ADM8829 feeding the ADRF5040s);
-  route it over and add a local 1 µF (`GRM188R61E105KA12D`) reservoir at the VSS_EXT pin.
+  route it over and add a local 1 µF (`CC0603KRX5R8BB105`) reservoir at the VSS_EXT pin.
 - **Standalone:** add an Analog Devices `ADM8829ARTZ-REEL7` switched-cap inverter + 2× 1 µF (flying +
   reservoir) — the same inverter already used on RX.
 
