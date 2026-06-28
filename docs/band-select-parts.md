@@ -27,7 +27,7 @@ internal −V generator); the spur-free **bypass-mode** option is at the end. Th
 |-----|-------|-----------|----:|------|
 | R1–R4 | 10 kΩ 0402 | `RC0402FR-0710KL` | 4 | Pull-downs on V1–V4 → defined power-up state. |
 | R5 | 0 Ω 0402 | `RC0402JR-070RL` | 1 | LS → GND. Ground straight to plane (a good RF ground on LS improves IL/isolation). 0 Ω leaves the option to lift LS to a GPIO for the all-isolated park. |
-| J_ctrl | 1×6 100-mil header | (generic) | 1 | V1·V2·V3·V4·3V3·GND to the control board (JST-SH 6-pin is a compact alt). |
+| J_ctrl | TE MTA-100 6-pos vertical header, 2.54 mm | `640456-6` (DigiKey `A1923-ND`) | 1 | V1·V2·V3·V4·3V3·GND to the control/monitor board. IDC board-to-wire — harness side is a mating MTA-100 receptacle (seat wires with the MTA tool). |
 
 **MCU is off-board.** It's driven by the enclosure **control/monitor board** — the same board doing
 telemetry, T-R sequencing tie-in, and PA bias keying — not a chip on this PCB. The band decision must
