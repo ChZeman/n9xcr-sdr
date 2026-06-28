@@ -153,11 +153,15 @@ the cap side pulls each LC corner onto frequency even with L at a standard step 
 LC *product*), and the value rounding is small (≤~5 %: 66→68, 44→43, 46→47) — well within trimmer
 travel. You do not swap inductors during tuning.
 
-- **Inductors → fixed Coilcraft chip**, nearest E24 value (PNs per board below). `0603HP` high-Q
-  through 70 cm; `0402` (e.g. `0402DC`) at 902. Confirm the datasheet SRF clears the band — it does
-  (the ~9 nH 0402 parts self-resonate up in the GHz range). *Insurance:* order one adjacent E24 value
-  per position (e.g. a 62 nH and a 75 nH alongside each 68 nH) so a stubborn section can be stepped
-  rather than fought — rarely needed.
+- **Inductors → fixed Coilcraft `0603DC` chip**, nearest E24 value (PNs per board below). 0603DC is
+  wirewound, the highest-Q 0603 series (up to ~40 % higher Q than the older `0603HP`, and lower DCR),
+  and — unlike `0603HP`, which DigiKey factory-orders only — it is **DigiKey-stocked in cut tape
+  (qty 1, ships today)**. Order code `0603DC-<val>XJRW` (±5 %, fine for a trimmed filter) or `…XGRW`
+  (±2 %). At 902 use `0402DC` (or just wind air-cores, preferred there). SRF clears every band. *Avoid
+  Abracon `AISC-0603HP-…` lookalikes* — same name, but not stocked and tape-&-reel of 3 000 only.
+  *Insurance:* order one adjacent E24 value per position (e.g. a 62 nH and a 75 nH alongside each
+  68 nH) so a stubborn section can be stepped rather than fought — rarely needed. Coilcraft also ships
+  direct (same-day, free samples, small qty) if you'd rather not chase per-value DigiKey stock.
 - **Tuning caps → Knowles Johanson Giga-Trim sapphire piston trimmers** (Q>3000 @ 250 MHz, sapphire
   dielectric, near-zero tuning noise, DigiKey-stocked, numeric PNs). Pick a range that centers the
   target: `5802` (0.35–3.5 pF), `5761` (0.6–6 pF), `5201` (0.8–10 pF), `5502` (1–20 pF), `5602`
@@ -176,10 +180,10 @@ Per board (inductor = fixed Coilcraft nearest E24; cap = trimmer range chosen to
 
 | Board | Inductors (Coilcraft, fixed) | Trimmer caps (Johanson PN) |
 |-------|------------------------------|----------------------------|
-| **2 m** | L1,L3 `0603HP-68N`; L2 `0603HP-39N`; L4,L5 `0603HP-68N` | C1,C2,C3,C5 ~22 pF → `5602`; C4 ~40 pF → 33 pF `GRM18` + `5201` |
-| **222** | L1,L3 `0603HP-43N`; L2 `0603HP-27N`; L4,L5 `0603HP-47N` | C1,C2,C3,C5 15 pF → `5602`; C4 27 pF → `5602` |
-| **70 cm** | L1,L3,L4,L5 `0603HP-20N`; L2 `0603HP-11N` | C1,C2,C3,C5 ~6.6 pF → `5201`; C4 12 pF → `5502` |
-| **902** | L1,L3 `0402` 9.1 nH; L2 `0402` 5.1 nH; L4,L5 `0402` 9.1 nH *(or air-wound)* | C1,C2,C3,C5 ~3.0 pF → `5761`; C4 ~5.2 pF → `5201` |
+| **2 m** | L1,L3 `0603DC-68N`; L2 `0603DC-39N`; L4,L5 `0603DC-68N` | C1,C2,C3,C5 ~22 pF → `5602`; C4 ~40 pF → 33 pF `GRM18` + `5201` |
+| **222** | L1,L3 `0603DC-43N`; L2 `0603DC-27N`; L4,L5 `0603DC-47N` | C1,C2,C3,C5 15 pF → `5602`; C4 27 pF → `5602` |
+| **70 cm** | L1,L3,L4,L5 `0603DC-20N`; L2 `0603DC-11N` | C1,C2,C3,C5 ~6.6 pF → `5201`; C4 12 pF → `5502` |
+| **902** | L1,L3 `0402DC` 9.1 nH; L2 `0402DC` 5.1 nH; L4,L5 `0402DC` 9.1 nH *(or air-wound)* | C1,C2,C3,C5 ~3.0 pF → `5761`; C4 ~5.2 pF → `5201` |
 
 Five chip inductors + five trimmers per board. Tune the caps for best in-band return loss and the
 harmonic rejection you need; the inductors don't move. (Computed pre-round L/C values: filters.md.)

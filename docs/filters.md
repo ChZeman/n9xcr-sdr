@@ -122,7 +122,7 @@ not a final BOM.**
 | 902 (800–1200) | 8.7 / 2.9 / 5.0 / 2.9 / 8.7 | 3.0 / 9.1 / 5.2 / 9.1 / 3.0 |
 
 Parts per filter: **5 inductors + 5 capacitors** (20 L + 20 C across all four). **Build pattern: fixed
-Coilcraft chip inductors + trimmer caps.** Inductors sit at the nearest E24 value and stay put; each
+Coilcraft `0603DC` chip inductors + trimmer caps.** Inductors sit at the nearest E24 value and stay put; each
 filter is brought to spec by tuning the **capacitors only** (the LC corner tracks the LC product, so a
 cap trimmer pulls it onto frequency despite the inductor rounding, which is ≤~5 %). Caps are Knowles
 Johanson Giga-Trim sapphire piston trimmers (Q>3000). **Air-wound inductors are the higher-Q option**

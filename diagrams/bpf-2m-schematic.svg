@@ -52,15 +52,15 @@
 <line x1="24" y1="338" x2="596" y2="338" class="div"/>
 <text class="td" x="28" y="354">L1,L3</text>
 <text class="td" x="112" y="354">66 nH</text>
-<text class="td" x="190" y="354">Coilcraft 0603HP-68N (or air-wound)</text>
+<text class="td" x="190" y="354">Coilcraft 0603DC-68N (or air-wound)</text>
 <text class="td" x="560" y="354">2</text>
 <text class="td" x="28" y="374">L2</text>
 <text class="td" x="112" y="374">38 nH</text>
-<text class="td" x="190" y="374">Coilcraft 0603HP-39N (or air-wound)</text>
+<text class="td" x="190" y="374">Coilcraft 0603DC-39N (or air-wound)</text>
 <text class="td" x="560" y="374">1</text>
 <text class="td" x="28" y="394">L4,L5</text>
 <text class="td" x="112" y="394">69 nH</text>
-<text class="td" x="190" y="394">Coilcraft 0603HP-68N (or air-wound)</text>
+<text class="td" x="190" y="394">Coilcraft 0603DC-68N (or air-wound)</text>
 <text class="td" x="560" y="394">2</text>
 <text class="td" x="28" y="414">C1,C2,C3,C5</text>
 <text class="td" x="112" y="414">~22 pF</text>
