@@ -15,7 +15,7 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 | Final, UHF (ex: 70 cm / 902 / 23 cm) | Wolfspeed/MACOM CGH40120F | 120 W GaN, 28 V; one part both bands; run at 50 W |
 | Pre-driver | onboard PGA-102+ on the SDR | ~+15–19 dBm out; no separate board (discrete PGA-103+ optional if the onboard PA is bypassed) |
 | Driver | Wolfspeed/MACOM CGH40010 (F flange / P pill) | 10 W GaN (13 W PSAT), DC–6 GHz, 28 V; one part type, 4 builds (per band); runs ~30 % for linear |
-| TX band-select | pSemi PE42512A (UltraCMOS SP12T) | silicon SP12T, absorptive, 9 kHz-8 GHz, **single 3.3 V supply** (internal -V gen; VSS_EXT->GND), 4-bit V1-V4 + LS control; low-level switch ahead of the per-band chains. Order code `PE42512A-X` (DigiKey, ~$15-20). Base PE42512 is EOL - buy ~4 spares. See "Band-select build (PE42512A)" below. |
+| TX band-select | pSemi PE42512A (UltraCMOS SP12T) | silicon SP12T, absorptive, 9 kHz-8 GHz, **single 3.3 V supply** (internal -V gen; VSS_EXT->GND), 4-bit V1-V4 + LS control; low-level switch ahead of the per-band chains. Order code `PE42512A-X` (DigiKey, ~$5-12 - verify on page). Base PE42512 is EOL - buy +2-4 spares. Full orderable list: `band-select-parts.md`; build detail below. |
 | RX front-end switches | Analog Devices ADRF5040 (x2) | SP4T switch-filter-switch in the RX preselector carrier (unchanged); needs +3.3 V & -3.3 V via a shared ADM8829. See `rx-frontend.svg`. |
 | RX preselector, 2 m | DCI-146-4H | 4-pole cavity, 144–148 |
 | RX preselector, 222 | Temwell helical | 222–225 |
@@ -69,14 +69,14 @@ no -3.3 V rail, and **no RF DC-block caps** (every RF pin sits at 0 VDC). Schema
 
 | Item | Part | Source (approx) | Notes |
 |------|------|-----------------|-------|
-| SP12T switch | **PE42512A-X** | DigiKey (`PE42512A-X`, 500/T&R) ~$15-20 | active "A" revision; base PE42512 is discontinued. Buy ~4 spares - pSemi is phasing out its broadband-switch line. Confirm DigiKey "Part Status: Active". |
-| Supply decoupling | 0.1 uF + 1 uF to GND | with order | on VDD (3.3 V, IDD ~200 uA) |
+| SP12T switch | **PE42512A-X** | DigiKey (`PE42512A-X`) ~$5-12 (verify on page) | active "A" revision; base PE42512 is discontinued. Buy +2-4 spares - pSemi is phasing out its broadband-switch line; QFN is hard to rework. Confirm "Part Status: Active". |
+| Supply decoupling | 0.1 uF `GRM155R71H104KE14J` + 1 uF `GRM188R61E105KA12D` | DigiKey | on VDD (3.3 V, IDD ~200 uA); optional 10 uF `GRM21BR61E106KA73L` bulk |
 | VSS_EXT (pin 10) | tie -> GND | - | normal mode = internal -V gen ON; ~5 MHz spur is irrelevant at VHF/UHF. Bypass mode (-3.0 V) optional for spur-free, unused. |
 | LS (pin 32) | tie -> GND | - | selects the LS=0 decode map; grounding LS also improves IL/isolation. Internal 1 MOhm pull-up makes a floating LS read high - tie it deliberately. |
-| Control | 4 x GPIO (V1-V4) | from control MCU | 3.3 V CMOS; nothing to buy |
+| Control | V1-V4 + 4x 10k pull-down `RC0402FR-0710KL`, LS->GND via 0 Ohm `RC0402JR-070RL`, 1x6 header | DigiKey | 3.3 V CMOS direct (no level shifter). **MCU off-board** = the enclosure control/monitor board (telemetry + sequencing + band select), never an on-board ESP32 (2.4 GHz radio beside the 13/9 cm ports). |
 | RF DC-blocks | **none** | - | not required (RF ports at 0 VDC) |
 | PCB | small custom 2-layer (or 4-layer) board | JLCPCB / PCBWay | lay out from the SnapEDA/SnapMagic **PE42512A-X** footprint+symbol (KiCad/Altium/PADS/Eagle). The pSemi eval Gerbers are a 12-SMA *characterization* board - reference only, not the node board. |
-| Connectors (standalone only) | SMA/edge-launch as needed | with order | omit if integrated onto the TX board |
+| Connectors | 13x edge-launch SMA `901-10513-1` (RFC + RF1-RF12) | DigiKey | **all ports populated** - board stays standalone + VNA-testable. Absorptive OFF ports self-terminate (no load needed); a screw-on 50 Ohm (e.g. Mini-Circuits ANNE-50+) on unbuilt/park ports is an optional mis-select failsafe, not required. |
 
 **Port map** - each port is a 1.5:1 sub-octave slice spanning 4 m (70 MHz) to 5 cm (5.8 GHz); the
 amateur band that lands in each slice is tagged. Loss-tiered: RF1/RF12 (lowest loss) carry the
