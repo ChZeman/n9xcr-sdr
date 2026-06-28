@@ -1,15 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1320" viewBox="0 0 620 660" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-<title>TX cleanup BPF – 70 cm (RF4, 355–533 MHz) tunable</title>
-<style>text{font-family:Arial,Helvetica,sans-serif}.h1{font-size:15px;font-weight:700;fill:#2C2C2A}.h2{font-size:10px;fill:#56554f}.w{stroke:#2C2C2A;stroke-width:1.5;fill:none}.gnd{stroke:#7a7972;stroke-width:1.3}.lbl{font-size:12px;font-weight:700;fill:#2C2C2A}.val{font-size:10.5px;fill:#56554f}.sec{font-size:10px;font-weight:700;fill:#6b6a64}.port{font-size:11px;font-weight:700;fill:#2C2C2A}.cap2{font-size:9.5px;fill:#6b6a64}.th{font-size:11.5px;font-weight:700;fill:#2C2C2A}.td{font-size:11.5px;fill:#2C2C2A}.div{stroke:#888780;stroke-width:1.1;stroke-dasharray:4 3}.box{fill:#F1EFE8;stroke:#888780;stroke-width:1.1}</style>
+<title>TX cleanup BPF – 70 cm (RF4, 355–533 MHz) trim C2+C4</title>
+<style>text{font-family:Arial,Helvetica,sans-serif}.h1{font-size:15px;font-weight:700;fill:#2C2C2A}.h2{font-size:10px;fill:#56554f}.w{stroke:#2C2C2A;stroke-width:1.5;fill:none}.gnd{stroke:#7a7972;stroke-width:1.3}.lbl{font-size:12px;font-weight:700;fill:#2C2C2A}.val{font-size:10.5px;fill:#56554f}.sec{font-size:10px;font-weight:700;fill:#6b6a64}.port{font-size:11px;font-weight:700;fill:#2C2C2A}.cap2{font-size:9.5px;fill:#6b6a64}.trm{font-size:8.5px;font-weight:700;fill:#7a5b1e}.th{font-size:11.5px;font-weight:700;fill:#2C2C2A}.td{font-size:11.5px;fill:#2C2C2A}.div{stroke:#888780;stroke-width:1.1;stroke-dasharray:4 3}.box{fill:#F1EFE8;stroke:#888780;stroke-width:1.1}</style>
 <text class="h1" x="16" y="26">TX cleanup bandpass – 70 cm (RF4, slice 355–533 MHz)</text>
-<text class="h2" x="16" y="44">Fixed Coilcraft inductors + trimmer caps (tune caps only). 50 Ω, low level. Ham 420–450. Targets shown.</text>
+<text class="h2" x="16" y="44">Fixed Coilcraft inductors. Trim C2 + C4 (2 sapphire trimmers); C1/C3/C5 fixed C0G. 50 Ω. Ham 420–450. Targets shown.</text>
 <text class="port" x="14" y="134">RF IN</text>
 <text class="port" x="566" y="134">RF OUT</text>
 <line x1="60" y1="130" x2="95" y2="130" class="w"/>
-<line x1="95" y1="130" x2="131" y2="130" class="w"/><line x1="131" y1="122" x2="131" y2="138" class="w"/><line x1="139" y1="122" x2="139" y2="138" class="w"/><line x1="126" y1="139" x2="144" y2="121" class="w"/><path d="M144 121 l-6 1 l3 5 z" fill="#2C2C2A"/><line x1="139" y1="130" x2="175" y2="130" class="w"/>
+<line x1="95" y1="130" x2="131" y2="130" class="w"/><line x1="131" y1="122" x2="131" y2="138" class="w"/><line x1="139" y1="122" x2="139" y2="138" class="w"/><line x1="139" y1="130" x2="175" y2="130" class="w"/>
 <text class="lbl" x="135" y="111" text-anchor="middle">C1</text><text class="val" x="135" y="122" text-anchor="middle">6.5 pF</text>
 <line x1="175" y1="130" x2="211" y2="130" class="w"/><line x1="211" y1="122" x2="211" y2="138" class="w"/><line x1="219" y1="122" x2="219" y2="138" class="w"/><line x1="206" y1="139" x2="224" y2="121" class="w"/><path d="M224 121 l-6 1 l3 5 z" fill="#2C2C2A"/><line x1="219" y1="130" x2="255" y2="130" class="w"/>
 <text class="lbl" x="215" y="111" text-anchor="middle">C2</text><text class="val" x="215" y="122" text-anchor="middle">6.5 pF</text>
+<text class="trm" x="215" y="150" text-anchor="middle">TRIM</text>
 <line x1="255" y1="130" x2="320" y2="130" class="w"/>
 <line x1="320" y1="130" x2="357" y2="130" class="w"/><path d="M357 130 a6 6 0 0 1 12 0 a6 6 0 0 1 12 0 a6 6 0 0 1 12 0" class="w"/><line x1="393" y1="130" x2="430" y2="130" class="w"/>
 <text class="lbl" x="375" y="111" text-anchor="middle">L4</text><text class="val" x="375" y="122" text-anchor="middle">20 nH</text>
@@ -30,15 +31,16 @@
 <line x1="250" y1="240" x2="260" y2="246" class="gnd"/>
 <text class="lbl" x="266" y="183">L3</text><text class="val" x="266" y="196">20 nH</text>
 <line x1="320" y1="130" x2="320" y2="240" class="w"/>
-<line x1="312" y1="181" x2="328" y2="181" class="w"/><line x1="312" y1="189" x2="328" y2="189" class="w"/><line x1="311" y1="194" x2="329" y2="176" class="w"/><path d="M329 176 l-6 1 l3 5 z" fill="#2C2C2A"/>
+<line x1="312" y1="181" x2="328" y2="181" class="w"/><line x1="312" y1="189" x2="328" y2="189" class="w"/>
 <line x1="315" y1="240" x2="325" y2="246" class="gnd"/>
 <text class="lbl" x="331" y="183">C3</text><text class="val" x="331" y="196">6.8 pF</text>
 <line x1="430" y1="130" x2="430" y2="240" class="w"/>
 <line x1="422" y1="181" x2="438" y2="181" class="w"/><line x1="422" y1="189" x2="438" y2="189" class="w"/><line x1="421" y1="194" x2="439" y2="176" class="w"/><path d="M439 176 l-6 1 l3 5 z" fill="#2C2C2A"/>
 <line x1="425" y1="240" x2="435" y2="246" class="gnd"/>
 <text class="lbl" x="441" y="183">C4</text><text class="val" x="441" y="196">12 pF</text>
+<text class="trm" x="441" y="208">TRIM</text>
 <line x1="510" y1="130" x2="510" y2="240" class="w"/>
-<line x1="502" y1="181" x2="518" y2="181" class="w"/><line x1="502" y1="189" x2="518" y2="189" class="w"/><line x1="501" y1="194" x2="519" y2="176" class="w"/><path d="M519 176 l-6 1 l3 5 z" fill="#2C2C2A"/>
+<line x1="502" y1="181" x2="518" y2="181" class="w"/><line x1="502" y1="189" x2="518" y2="189" class="w"/>
 <line x1="505" y1="240" x2="515" y2="246" class="gnd"/>
 <text class="lbl" x="521" y="183">C5</text><text class="val" x="521" y="196">6.8 pF</text>
 <line x1="287" y1="64" x2="287" y2="248" class="div"/>
@@ -46,38 +48,38 @@
 <rect class="box" x="16" y="288" width="588" height="282" rx="6"/>
 <text class="h1" x="28" y="310" style="font-size:13px">Bill of materials (one board) — vendor part numbers</text>
 <text class="th" x="28" y="332">Ref</text>
-<text class="th" x="112" y="332">Value</text>
-<text class="th" x="190" y="332">Type / vendor part no.</text>
+<text class="th" x="108" y="332">Value</text>
+<text class="th" x="182" y="332">Type / vendor part no.</text>
 <text class="th" x="560" y="332">Qty</text>
 <line x1="24" y1="338" x2="596" y2="338" class="div"/>
 <text class="td" x="28" y="354">L1,L3,L4,L5</text>
-<text class="td" x="112" y="354">20 nH</text>
-<text class="td" x="190" y="354">Coilcraft 0603DC-20N (or air-wound)</text>
+<text class="td" x="108" y="354">20 nH</text>
+<text class="td" x="182" y="354">Coilcraft 0603DC-20N (or air-wound)</text>
 <text class="td" x="560" y="354">4</text>
 <text class="td" x="28" y="374">L2</text>
-<text class="td" x="112" y="374">11 nH</text>
-<text class="td" x="190" y="374">Coilcraft 0603DC-11N (or air-wound)</text>
+<text class="td" x="108" y="374">11 nH</text>
+<text class="td" x="182" y="374">Coilcraft 0603DC-11N (or air-wound)</text>
 <text class="td" x="560" y="374">1</text>
-<text class="td" x="28" y="394">C1,C2,C3,C5</text>
-<text class="td" x="112" y="394">~6.6 pF</text>
-<text class="td" x="190" y="394">trimmer Johanson 5201 (0.8–10 pF)</text>
-<text class="td" x="560" y="394">4</text>
-<text class="td" x="28" y="414">C4</text>
-<text class="td" x="112" y="414">12 pF</text>
-<text class="td" x="190" y="414">trimmer Johanson 5502 (1–20 pF)</text>
+<text class="td" x="28" y="394">C1,C3,C5</text>
+<text class="td" x="108" y="394">6.8 pF</text>
+<text class="td" x="182" y="394">fixed C0G, Murata GRM1885C1H6R8DA01D</text>
+<text class="td" x="560" y="394">3</text>
+<text class="td" x="28" y="414">C2</text>
+<text class="td" x="108" y="414">trim</text>
+<text class="td" x="182" y="414">Johanson 5201 (0.8–10 pF) sapphire</text>
 <text class="td" x="560" y="414">1</text>
-<text class="td" x="28" y="434">—</text>
-<text class="td" x="112" y="434">—</text>
-<text class="td" x="190" y="434">silver-plated Cu wire ~20 AWG (for air-cores)</text>
+<text class="td" x="28" y="434">C4</text>
+<text class="td" x="108" y="434">trim</text>
+<text class="td" x="182" y="434">Johanson 5502 (1–20 pF) sapphire</text>
 <text class="td" x="560" y="434">1</text>
 <text class="td" x="28" y="454">J1,J2</text>
-<text class="td" x="112" y="454">SMA</text>
-<text class="td" x="190" y="454">Amphenol 901-10513-1 edge-launch SMA</text>
+<text class="td" x="108" y="454">SMA</text>
+<text class="td" x="182" y="454">Amphenol 901-10513-1 edge-launch</text>
 <text class="td" x="560" y="454">2</text>
 <text class="td" x="28" y="474">PCB</text>
-<text class="td" x="112" y="474">—</text>
-<text class="td" x="190" y="474">FR-4 (JLCPCB/PCBWay) or copper-clad</text>
+<text class="td" x="108" y="474">—</text>
+<text class="td" x="182" y="474">FR-4 (JLCPCB/PCBWay) or copper-clad</text>
 <text class="td" x="560" y="474">1</text>
-<text class="cap2" x="28" y="538">Inductors = fixed Coilcraft chip (tune caps only). Caps = Johanson Giga-Trim sapphire trimmers (Q&gt;3000).</text>
-<text class="cap2" x="28" y="554">Full sourcing + per-board notes: docs/bom.md. Computed (pre-round) values: docs/filters.md.</text>
+<text class="cap2" x="28" y="538">Trim C2 (low corner) + C4 (high corner) on sapphire Giga-Trims; C1/C3/C5 fixed C0G. Inductors fixed chip or air-wound.</text>
+<text class="cap2" x="28" y="554">Full DigiKey BOM: docs/parts-list.md. Sourcing notes: docs/bom.md.</text>
 </svg>

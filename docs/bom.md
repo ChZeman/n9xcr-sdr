@@ -147,43 +147,33 @@ The RX front-end's two SP4Ts still use these parts (one shared -3.3 V rail for t
 
 ## BPF passives — DigiKey sourcing
 
-**Build pattern: fixed Coilcraft chip inductors + trimmer caps.** The inductors sit at the nearest E24
-value and stay put; each filter is brought to spec by adjusting the **capacitors only**. A trimmer on
-the cap side pulls each LC corner onto frequency even with L at a standard step (the corner tracks the
-LC *product*), and the value rounding is small (≤~5 %: 66→68, 44→43, 46→47) — well within trimmer
-travel. You do not swap inductors during tuning.
+**Build pattern: fixed Coilcraft chip inductors + two trimmer caps per board.** Inductors sit at the
+nearest E24 value and stay put. Of the five caps, only **C2** (inner series — sets the low corner) and
+**C4** (center shunt — sets the high corner) are trimmed; two near-independent knobs place both filter
+corners. **C1, C3, C5 are fixed C0G.** So each board tunes on two trimmers, not five.
 
-- **Inductors → fixed Coilcraft `0603DC` chip**, nearest E24 value (PNs per board below). 0603DC is
-  wirewound, the highest-Q 0603 series (up to ~40 % higher Q than the older `0603HP`, and lower DCR),
-  and — unlike `0603HP`, which DigiKey factory-orders only — it is **DigiKey-stocked in cut tape
-  (qty 1, ships today)**. Order code `0603DC-<val>XJRW` (±5 %, fine for a trimmed filter) or `…XGRW`
-  (±2 %). At 902 use `0402DC` (or just wind air-cores, preferred there). SRF clears every band. *Avoid
-  Abracon `AISC-0603HP-…` lookalikes* — same name, but not stocked and tape-&-reel of 3 000 only.
-  *Insurance:* order one adjacent E24 value per position (e.g. a 62 nH and a 75 nH alongside each
-  68 nH) so a stubborn section can be stepped rather than fought — rarely needed. Coilcraft also ships
-  direct (same-day, free samples, small qty) if you'd rather not chase per-value DigiKey stock.
-- **Tuning caps → Knowles Johanson Giga-Trim sapphire piston trimmers** (Q>3000 @ 250 MHz, sapphire
-  dielectric, near-zero tuning noise, DigiKey-stocked, numeric PNs). Pick a range that centers the
-  target: `5802` (0.35–3.5 pF), `5761` (0.6–6 pF), `5201` (0.8–10 pF), `5502` (1–20 pF), `5602`
-  (1–30 pF). Above ~30 pF (only 2 m C4 ≈ 40 pF) use a fixed 33 pF C0G (Murata `GRM18`) in parallel
-  with a `5201` trimmer.
-- **Higher-Q option → air-wound inductors**, silver-plated Cu (~20 AWG; DigiKey stocks the wire),
-  tuned by turn spacing. Chip Q (dozens) vs air-wound (150+) costs a little insertion loss and
-  ultimate stopband at the top bands; negligible at 2 m/222. **902 is where air-wound earns its keep**
-  — wind those coils if you want the last bit of loss/rejection; fixed chips are fine on 2 m/222/70 cm.
-  (Air-wound is also the only good *tunable* inductor at UHF — ferrite slug-tuned cores are unusable
-  above VHF from eddy-current loss — but with cap tuning you don't need a tunable inductor.)
-- **Connectors:** Amphenol RF `901-10513-1` edge-launch SMA jack (0.062″ PCB), ×2 per board.
+- **Inductors → fixed Coilcraft `0603DC`** (`0402DC` at 902), nearest E24, order code
+  `0603DC-<val>XJRW` (±5 %). Highest-Q 0603 series, DigiKey cut-tape qty 1. Air-wound is the higher-Q
+  alternative, worth winding at 902. Avoid Abracon `AISC-0603HP` lookalikes (not stocked, 3 000 reel).
+- **Trim caps (C2, C4) → Knowles Johanson Giga-Trim sapphire piston trimmers** (Q>3000, DigiKey
+  stocked; the model number *is* the PN): `5761` (0.6–6 pF), `5201` (0.8–10 pF), `5502` (1–20 pF),
+  `5602` (1–30 pF). Two per board. Pick the surface-mount variant of a range to match the board
+  (1–30 pF: `5601` side-SMT / `5641` top-SMT vs panel-mount `5602`).
+- **Fixed caps (C1, C3, C5) → Murata GRM18 C0G, 0603, 50 V, ±5 %** (`GRM1885C1H…JA01D`). At 902 a
+  high-Q part (Murata GQM18 0603 or GJM15 0402) is the upgrade; standard C0G still works.
+- **Connectors:** Amphenol RF `901-10513-1` edge-launch SMA, ×2 per board.
 - **Board:** custom FR-4 (JLCPCB / PCBWay) or copper-clad.
 
-Per board (inductor = fixed Coilcraft nearest E24; cap = trimmer range chosen to center the target):
+Per board:
 
-| Board | Inductors (Coilcraft, fixed) | Trimmer caps (Johanson PN) |
-|-------|------------------------------|----------------------------|
-| **2 m** | L1,L3 `0603DC-68N`; L2 `0603DC-39N`; L4,L5 `0603DC-68N` | C1,C2,C3,C5 ~22 pF → `5602`; C4 ~40 pF → 33 pF `GRM18` + `5201` |
-| **222** | L1,L3 `0603DC-43N`; L2 `0603DC-27N`; L4,L5 `0603DC-47N` | C1,C2,C3,C5 15 pF → `5602`; C4 27 pF → `5602` |
-| **70 cm** | L1,L3,L4,L5 `0603DC-20N`; L2 `0603DC-11N` | C1,C2,C3,C5 ~6.6 pF → `5201`; C4 12 pF → `5502` |
-| **902** | L1,L3 `0402DC` 9.1 nH; L2 `0402DC` 5.1 nH; L4,L5 `0402DC` 9.1 nH *(or air-wound)* | C1,C2,C3,C5 ~3.0 pF → `5761`; C4 ~5.2 pF → `5201` |
+| Board | Inductors (Coilcraft) | Fixed C1,C3,C5 (Murata GRM18) | Trim C2 / C4 (Johanson) |
+|-------|-----------------------|-------------------------------|--------------------------|
+| **2 m** | L1,L3,L4,L5 `0603DC-68N`; L2 `0603DC-39N` | `GRM1885C1H220JA01D` ×3 (22 pF); C4 bulk 33 pF `GRM1885C1H330JA01D` | C2 `5602`; C4 `5201` |
+| **222** | L1,L3 `0603DC-43N`; L2 `0603DC-27N`; L4,L5 `0603DC-47N` | `GRM1885C1H150JA01D` ×3 (15 pF) | C2 `5602`; C4 `5602` |
+| **70 cm** | L1,L3,L4,L5 `0603DC-20N`; L2 `0603DC-11N` | `GRM1885C1H6R8DA01D` ×3 (6.8 pF) | C2 `5201`; C4 `5502` |
+| **902** | L1,L3,L4,L5 `0402DC-9N1`; L2 `0402DC-5N1` | `GRM1885C1H3R0CA01D` ×3 (3.0 pF) | C2 `5761`; C4 `5201` |
 
-Five chip inductors + five trimmers per board. Tune the caps for best in-band return loss and the
-harmonic rejection you need; the inductors don't move. (Computed pre-round L/C values: filters.md.)
+2 m C4 (≈40 pF) is above any trimmer's top range, so it's a fixed 33 pF C0G in parallel with the `5201`
+(~34–43 pF). **Cost:** eight sapphire trimmers ≈ $400 total (vs ~$1 000 for an all-trimmer build);
+inductors, fixed caps, and SMAs add under $100. Full consolidated DigiKey BOM with quantities:
+[`parts-list.md`](parts-list.md).
