@@ -171,7 +171,7 @@ Per board:
 | **2 m** | L1,L3,L4,L5 `0603DC-68N`; L2 `0603DC-39N` | `GRM1885C1H220JA01D` ×3 (22 pF); C4 bulk 33 pF `GRM1885C1H330JA01D` | C2 `5602`; C4 `5201` |
 | **222** | L1,L3 `0603DC-43N`; L2 `0603DC-27N`; L4,L5 `0603DC-47N` | `GRM1885C1H150JA01D` ×3 (15 pF) | C2 `5602`; C4 `5602` |
 | **70 cm** | L1,L3,L4,L5 `0603DC-20N`; L2 `0603DC-11N` | `GRM1885C1H6R8DA01D` ×3 (6.8 pF) | C2 `5201`; C4 `5502` |
-| **902** | L1,L3,L4,L5 `0402DC-9N0`; L2 `0402DC-5N0` | `GRM1885C1H3R0CA01D` ×3 (3.0 pF) | C2 `5761`; C4 `5201` |
+| **902** | L1,L3,L4,L5 `0402DC-9N1`; L2 `0402DC-4N7` (5.0 nH tgt; verify stock or air-wind) | `GRM1885C1H3R0CA01D` ×3 (3.0 pF) | C2 `5761`; C4 `5201` |
 
 2 m C4 (≈40 pF) is above any trimmer's top range, so it's a fixed 33 pF C0G in parallel with the `5201`
 (~34–43 pF). **Cost:** eight sapphire trimmers ≈ $400 total (vs ~$1 000 for an all-trimmer build);

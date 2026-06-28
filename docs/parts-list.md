@@ -16,10 +16,10 @@ are ±5 % (`…XJRW`) — choose **Cut Tape** at DigiKey; use `…XGRW` for ±2 
 | `0603DC-47NXJRW` | 47 nH | 2 | 222 L4,L5 |
 | `0603DC-20NXJRW` | 20 nH | 4 | 70 cm L1,L3,L4,L5 |
 | `0603DC-11NXJRW` | 11 nH | 1 | 70 cm L2 |
-| `0402DC-9N0XJRW` | 9.0 nH | 4 | 902 L1,L3,L4,L5 |
-| `0402DC-5N0XJRW` | 5.0 nH | 1 | 902 L2 |
+| `0402DC-9N1XJRW` | 9.1 nH | 4 | 902 L1,L3,L4,L5 |
+| `0402DC-4N7XJRW` | 4.7 nH | 1 | 902 L2 (5.0 nH target) |
 
-20 inductors. The 0402DC ±5 % grid uses whole-tenth values, so 902 uses `9N0`/`5N0` (the `9N1`/`5N1` values exist only as ±2 % `…XGRW`). Air-wound is the higher-Q alternative at 902.
+20 inductors. DigiKey 0402DC ±5 % stock is spotty per value: `9N1` is stocked, but **neither `5N1` nor `5N0` is**, so L2 (5.0 nH target) uses the nearest in-stock value — `4N7` (4.7 nH) shown, or `5N6` (5.6 nH); the C2 trimmer absorbs the few-percent difference. For exact 5.0 nH, order `0402DC-5N0` from **Coilcraft direct** (same-day, free samples), or wind L2 air-core (preferred at 902 anyway). Confirm live stock per value at order time — it shifts.
 
 ## Trim caps — Knowles Johanson Mfg, sapphire Giga-Trim (qty 1)
 
