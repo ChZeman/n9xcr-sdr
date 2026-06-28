@@ -156,9 +156,9 @@ corners. **C1, C3, C5 are fixed C0G.** So each board tunes on two trimmers, not 
   `0603DC-<val>XJRW` (±5 %). Highest-Q 0603 series, DigiKey cut-tape qty 1. Air-wound is the higher-Q
   alternative, worth winding at 902. Avoid Abracon `AISC-0603HP` lookalikes (not stocked, 3 000 reel).
 - **Trim caps (C2, C4) → Knowles Johanson Giga-Trim sapphire piston trimmers** (Q>3000, DigiKey
-  stocked; the model number *is* the PN): `5761` (0.6–6 pF), `5201` (0.8–10 pF), `5502` (1–20 pF),
-  `5602` (1–30 pF). Two per board. Pick the surface-mount variant of a range to match the board
-  (1–30 pF: `5601` side-SMT / `5641` top-SMT vs panel-mount `5602`).
+  stocked; the model number *is* the PN): `27273` (0.6–4.5 pF), `5202` (0.8–10 pF), `5502` (1–20 pF),
+  `5602` (1–30 pF). Two per board, all top-adjust surface-mount (DigiKey 1956-1000/1001/1032/1008-ND).
+  DigiKey's "Top Panel Mount" tag on some is a miscategorization — Giga-Trims have no bushing; they're SMD, top-tuned.
 - **Fixed caps (C1, C3, C5) → Murata GRM18 C0G, 0603, 50 V, ±5 %** (`GRM1885C1H…JA01D`). At 902 a
   high-Q part (Murata GQM18 0603 or GJM15 0402) is the upgrade; standard C0G still works.
 - **Connectors:** Amphenol RF `901-10513-1` edge-launch SMA, ×2 per board.
@@ -168,12 +168,12 @@ Per board:
 
 | Board | Inductors (Coilcraft) | Fixed C1,C3,C5 (Murata GRM18) | Trim C2 / C4 (Johanson) |
 |-------|-----------------------|-------------------------------|--------------------------|
-| **2 m** | L1,L3,L4,L5 `0603DC-68N`; L2 `0603DC-39N` | `GRM1885C1H220JA01D` ×3 (22 pF); C4 bulk 33 pF `GRM1885C1H330JA01D` | C2 `5602`; C4 `5201` |
+| **2 m** | L1,L3,L4,L5 `0603DC-68N`; L2 `0603DC-39N` | `GRM1885C1H220JA01D` ×3 (22 pF); C4 bulk 33 pF `GRM1885C1H330JA01D` | C2 `5602`; C4 `5202` |
 | **222** | L1,L3 `0603DC-43N`; L2 `0603DC-27N`; L4,L5 `0603DC-47N` | `GRM1885C1H150JA01D` ×3 (15 pF) | C2 `5602`; C4 `5602` |
-| **70 cm** | L1,L3,L4,L5 `0603DC-20N`; L2 `0603DC-11N` | `GRM1885C1H6R8DA01D` ×3 (6.8 pF) | C2 `5201`; C4 `5502` |
-| **902** | L1,L3,L4,L5 `0402DC-9N1`; L2 `0402DC-5N0XGRW` (5.0 nH, ±2 %) | `GRM1885C1H3R0CA01D` ×3 (3.0 pF) | C2 `5761`; C4 `5201` |
+| **70 cm** | L1,L3,L4,L5 `0603DC-20N`; L2 `0603DC-11N` | `GRM1885C1H6R8DA01D` ×3 (6.8 pF) | C2 `5202`; C4 `5502` |
+| **902** | L1,L3,L4,L5 `0402DC-9N1`; L2 `0402DC-5N0XGRW` (5.0 nH, ±2 %) | `GRM1885C1H3R0CA01D` ×3 (3.0 pF) | C2 `27273`; C4 `5202` |
 
-2 m C4 (≈40 pF) is above any trimmer's top range, so it's a fixed 33 pF C0G in parallel with the `5201`
+2 m C4 (≈40 pF) is above any trimmer's top range, so it's a fixed 33 pF C0G in parallel with the `5202`
 (~34–43 pF). **Cost:** eight sapphire trimmers ≈ $400 total (vs ~$1 000 for an all-trimmer build);
 inductors, fixed caps, and SMAs add under $100. Full consolidated DigiKey BOM with quantities:
 [`parts-list.md`](parts-list.md).

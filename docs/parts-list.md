@@ -25,20 +25,22 @@ are ±5 % (`…XJRW`) — choose **Cut Tape** at DigiKey; use `…XGRW` for ±2 
 
 | DigiKey PN | Range | Qty | Positions |
 |------------|-------|----:|-----------|
-| `5602` | 1–30 pF | 3 | 2 m C2; 222 C2,C4 |
-| `5201` | 0.8–10 pF | 3 | 2 m C4; 70 cm C2; 902 C4 |
-| `5761` | 0.6–6 pF | 1 | 902 C2 |
-| `5502` | 1–20 pF | 1 | 70 cm C4 |
+| `5602` / 1956-1000-ND | 1–30 pF | 3 | 2 m C2; 222 C2,C4 |
+| `5202` / 1956-1001-ND | 0.8–10 pF | 3 | 2 m C4; 70 cm C2; 902 C4 |
+| `27273` / 1956-1032-ND | 0.6–4.5 pF | 1 | 902 C2 |
+| `5502` / 1956-1008-ND | 1–20 pF | 1 | 70 cm C4 |
 
-8 trimmers (2 per board). ≈ $400 total — the bulk of the build cost. Pick the surface-mount variant of
-a range to match the board (1–30 pF: `5601` side-SMT / `5641` top-SMT vs panel-mount `5602`).
+8 trimmers (2 per board), all **top-adjust surface-mount** Giga-Trims — lowest parasitics, and you tune
+each board flat. ≈ $400 total — the bulk of the build cost. DigiKey tags some of these "Top Panel Mount,"
+but Giga-Trims have no bushing; that's a miscategorization (the same PN appears as both "Surface Mount" and
+"Panel Mount" on different DigiKey pages). Confirm pad geometry against each part's drawing at layout.
 
 ## Fixed caps — Murata GRM18 C0G, 0603, 50 V, ±5 % (qty 1)
 
 | DigiKey PN | Value | Qty | Positions |
 |------------|-------|----:|-----------|
 | `GRM1885C1H220JA01D` | 22 pF | 3 | 2 m C1,C3,C5 |
-| `GRM1885C1H330JA01D` | 33 pF | 1 | 2 m C4 (bulk, parallel w/ 5201) |
+| `GRM1885C1H330JA01D` | 33 pF | 1 | 2 m C4 (bulk, parallel w/ 5202) |
 | `GRM1885C1H150JA01D` | 15 pF | 3 | 222 C1,C3,C5 |
 | `GRM1885C1H6R8DA01D` | 6.8 pF | 3 | 70 cm C1,C3,C5 |
 | `GRM1885C1H3R0CA01D` | 3.0 pF | 3 | 902 C1,C3,C5 |
