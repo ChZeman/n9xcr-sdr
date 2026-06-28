@@ -50,6 +50,11 @@ See `diagrams/tx-chain.svg`.
   bands, the software allowed-TX table is now SAFETY-CRITICAL -> must be FAIL-CLOSED (deny by default,
   permit only enumerated authorized segments; RF7 cold-switch park = safe state on fault/out-of-table).
   RX preselectors stay narrow (separate job: front-end protection + crossband isolation).
+- **BPF cleanup filters: two-trimmer tune, top-adjust SMD Giga-Trims.** Each slice-wide BPF trims only
+  C2 (low corner) + C4 (high corner); C1/C3/C5 fixed C0G. All trimmers standardized on **top-adjust
+  surface-mount** sapphire Giga-Trims (lowest parasitics, tune the board flat): `5602` 1–30 pF,
+  `5202` 0.8–10 pF, `27273` 0.6–4.5 pF (902 C2), `5502` 1–20 pF — DigiKey 1956-1000/1001/1032/1008-ND.
+  DigiKey's "Top Panel Mount" tag on some is a mislabel (Giga-Trims have no bushing). See `docs/parts-list.md`.
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;
