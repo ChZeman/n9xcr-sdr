@@ -145,32 +145,41 @@ The RX front-end's two SP4Ts still use these parts (one shared -3.3 V rail for t
 | Supply decoupling | 100 nF + bulk (1-10 uF) | with order | on VDD and VSS to GND |
 | RF DC-blocks | ~1 nF C0G x 5 (each switch) | with order | RFC + RF1-RF4 |
 
-## BPF passives — DigiKey sourcing (tunable build)
+## BPF passives — DigiKey sourcing
 
-The BPF boards are built **tunable**, so each filter is dialed in on the VNA/SA without swapping fixed
-parts. Best parts for that:
+**Build pattern: fixed Coilcraft chip inductors + trimmer caps.** The inductors sit at the nearest E24
+value and stay put; each filter is brought to spec by adjusting the **capacitors only**. A trimmer on
+the cap side pulls each LC corner onto frequency even with L at a standard step (the corner tracks the
+LC *product*), and the value rounding is small (≤~5 %: 66→68, 44→43, 46→47) — well within trimmer
+travel. You do not swap inductors during tuning.
 
+- **Inductors → fixed Coilcraft chip**, nearest E24 value (PNs per board below). `0603HP` high-Q
+  through 70 cm; `0402` (e.g. `0402DC`) at 902. Confirm the datasheet SRF clears the band — it does
+  (the ~9 nH 0402 parts self-resonate up in the GHz range). *Insurance:* order one adjacent E24 value
+  per position (e.g. a 62 nH and a 75 nH alongside each 68 nH) so a stubborn section can be stepped
+  rather than fought — rarely needed.
 - **Tuning caps → Knowles Johanson Giga-Trim sapphire piston trimmers** (Q>3000 @ 250 MHz, sapphire
-  dielectric, near-zero tuning noise, DigiKey-stocked, simple numeric PNs). Pick a range that centers
-  the target value: `5802` (0.35–3.5 pF), `5761` (0.6–6 pF), `5201` (0.8–10 pF), `5502` (1–20 pF),
-  `5602` (1–30 pF). Values above ~30 pF (only the 2 m C4 ≈ 40 pF) use a fixed high-Q C0G (33 pF, e.g.
-  Murata `GRM18`) in parallel with a `5201` (0.8–10 pF) trimmer.
-- **Inductors → air-wound**, silver-plated Cu (~20 AWG; DigiKey stocks the wire), wound to the target
-  and tuned by turn spacing. This is both the highest-Q option and the only good *tunable* inductor at
-  UHF — ferrite slug-tuned variable inductors are unusable above VHF (eddy-current loss). Fixed
-  Coilcraft `0603HP` / `0402` chip inductors remain the non-tunable alternative.
+  dielectric, near-zero tuning noise, DigiKey-stocked, numeric PNs). Pick a range that centers the
+  target: `5802` (0.35–3.5 pF), `5761` (0.6–6 pF), `5201` (0.8–10 pF), `5502` (1–20 pF), `5602`
+  (1–30 pF). Above ~30 pF (only 2 m C4 ≈ 40 pF) use a fixed 33 pF C0G (Murata `GRM18`) in parallel
+  with a `5201` trimmer.
+- **Higher-Q option → air-wound inductors**, silver-plated Cu (~20 AWG; DigiKey stocks the wire),
+  tuned by turn spacing. Chip Q (dozens) vs air-wound (150+) costs a little insertion loss and
+  ultimate stopband at the top bands; negligible at 2 m/222. **902 is where air-wound earns its keep**
+  — wind those coils if you want the last bit of loss/rejection; fixed chips are fine on 2 m/222/70 cm.
+  (Air-wound is also the only good *tunable* inductor at UHF — ferrite slug-tuned cores are unusable
+  above VHF from eddy-current loss — but with cap tuning you don't need a tunable inductor.)
 - **Connectors:** Amphenol RF `901-10513-1` edge-launch SMA jack (0.062″ PCB), ×2 per board.
 - **Board:** custom FR-4 (JLCPCB / PCBWay) or copper-clad.
 
-Per board (targets from filters.md; trimmer range chosen to center each value):
+Per board (inductor = fixed Coilcraft nearest E24; cap = trimmer range chosen to center the target):
 
-| Board | Trimmer caps (Johanson PN) | Air-wound inductors (target) |
-|-------|----------------------------|------------------------------|
-| **2 m** | C1,C2,C3,C5 ~22 pF → `5602`; C4 ~40 pF → 33 pF C0G + `5201` | L1,L3 66 nH; L2 38 nH; L4,L5 69 nH |
-| **222** | C1,C2,C3,C5 15 pF → `5602`; C4 27 pF → `5602` | L1,L3 44 nH; L2 26 nH; L4,L5 46 nH |
-| **70 cm** | C1,C2,C3,C5 ~6.6 pF → `5201`; C4 12 pF → `5502` | L1,L3 20 nH; L2 11 nH; L4,L5 20 nH |
-| **902** | C1,C2,C3,C5 ~3.0 pF → `5761`; C4 ~5.2 pF → `5201` | L1,L3 8.7 nH; L2 5.0 nH; L4,L5 9.1 nH |
+| Board | Inductors (Coilcraft, fixed) | Trimmer caps (Johanson PN) |
+|-------|------------------------------|----------------------------|
+| **2 m** | L1,L3 `0603HP-68N`; L2 `0603HP-39N`; L4,L5 `0603HP-68N` | C1,C2,C3,C5 ~22 pF → `5602`; C4 ~40 pF → 33 pF `GRM18` + `5201` |
+| **222** | L1,L3 `0603HP-43N`; L2 `0603HP-27N`; L4,L5 `0603HP-47N` | C1,C2,C3,C5 15 pF → `5602`; C4 27 pF → `5602` |
+| **70 cm** | L1,L3,L4,L5 `0603HP-20N`; L2 `0603HP-11N` | C1,C2,C3,C5 ~6.6 pF → `5201`; C4 12 pF → `5502` |
+| **902** | L1,L3 `0402` 9.1 nH; L2 `0402` 5.1 nH; L4,L5 `0402` 9.1 nH *(or air-wound)* | C1,C2,C3,C5 ~3.0 pF → `5761`; C4 ~5.2 pF → `5201` |
 
-Five trimmers + five air-wound inductors per board. Trimmers are bigger and pricier than chip parts,
-so if you'd rather tune only the critical resonators, fix the rest as high-Q C0G/porcelain and trim
-two or three — but the all-tunable build above gives the most adjustment latitude.
+Five chip inductors + five trimmers per board. Tune the caps for best in-band return loss and the
+harmonic rejection you need; the inductors don't move. (Computed pre-round L/C values: filters.md.)

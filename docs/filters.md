@@ -121,11 +121,15 @@ not a final BOM.**
 | 70 cm (355–533) | 20 / 6.5 / 11 / 6.5 / 20 | 6.8 / 20 / 12 / 20 / 6.8 |
 | 902 (800–1200) | 8.7 / 2.9 / 5.0 / 2.9 / 8.7 | 3.0 / 9.1 / 5.2 / 9.1 / 3.0 |
 
-Parts per filter: **5 inductors + 5 capacitors** (20 L + 20 C across all four). **Built tunable:** caps
-are Knowles Johanson Giga-Trim sapphire piston trimmers (Q>3000) and inductors are air-wound (tuned by
-turn spacing — the only good tunable inductor at UHF, since ferrite slugs are lossy above VHF), so each
-filter is dialed in on the VNA/SA without swapping parts. Trimmer ranges/PNs per board are in
-[`bom.md`](bom.md). Low-level (~80 mW) so no power-rating concern.
+Parts per filter: **5 inductors + 5 capacitors** (20 L + 20 C across all four). **Build pattern: fixed
+Coilcraft chip inductors + trimmer caps.** Inductors sit at the nearest E24 value and stay put; each
+filter is brought to spec by tuning the **capacitors only** (the LC corner tracks the LC product, so a
+cap trimmer pulls it onto frequency despite the inductor rounding, which is ≤~5 %). Caps are Knowles
+Johanson Giga-Trim sapphire piston trimmers (Q>3000). **Air-wound inductors are the higher-Q option**
+(150+ vs dozens), worth winding at 902 where chip Q costs a little loss/rejection; fixed chips are fine
+on 2 m/222/70 cm. (Air-wound is also the only good *tunable* inductor at UHF, but cap tuning makes that
+moot.) Per-board inductor + trimmer PNs are in [`bom.md`](bom.md). Low-level (~80 mW) so no
+power-rating concern.
 
 A slice is only 1.5:1 wide, so the HP and LP sections **interact** — expect ~1–2 dB midband loss and
 softer corners (fine for a cleanup filter). In tuning, nudge the HP corner ~10 % low and LP ~10 % high
