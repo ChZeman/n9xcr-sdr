@@ -57,8 +57,11 @@ See `diagrams/tx-chain.svg`.
   DigiKey's "Top Panel Mount" tag on some is a mislabel (Giga-Trims have no bushing). See `docs/parts-list.md`.
 - **Driver stage documented.** The CGH40010 GaN driver now has its own schematic + per-board BOM
   (`diagrams/driver-schematic.svg`) and a consolidated doc (`docs/driver.md`): reference-amp
-  topology, ~100–150 mA IDQ, GaN bias-sequencing rule, and per-band match/retune. One schematic
-  (not 4) since the device + bias network are common and only the match retunes per band.
+  topology, ~100–150 mA IDQ, GaN bias-sequencing rule, per-band match/retune, a **4-board build
+  BOM** (2 m–902, split buy-now / buy-after-bench / shared tuning kit), and a **bench bring-up**
+  procedure (Phases 0–4, tune-then-fix). One schematic (not 4) since the device + bias network are
+  common and only the match retunes per band. Match L/C are bench-measured, not pre-orderable;
+  trimmers + air coils are bench instruments, the shipped board is all-fixed.
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;

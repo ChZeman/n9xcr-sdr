@@ -130,6 +130,164 @@ the fiddliest, same as it is for that band's BPF and final.
 For all 4 bands: 4× CGH40010F, plus the common support set ×4 and the per-band match/DC-block parts.
 Buy **+1–2 spare CGH40010** (GaN finals/drivers are the long-lead, can't-improvise parts).
 
+## Build BOM — four boards (2 m through 902)
+
+One VHF/UHF node = **four driver boards** (2 m / 222 / 70 cm / 902), one CGH40010 each. The parts
+split into three buckets, and that split is the whole point:
+
+- **Buy now (fixed value known):** device, DC blocks, bias/stability network, connectors, PCB.
+- **Buy after the bench (value measured, not guessed):** the four match parts per board (L1/C1/L2/C2).
+- **Bench tuning kit (one shared set, not shipped on any board):** trimmers, magnet wire, assortments.
+
+You can order everything in the first and third buckets today; the second bucket is a short list you
+place once tuning converges (see *Bench bring-up*).
+
+### A. Active device + thermal (the long-lead items)
+
+| Ref | Part | Per board | Node total | Notes |
+|-----|------|----------:|-----------:|-------|
+| U1 | Wolfspeed/MACOM **CGH40010F** (flange) | 1 | **6** (4 + 2 spare) | GaN, long lead; buy spares |
+| HW | flange screws + thermal interface (thermal pad or grease) | 1 set | 4 sets | torque to spec; never run bare |
+
+### B. DC blocks — fixed, value per band (ATC 100B porcelain)
+
+| Band | Cin / Cout | Qty |
+|------|-----------|----:|
+| 2 m | 1 nF | 2 |
+| 222 | 680 pF | 2 |
+| 70 cm | 100 pF | 2 |
+| 902 | 47 pF | 2 |
+
+8 total. Near-shorts at band, not tuning elements. Confirm the exact ATC 100B value/PN at order.
+
+### C. Bias & stability network — common to all four boards
+
+| Ref | Value | Per board | Node total | Type |
+|-----|-------|----------:|-----------:|------|
+| Rg | 22 Ω | 1 | 4 | thin-film 0603 (stock 10/22/33 Ω to pick on bench) |
+| Lg, Ld | high-Z choke | 2 | 8 | wideband conical (Coilcraft conical / Piconics) **or** per-band chip choke, high SRF |
+| Cg1 | 0.1 µF | 1 | 4 | X7R 0603 50 V |
+| Cg2 | 0.01 µF | 1 | 4 | X7R 0603 50 V |
+| Cd1 | 100 pF | 1 | 4 | C0G 0603 50 V |
+| Cd2 | 0.1 µF | 1 | 4 | X7R 0603 50 V |
+| Cd3 | 10 µF + 100 µF | 2 | 8 | tantalum / electrolytic 50 V (drain video-bandwidth bank) |
+
+### D. Connectors + PCB
+
+| Ref | Part | Per board | Node total | Notes |
+|-----|------|----------:|-----------:|-------|
+| J1, J2 | Amphenol **901-10513-1** edge-launch SMA | 2 | 8 | repo-standard internal SMA |
+| PCB | Rogers **RO4350B 20 mil**, custom fab | 1 | 4 (panel 5–6 w/ spares) | JLCPCB / PCBWay |
+
+### E. Match parts — found on the bench, installed FIXED (order post-tune)
+
+Do **not** pre-order these at a value — the bench gives the value. Stuff/tune with the kit in (F),
+read the result, then order the fixed parts below at the measured values.
+
+| Position | Per board | Node total | What you order after tuning |
+|----------|----------:|-----------:|------------------------------|
+| C1, C2 | 2 | 8 | fixed high-Q C0G / ATC 100B porcelain at measured value |
+| L1, L2 | 2 | 8 | air-wound (no PN) **or** nearest Coilcraft `0603DC` (`0402DC` at 902) at measured value |
+
+On 2 m / 222 the **input** inductance runs large (it's resonating the gate cap) and often past the
+chip series' top — leave the input coil **air-wound** on the low bands. Where a match cap lands above a
+trimmer's top range (the 2 m input can need ~80 pF), park a fixed C0G in parallel and trim the
+remainder — the same fixed-plus-trim trick used on the 2 m BPF C4.
+
+### F. Bench tuning kit — ONE shared set, reused on all four boards (never shipped)
+
+| Item | Qty | Use |
+|------|----:|-----|
+| Sapphire Giga-Trim trimmers `5602` (1–30 pF), `5202` (0.8–10 pF), `5502` (1–20 pF), `27273` (0.6–4.5 pF) | 2–3 each | temporarily set C1/C2 to find the value (same PNs as the BPF build) |
+| Magnet wire, 18 AWG + 22 AWG enameled | 1 spool each | wind + squeeze-tune the L1/L2 air coils |
+| Fixed C0G / porcelain cap assortment, ~1–100 pF | 1 kit | drop-in fixed caps after tuning; parallel-fix for the large 2 m input cap |
+| Coilcraft `0603DC` + `0402DC` inductor assortment (adjacent E24 values) | 1 set | only if going chip instead of air-wound |
+
+The kit is a set of **instruments**: trimmers, wire, and assortments tune all four boards (and future
+spares). They cost a fraction of the per-board parts and are reused indefinitely.
+
+### Order-now vs order-after
+
+- **Order now:** A, B, C, D, F — the device, fixed support parts, boards, and the whole tuning kit.
+- **Order after the bench:** E only — eight caps and (if chip) eight inductors, at measured values.
+
+## Bench bring-up
+
+Tuning one board, in the order you actually do it. The rule underneath every step: **bias before RF,
+small-signal before large-signal, tune before you fix values.** "Tune" means temporary bench
+instruments (trimmer + air coil); the shipped board is all-fixed — see the table at the end.
+
+**Gear:** device bolted to a heatsink (thermal compound) *before any power*; two metered supplies — a
+current-limited **+28 V** drain and a separate **adjustable −V** gate (0 to −10 V), each with a current
+readout; a VNA with **output pads** (the amp has gain — protect the receiver port); a large-signal
+chain of source → rated **attenuator → 50 Ω dummy load** → power meter / spectrum analyzer; and an LCR
+meter to read final component values.
+
+### Phase 0 — DC sanity (no RF, no drain)
+
+Torque the flange, inspect for shorts. Gate to **−8 V** (past pinch-off). Drain **off**, current-limited
+to ~0.5 A. Gate negative **first**, always.
+
+### Phase 1 — set IDQ
+
+1. Gate at −8 V (OFF). Bring up +28 V. Drain current should read **~0 mA** — if it jumps, stop and fix.
+2. Walk the gate less-negative (−8 → −3 → −2.9 …); current starts to climb around **−2.7 to −3.0 V**
+   (per-device — every part differs).
+3. Set **IDQ ≈ 100–150 mA**, let it warm a couple minutes, re-trim (GaN drifts warm). **Record the VGG**
+   that gives target IDQ — that is this device's number.
+4. Rehearse shutdown once: **drain off first, then gate.**
+
+### Phase 2 — small-signal match (find L1/C1/L2/C2)
+
+Biased at IDQ, VNA-level drive (~−10 dBm), amp **standalone** (BPF not in line yet). Every match
+position is made **temporarily adjustable**: fit a **sapphire trimmer** in the C1/C2 spots (a bench
+instrument only) and an **air-wound coil** in the L1/L2 spots (tune by squeezing/spreading turns) — two
+real knobs per L-match.
+
+1. **Stability sweep first, wide.** No S-parameter > 1 out of band, no low-frequency gain spike. GaN
+   oscillates low if the Rg / bias decoupling is off — fix that **before** tuning anything.
+2. Tune the **output** (L2 + C2) for best S22 and a gain peak centered on band.
+3. Tune the **input** (L1 + C1) for deepest S11 (target < −15 to −20 dB).
+4. **Iterate input ↔ output** a few passes — they interact. Confirm S21 flat at ~18–20 dB across band.
+
+### Phase 3 — large-signal: power + linearity
+
+Drive for real into the attenuator/load, stepping up **gradually** from low.
+
+1. Confirm it makes the budget output (e.g. 2.5 W at 902) from the SDR's actual +19 dBm drive, with
+   gain holding before compression.
+2. **Two-tone IMD** at operating output — the all-mode acceptance test. Aim IMD3 ≈ −30 dBc or better.
+   Ugly = driven too hard or IDQ too low.
+3. Watch drain current rise (normal Class AB), harmonics, and **device temperature** — no runaway.
+4. Re-peak the match slightly if it shifted (it won't move much at ~30 % of rating — the upside of
+   running backed off).
+
+### Phase 4 — lock to fixed parts
+
+1. **Read C1, C2** off the trimmers with the LCR meter → remove the trimmers → install **fixed high-Q
+   C0G / porcelain** at the measured values. **Trimmers do not ship on this board.**
+2. **L1, L2:** either immobilize the air coil as the final part, or read its inductance and swap to the
+   nearest Coilcraft `0603DC` (`0402DC` at 902). The PN is chosen **now**, from the measured value.
+3. **Re-sweep** to confirm nothing moved when you went fixed. That is the tuned, shippable board.
+
+| Position | Phase 2 (bench, to find the value) | Phase 4 (shipped board) |
+|----------|------------------------------------|--------------------------|
+| C1, C2 | sapphire trimmer (instrument) | **fixed C0G / porcelain** at measured value |
+| L1, L2 | air-wound, squeeze to tune | lock the coil, **or** nearest Coilcraft `0603DC` / `0402DC` |
+
+This is the deliberate contrast with the BPF: there the sapphire trimmer **stays** (low level,
+drift-tolerant, useful touch-up); here it's a bench tool only, because the driver output is a power /
+efficiency node you want fixed in a set-and-forget node.
+
+### Standing safety rules (every power cycle)
+
+- **Gate −V before drain; drain off before gate.** No exceptions — depletion-mode GaN conducts at VGS=0.
+- **Always on a heatsink**; set IDQ warm, not cold (it drifts up as it heats).
+- **Pad the VNA output** — a biased amp will damage the receiver port otherwise.
+- **Dummy load only** — never key into an open or short.
+- **Check stability wideband**, not just in-band — GaN's favorite failure is a low-frequency oscillation.
+- **Do 902 last** — shortest stubs, tightest layout, the match moves fastest; get your rhythm on 2 m.
+
 ## Sourcing
 
 - **CGH40010F / CGH40010P** — DigiKey-stocked (Wolfspeed/MACOM); confirm Active status and live stock
@@ -144,7 +302,7 @@ Buy **+1–2 spare CGH40010** (GaN finals/drivers are the long-lead, can't-impro
 - **Negative keyed gate bias** on the control board for the GaN driver (all bands) + GaN finals —
   confirm the chosen board (or add a small negative-bias/keying board) alongside the positive rail for
   the LDMOS finals. *This is the gating open item for the driver stage.*
-- **Per-band match values** — extract from the Wolfspeed LSM / reference retune and confirm on a VNA;
-  fold the final numbers back into this doc and the schematic once measured.
+- **Per-band match values** — measured on the bench per *Bench bring-up* (not pre-orderable); fold the
+  final L1/C1/L2/C2 numbers back into this doc and the schematic once a board is tuned.
 - **Microwave drivers (13/9/5 cm)** — the CGH40010 covers DC–6 GHz, so the same driver part likely
   carries those slices if they are ever built; the finals are the open question there, not the driver.
