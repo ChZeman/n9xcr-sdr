@@ -40,10 +40,11 @@ Read-offs: the SDR's onboard PA delivers +12 to +19 dBm (set in software per ban
 ## Why 50 W (not 100 W)
 
 100 W barely changes the gain budget (+3 dB everywhere) but roughly doubles the downstream
-physics: finals jump a device class, and dissipation/current roughly double (~90 W waste heat
-per PA in a sealed outdoor enclosure → forced-air territory). The benefit is only +3 dB — half an
-S-unit at the far end. 50 W is the efficient,
-thermally-easy sweet spot: single-device finals, ~50–60 W dissipation per PA, ~100 W supply.
+physics: dissipation/current roughly double (~90 W waste heat per PA in a sealed outdoor enclosure
+→ forced-air territory). The benefit is only +3 dB — half an S-unit at the far end. 50 W is the
+efficient, thermally-easy sweet spot: single-device finals, ~50–60 W dissipation per PA, ~100 W
+supply. (On 2 m / 222 the MRF300AN final makes raising power later a cooling problem, not a device
+change — see [`power-thermal.md`](power-thermal.md); the 50 W baseline is unchanged.)
 
 ## Devices
 
@@ -56,9 +57,16 @@ thermally-easy sweet spot: single-device finals, ~50–60 W dissipation per PA, 
   built, not ports. (This replaced an earlier ADRF5040 SP4T on the TX path; 2× ADRF5040 SP4T remain on
   the RX path. A Skyworks SKY13xxx-class part is an option where that isolation isn't needed.)
 - **Driver:** Wolfspeed/MACOM **CGH40010** GaN HEMT — 10 W (13 W typ PSAT), DC–6 GHz, 28 V, ~18–20 dB gain at VHF/UHF, Class AB linear. Available solder-down pill (CGH40010P) or screw-down flange (CGH40010F); one part covers all bands. At the ~4 W worst-case drive (902 at 80 W) it runs at ~30 % of rating for clean IMD, and it is family-matched to the CGH40120F final. (The 8 W CGH60008D fits electrically but ships as bare die — not hand-solderable — so it is not used.) Full schematic, per-board BOM, bias setpoints and the GaN sequencing rule: [`driver.md`](driver.md).
-- **Finals 2 m + 222:** NXP **MRF101AN** — 100 W LDMOS, 1.8–250 MHz, linear to ~100 W at
-  100 mA Idq; at 50 W it loafs for clean IMD. Use a VHF-tuned board (NXP 136–174 MHz reference
-  circuit), not the HF-tuned eval deck. Avoid counterfeit eBay "100 W" (MRF9120) amps.
+- **Finals 2 m + 222:** NXP **MRF300AN** — ~300 W LDMOS, 1.8–250 MHz, 50 V, single-ended Class AB;
+  run at the 50 W design point where it loafs hard (~17 % of rating) for excellent IMD and low
+  junction temperature, with a deferred path to ~150–200 W on added cooling (no device change). Use a
+  VHF-tuned board off the NXP reference; covers 2 m and 222 only (≤250 MHz). Avoid counterfeit eBay
+  "100 W" (MRF9120) amps.
+  *Alternatives considered:* **MRF101AN** (100 W, currently ~$44.45 vs the MRF300AN's ~$88.10) is the
+  cheaper part and identical on the air at 50 W, but caps at ~80–100 W and would need a push-pull
+  redesign for more. The MRF300AN's ~$44 premium buys headroom-on-tap and is the lower-regret choice:
+  never use it and you're out ~$44; hard-cap with the MRF101AN and later want more and you redesign
+  the final. Verify both prices live on the page.
 - **Finals 70 cm + 902:** Wolfspeed/MACOM **CGH40120F** — 120 W GaN HEMT, 28 V, broadband
   (DC–~1.5 GHz, spans 432 and 915). One part covers both bands (two builds). MACOM publishes a
   0.8–1.3 GHz reference circuit and DVB linear data, so it's an adapted vendor reference, not a

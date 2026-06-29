@@ -78,6 +78,13 @@ See `diagrams/tx-chain.svg`.
 - **Driver bias choke settled = Coilcraft 4310LC-132KEC** (1.3 µH wideband bias choke, one part all
   bands; Coilcraft-direct, not DigiKey — small separate order, qty 8 +spares). Driver scope now fully
   specified up to the 10 W stage. PR1102611408 100 pF consolidation (lines 25+29 → qty 6) applied.
+- **2 m / 222 final = NXP MRF300AN** (decision of record), single-ended Class AB, **50 W design point**;
+  replaced the 100 W MRF101AN to keep a deferred headroom path to ~150–200 W on added cooling without a
+  push-pull redesign. MRF101AN noted as the cheaper hard-50/100 W alternative (~$44.45 vs ~$88.10; verify).
+  Updated `tx-chain.md`, `power-thermal.md`, `bom.md`. 70 cm / 902 finals unchanged (CGH40120F GaN).
+  200 W headroom-build cooling spec captured + DEFERRED in `power-thermal.md`: ~150 W dissipation,
+  ~0.2–0.3 °C/W forced-air sink (Boyd/Aavid cut-to-length, ~$30–80), Delta FFB0812VHE-F00 fan
+  (603-1600-ND, ~$20–25), subsystem ~$55–120 — build/cool for 50 W now, size mount not heatsink.
 - **Driver PCB/mechanical captured in `docs/driver.md`.** One common layout all bands (per-band diff =
   bench-tuned match only; 2 m/222 input may go air-wound). Working board size ≈ 50×75 mm on RO4350B.
   Mounting: flange through a board cutout to a backplane-mounted spreader plate (aluminium for driver,

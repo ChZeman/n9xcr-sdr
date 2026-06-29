@@ -11,7 +11,7 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 | VHF/UHF SDR | OpenSourceSDRLab 7020-SDR (PlutoSky R2), AD9361 + onboard PA | Buy direct from opensourcesdrlab.com (PlutoSky R2 7020) and select the **"9361 with PA"** variant (~$220) — not the "9363" variants, and not the $120 AD9363 "Professional Edition". Aluminum case is a separate ~$18 item (match the shell to a 9361-with-PA board). AliExpress "7020-SDR AD9361 with case" (~$200.71) is the cheaper equivalent — confirm the listing says *with PA*. AntSDR E200 (Mouser `ANTSDR-AD9361-With-CASE-01`) is the turnkey alternative. AD9361 not AD9363; onboard PGA-102+ PA (~+15–19 dBm) covers the pre-driver; runs plutosdr-fw / libiio. |
 | HF SDR | Hermes-Lite 2 | example; any HPSDR-class HF SDR |
 | Digital-voice vocoder | DVMEGA DVstick 30 | AMBE-3000; ham dealer (e.g. GigaParts), not a component distributor |
-| Final, VHF / low-UHF (ex: 4 m / 2 m / 222) | NXP MRF101AN | 100 W LDMOS, 1.8–250 MHz; run at 50 W |
+| Final, VHF / low-UHF (ex: 4 m / 2 m / 222) | NXP MRF300AN | ~300 W LDMOS, 1.8–250 MHz, 50 V; run at 50 W (headroom to ~150–200 W on added cooling, deferred) |
 | Final, UHF (ex: 70 cm / 902 / 23 cm) | Wolfspeed/MACOM CGH40120F | 120 W GaN, 28 V; one part both bands; run at 50 W |
 | Pre-driver | onboard PGA-102+ on the SDR | ~+15–19 dBm out; no separate board (discrete PGA-103+ optional if the onboard PA is bypassed) |
 | Driver | Wolfspeed/MACOM CGH40010 (F flange / P pill) | 10 W GaN (13 W PSAT), DC–6 GHz, 28 V; one part type, 4 builds (per band); runs ~30 % for linear |
@@ -44,14 +44,16 @@ Consolidated part list for a VHF/UHF node. "Firm" = decided; "Open" = still need
 
 ## Notes
 
-- The MRF101AN tops out at 250 MHz, so it serves 2 m and 222 only — 70 cm and 902 are the GaN
-  (CGH40120F) builds.
+- The MRF300AN tops out at 250 MHz, so it serves 2 m and 222 only — 70 cm and 902 are the GaN
+  (CGH40120F) builds. (MRF300AN replaced the 100 W MRF101AN for 2 m / 222 to keep a deferred
+  ~150–200 W headroom path without a push-pull redesign; the MRF101AN remains the cheaper hard-50/100 W
+  alternative. See `tx-chain.md` and `power-thermal.md`.)
 - Avoid cheap eBay "100 W" LDMOS amps (counterfeit MRF9120) and constant-envelope FM modules
   (e.g. Mitsubishi RA-series) — both are wrong for an all-mode linear station.
 - Whatever bundled filter ships on any amp board, verify harmonic suppression on an analyzer
   (−43 dBc required); do not assume.
 - **DigiKey single-sourcing.** DigiKey-stocked: the active devices (CGH40010F driver, CGH40120F +
-  MRF101AN finals — both finals confirmed in stock, MACOM/Wolfspeed; PE42512A switch) and all
+  MRF300AN finals — confirm both finals in stock, NXP/MACOM/Wolfspeed; PE42512A switch) and all
   passives / connectors / enclosures (Hammond) / PSUs (Mean Well), including the **BPF parts** (high-Q
   C0G/NP0 caps — Johanson / Murata GJM-GQM / KYOCERA AVX / Knowles; Coilcraft chip inductors or magnet
   wire; edge-launch SMA). **Not on DigiKey — order direct / ham-dealer:** 7020-SDR (opensourcesdrlab /
