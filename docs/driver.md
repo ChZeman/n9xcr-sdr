@@ -24,6 +24,38 @@ At the worst case — 902, driven for an 80 W final — the driver puts out ~4 W
 (≤2.5 W out). This headroom is deliberate: a clean driver keeps the whole chain's IMD set by the
 final, not by the small stage ahead of it.
 
+## Device selection — alternatives considered
+
+The CGH40010F is the **device of record** for the driver on all four bands. This was reconfirmed against
+a full survey of alternatives (2026-06) after the part was found flagged **NRND** ("not recommended for
+new design"). Conclusion: **stay with the CGH40010F** — it is still the best fit despite NRND, because it
+is the one part that covers every band, the design around it is already complete, and it is still buyable
+from distributor stock for a one-off node.
+
+| Candidate | Why not (for this build) |
+|-----------|--------------------------|
+| **CG2H40010F** (MACOM Gen-2 successor) | The natural drop-in — same 440166 flange, 28 V, now DC–8 GHz — but available only on pre-order at **MOQ 120**, unusable for a ~6-device node. The intended replacement *if* a rebuild is ever done at volume. |
+| **Qorvo QPA2237** (GaN MMIC, 0.03–2.5 GHz, 10 W, 50 Ω matched) | Active and internally matched (no tuning), but **~$134 ea** (dearer than the CGH40010F), 10 W is overkill for a ≤4 W driver, and its 2.5 GHz ceiling drops the future microwave slices. |
+| **MACOM CMPA0060002F1** (internally-matched MMIC, 20 MHz–6 GHz, 4.8 W) | Technically ideal — one part, all bands, 50 Ω in/out, zero match — but **>$300 ea**, too expensive per board. |
+| **Qorvo QPD1010** (bare GaN, DC–4 GHz, 10 W, 3×3 QFN) | Viable (Mouser / sample stock, Modelithics model), but needs a QFN relayout, has a 4 GHz ceiling, and offers no decisive edge over the CGH40010F already designed around. |
+| **Qorvo TGF2936** | Discontinued. |
+| **Band-optimized LDMOS** (e.g. NXP AFT05MS-class for VHF, positive bias) | Cheaper per part and simpler (positive) bias, but band-specific → multiple device types, multiple reference designs, and mixed bias schemes = more total complexity for a 4-band node. The coherent version, if ever pursued: an LDMOS driver on the LDMOS-final bands (2 m/222) + a GaN driver on the GaN-final bands (70 cm/902). |
+
+**Why the CGH40010F wins anyway:** one device covers 2 m–902 (and to 6 GHz for future slices); the
+schematic, BOM, and bench bring-up are already done; it is family-matched to the GaN finals and shares
+the CGH40010F-AMP reference ecosystem (ADS/MWO large-signal model for the match); and at ~$90 in stock it
+is *cheaper* than the QPA2237 it was being weighed against.
+
+**Accepted trade-offs:** (1) **NRND** — buy from remaining distributor stock (DigiKey/Mouser still list
+it) and treat it as a final buy; fine for a one-off node, not a part to base a production run on. If stock
+dries up, the fallbacks are the CG2H40010F (Gen-2, MOQ 120) or the LDMOS-low/GaN-high split above.
+(2) **Per-band match tuning** — there is no internal 50 Ω match, so each band is tuned on the bench per
+*Bench bring-up*. Both costs were judged acceptable for a personal, hand-built node.
+
+> The **finals face the same NRND situation**: the CGH40120F (70 cm/902) has a Gen-2 successor
+> (CG2H40120F). That is a separate decision (see open items), but the same "buy-from-stock for a one-off,
+> Gen-2 for a rebuild" logic applies.
+
 ## Why a discrete driver at all
 
 The SDR's onboard PA (PGA-102+) gives the pre-driver gain, and the final gives the output gain, but
@@ -290,8 +322,9 @@ efficiency node you want fixed in a set-and-forget node.
 
 ## Sourcing
 
-- **CGH40010F / CGH40010P** — DigiKey-stocked (Wolfspeed/MACOM); confirm Active status and live stock
-  at order time (do not assume from a search snippet).
+- **CGH40010F / CGH40010P** — DigiKey/Mouser still list it in stock, but it is **NRND** (not
+  recommended for new design): buy from remaining stock as a final buy, and confirm live stock at order
+  time (don't assume from a snippet). See *Device selection* for the lifecycle rationale and fallbacks.
 - **ATC 100B porcelain DC blocks, RO4350B board** — DigiKey / a fab house (RO4350B is a JLCPCB/PCBWay
   material option); small-signal sections tolerate good FR-4, but the gain stage benefits from RO4350B.
 - **Conical chokes** (Coilcraft BCR / Piconics) or printed λ/4 bias lines — DigiKey / Coilcraft.
@@ -306,3 +339,6 @@ efficiency node you want fixed in a set-and-forget node.
   final L1/C1/L2/C2 numbers back into this doc and the schematic once a board is tuned.
 - **Microwave drivers (13/9/5 cm)** — the CGH40010 covers DC–6 GHz, so the same driver part likely
   carries those slices if they are ever built; the finals are the open question there, not the driver.
+- **Finals lifecycle (NRND).** The CGH40120F final (70 cm/902) is in the same NRND family as the
+  driver; its Gen-2 successor is the CG2H40120F. Decide buy-from-stock (one-off) vs CG2H (rebuild)
+  for the finals — same logic the driver settled on. See *Device selection*.

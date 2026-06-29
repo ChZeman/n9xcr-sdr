@@ -62,6 +62,13 @@ See `diagrams/tx-chain.svg`.
   procedure (Phases 0–4, tune-then-fix). One schematic (not 4) since the device + bias network are
   common and only the match retunes per band. Match L/C are bench-measured, not pre-orderable;
   trimmers + air coils are bench instruments, the shipped board is all-fixed.
+- **Driver device confirmed = CGH40010F (stay).** The part is **NRND**; a full alternatives survey
+  (CG2H40010F = MOQ 120; QPA2237 = $134/10 W/2.5 GHz; CMPA0060002F1 = >$300; QPD1010 = QFN relayout;
+  TGF2936 = discontinued; band-optimized LDMOS = multiple device types) concluded the CGH40010F is
+  still best: one part all bands, design complete, ~$90 in stock (cheaper than QPA2237). Buy from
+  remaining stock as a final buy; per-band match tuned on the bench. Rationale recorded in
+  `docs/driver.md` (Device selection). Same NRND applies to the CGH40120F final → CG2H40120F is its
+  Gen-2; finals lifecycle is a separate open decision.
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;
