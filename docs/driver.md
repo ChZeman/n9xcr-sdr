@@ -190,19 +190,19 @@ place once tuning converges (see *Bench bring-up*).
 | 70 cm | 100 pF | 2 |
 | 902 | 47 pF | 2 |
 
-8 total. Near-shorts at band, not tuning elements. Confirm the exact ATC 100B value/PN at order.
+8 total. Near-shorts at band, not tuning elements. C0G 0603 substitutes fine — confirmed PNs in **G**.
 
 ### C. Bias & stability network — common to all four boards
 
 | Ref | Value | Per board | Node total | Type |
 |-----|-------|----------:|-----------:|------|
-| Rg | 22 Ω | 1 | 4 | thin-film 0603 (stock 10/22/33 Ω to pick on bench) |
+| Rg | 22 Ω | 1 | 4 | thick-film 0603 fine — Yageo RC0603FR-0722RL (stock 10/22/33 Ω to pick on bench) |
 | Lg, Ld | high-Z choke | 2 | 8 | wideband conical (Coilcraft conical / Piconics) **or** per-band chip choke, high SRF |
 | Cg1 | 0.1 µF | 1 | 4 | X7R 0603 50 V |
 | Cg2 | 0.01 µF | 1 | 4 | X7R 0603 50 V |
 | Cd1 | 100 pF | 1 | 4 | C0G 0603 50 V |
 | Cd2 | 0.1 µF | 1 | 4 | X7R 0603 50 V |
-| Cd3 | 10 µF + 100 µF | 2 | 8 | tantalum / electrolytic 50 V (drain video-bandwidth bank) |
+| Cd3 | 10 µF + 100 µF | 2 | 8 | aluminum electrolytic 50 V — ECA-1HM100/101 (not tantalum; drain video-bandwidth bank) |
 
 ### D. Connectors + PCB
 
@@ -237,6 +237,57 @@ remainder — the same fixed-plus-trim trick used on the 2 m BPF C4.
 
 The kit is a set of **instruments**: trimmers, wire, and assortments tune all four boards (and future
 spares). They cost a fraction of the per-board parts and are reused indefinitely.
+
+### G. DigiKey order list — verified part numbers (as ordered)
+
+Every line below is decoded to its real value and confirmed against a live DigiKey part number
+(verified 2026-06). The Six Flags PR descriptions read "VARIOUS VALUES"; the value lives in the DigiKey
+number, so this table is the key for reconciling a PR against the design. Commodity caps/resistors
+substitute freely at the same value/voltage — don't chase a specific MLCC PN if it goes NRND. Confirm
+live stock at order time.
+
+**Active device**
+
+| Ref | Value | Mfr PN | DigiKey # | Node qty | Notes |
+|-----|-------|--------|-----------|---------:|-------|
+| U1 | CGH40010F GaN HEMT (flange) | CGH40010F | 1465-CGH40010F-ND | 4 (+1–2 spare) | NRND — final buy from stock; see *Device selection* |
+
+**DC blocks (Cin/Cout) — C0G 0603 50 V, value per band** (C0G 0603 is the sourced equivalent of the §B ATC 100B porcelain — fine for a near-short at band)
+
+| Band | Value | Mfr PN | DigiKey # | Node qty |
+|------|-------|--------|-----------|---------:|
+| 2 m | 1 nF | GRM1885C1H102JA01D | 490-1451-1-ND | 2 |
+| 222 | 680 pF | GRM1885C1H681JA01D | 490-1447-1-ND | 2 |
+| 70 cm | 100 pF | GRM1885C1H101JA01D | 490-1427-1-ND | 2 |
+| 902 | 47 pF | GRM1885C1H470JA01D | 490-1419-1-ND | 2 |
+
+**Bias & stability network (common, ×4 boards)**
+
+| Ref | Value | Mfr PN | DigiKey # | Node qty | Notes |
+|-----|-------|--------|-----------|---------:|-------|
+| Rg | 22 Ω 0603 | Yageo RC0603FR-0722RL | 311-22.0HRCT-ND | 4 | thick-film fine (bias line, ~no current) |
+| Cg1, Cd2 | 0.1 µF X7R 0603 50 V | Yageo CC0603KRX7R9BB104 | 311-1344-1-ND | 8 | |
+| Cg2 | 0.01 µF X7R 0603 50 V | Yageo CC0603KRX7R9BB103 | 311-1085-1-ND | 4 | |
+| Cd1 | 100 pF C0G 0603 50 V | GRM1885C1H101JA01D | 490-1427-1-ND | 4 | same PN as 70 cm DC block |
+| Cd3a | 10 µF 50 V alum. electrolytic | Panasonic ECA-1HM100 | P5178-ND | 4 | not tantalum (derating + short-fail) |
+| Cd3b | 100 µF 50 V alum. electrolytic | Panasonic ECA-1HM101 | P5182-ND | 4 | |
+| Lg, Ld | wideband bias choke | Coilcraft 4310LC series | (value per bias-tee) | 8 | **not on PR1102611408 — order separately** |
+
+**Connectors**
+
+| Ref | Value | Mfr PN | DigiKey # | Node qty |
+|-----|-------|--------|-----------|---------:|
+| J1, J2 | edge-launch SMA jack | Amphenol 901-10513-1 | ARF2504-ND | 8 |
+
+> **Consolidate the 100 pF.** `490-1427-1-ND` (100 pF) serves both the 70 cm DC blocks (2) and Cd1 (4)
+> → order as **one line, qty 6**. On PR1102611408 it is split across line 25 (qty 2) and line 29
+> (qty 4); combine them.
+
+> **DigiKey number decoders** (so a dead PN never stalls a reorder):
+> Murata 0603 C0G `GRM1885C1H` value series → DigiKey `490-14xx-1-ND`, E24-sequential
+> (490-1413 = 27 pF, 1419 = 47 pF, 1427 = 100 pF, 1447 = 680 pF, 1451 = 1 nF).
+> Yageo MLCC `CC0603[K=±10%]RX7R9BB(=50 V)[104 = 0.1 µF / 103 = 10 nF]`.
+> Yageo resistor `RC0603FR-07<value>L` (`22R` = 22 Ω). Panasonic elec `ECA-1H(=50 V)M[100 = 10 µF / 101 = 100 µF]`.
 
 ### Order-now vs order-after
 

@@ -69,6 +69,12 @@ See `diagrams/tx-chain.svg`.
   remaining stock as a final buy; per-band match tuned on the bench. Rationale recorded in
   `docs/driver.md` (Device selection). Same NRND applies to the CGH40120F final → CG2H40120F is its
   Gen-2; finals lifecycle is a separate open decision.
+- **Verified DigiKey order list committed to `docs/driver.md` §G.** Every driver line decoded to a
+  confirmed PN (CGH40010F 1465-CGH40010F-ND; DC blocks 490-1451/1447/1427/1419-1-ND = 1n/680p/100p/47p;
+  Rg RC0603FR-0722RL = 311-22.0HRCT-ND; 0.1u 311-1344-1-ND; 0.01u 311-1085-1-ND; Cd1 490-1427-1-ND;
+  10u/100u elec ECA-1HM100/101 = P5178/P5182-ND; SMA 901-10513-1 = ARF2504-ND). PR audit (PR1102611408):
+  100 pF (490-1427-1-ND) split across two lines — condense to qty 6; Lg/Ld chokes not on that PR.
+  Rule reinforced: ignore Six Flags item descriptions, trust the DigiKey supplier #.
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;
