@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="1680" viewBox="0 0 680 840" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>TX driver stage – CGH40010 GaN HEMT (Class AB, one device, per-band retune)</title>
+<style>text{font-family:Arial,Helvetica,sans-serif}.h1{font-size:15px;font-weight:700;fill:#2C2C2A}.h2{font-size:10px;fill:#56554f}.w{stroke:#2C2C2A;stroke-width:1.5;fill:none}.gnd{stroke:#7a7972;stroke-width:1.3}.lbl{font-size:12px;font-weight:700;fill:#2C2C2A}.val{font-size:10.5px;fill:#56554f}.sec{font-size:10px;font-weight:700;fill:#6b6a64}.port{font-size:11px;font-weight:700;fill:#2C2C2A}.cap2{font-size:9.5px;fill:#6b6a64}.th{font-size:11.5px;font-weight:700;fill:#2C2C2A}.td{font-size:11px;fill:#2C2C2A}.div{stroke:#888780;stroke-width:1.1;stroke-dasharray:4 3}.box{fill:#F1EFE8;stroke:#888780;stroke-width:1.1}.devw{stroke:#6a4ea3;stroke-width:1.7;fill:none}.devlbl{font-size:12px;font-weight:700;fill:#4b3578}.bias{stroke:#b88a2e;stroke-width:1.4;fill:none}.biaslbl{font-size:10px;font-weight:700;fill:#7a5b1e}.cau{fill:#fbe7d2;stroke:#c8922f;stroke-width:1.2}.cauh{font-size:11.5px;font-weight:700;fill:#7a4e10}.caut{font-size:10px;fill:#5e4413}</style>
+<text class="h1" x="16" y="26">TX driver stage – CGH40010 GaN HEMT (10 W, DC–6 GHz, 28 V) – Class AB</text>
+<text class="h2" x="16" y="44">One device, per-band build: the bias + stability network is common; the input/output match retunes per band (see strip + docs/driver.md).</text>
+<text class="h2" x="16" y="58">Adapted from the Wolfspeed/MACOM CGH40010F-AMP reference amplifier (Rogers RO4350B). Drives the per-band final to 50 W.</text>
+<line x1="150" y1="86" x2="300" y2="86" class="bias"/>
+<line x1="170" y1="86" x2="170" y2="98" class="bias"/>
+<line x1="163" y1="98" x2="177" y2="98" class="bias"/>
+<line x1="163" y1="104" x2="177" y2="104" class="bias"/>
+<line x1="170" y1="104" x2="170" y2="110" class="bias"/>
+<line x1="161" y1="110" x2="179" y2="110" class="gnd"/>
+<line x1="164" y1="114" x2="176" y2="114" class="gnd"/>
+<line x1="167" y1="118" x2="173" y2="118" class="gnd"/>
+<text class="biaslbl" x="170" y="80" text-anchor="middle">Cd1</text>
+<line x1="212" y1="86" x2="212" y2="98" class="bias"/>
+<line x1="205" y1="98" x2="219" y2="98" class="bias"/>
+<line x1="205" y1="104" x2="219" y2="104" class="bias"/>
+<line x1="212" y1="104" x2="212" y2="110" class="bias"/>
+<line x1="203" y1="110" x2="221" y2="110" class="gnd"/>
+<line x1="206" y1="114" x2="218" y2="114" class="gnd"/>
+<line x1="209" y1="118" x2="215" y2="118" class="gnd"/>
+<text class="biaslbl" x="212" y="80" text-anchor="middle">Cd2</text>
+<line x1="254" y1="86" x2="254" y2="98" class="bias"/>
+<line x1="247" y1="98" x2="261" y2="98" class="bias"/>
+<line x1="247" y1="104" x2="261" y2="104" class="bias"/>
+<line x1="254" y1="104" x2="254" y2="110" class="bias"/>
+<line x1="245" y1="110" x2="263" y2="110" class="gnd"/>
+<line x1="248" y1="114" x2="260" y2="114" class="gnd"/>
+<line x1="251" y1="118" x2="257" y2="118" class="gnd"/>
+<text class="biaslbl" x="254" y="80" text-anchor="middle">Cd3</text>
+<circle cx="150" cy="86" r="2.5" fill="#b88a2e"/>
+<text class="biaslbl" x="40" y="80">VDD +28 V</text>
+<text class="caut" x="40" y="93" fill="#7a5b1e">keyed; to sequencer</text>
+<path d="M300 86 a5.0 5.0 0 0 1 0 10.0 a5.0 5.0 0 0 1 0 10.0 a5.0 5.0 0 0 1 0 10.0" class="bias"/>
+<line x1="300" y1="116" x2="300" y2="138" class="bias"/>
+<text class="biaslbl" x="308" y="110">Ld</text>
+<text class="port" x="14" y="200">RF IN</text>
+<text class="h2" x="14" y="215">+12…+19 dBm</text>
+<line x1="52" y1="196" x2="92" y2="196" class="w"/>
+<line x1="92" y1="188" x2="92" y2="204" class="w"/>
+<line x1="100" y1="188" x2="100" y2="204" class="w"/>
+<line x1="100" y1="196" x2="140" y2="196" class="w"/>
+<text class="lbl" x="96" y="174" text-anchor="middle">Cin</text>
+<text class="val" x="96" y="186" text-anchor="middle">DC blk</text>
+<path d="M140 196 a6.0 6.0 0 0 1 12.0 0 a6.0 6.0 0 0 1 12.0 0 a6.0 6.0 0 0 1 12.0 0" class="w"/>
+<line x1="176" y1="196" x2="210" y2="196" class="w"/>
+<text class="lbl" x="158" y="174" text-anchor="middle">L1</text>
+<text class="val" x="158" y="186" text-anchor="middle">match</text>
+<line x1="210" y1="196" x2="210" y2="240" class="w"/>
+<line x1="202" y1="236" x2="218" y2="236" class="w"/>
+<line x1="202" y1="244" x2="218" y2="244" class="w"/>
+<line x1="210" y1="248" x2="210" y2="256" class="w"/>
+<line x1="201" y1="256" x2="219" y2="256" class="gnd"/>
+<line x1="204" y1="260" x2="216" y2="260" class="gnd"/>
+<line x1="207" y1="264" x2="213" y2="264" class="gnd"/>
+<text class="lbl" x="222" y="232">C1</text>
+<text class="val" x="222" y="244">match</text>
+<line x1="210" y1="196" x2="262" y2="196" class="w"/>
+<text class="sec" x="150" y="156" text-anchor="middle">INPUT MATCH</text>
+<line x1="262" y1="196" x2="286" y2="196" class="devw"/>
+<line x1="286" y1="178" x2="286" y2="214" class="devw"/>
+<line x1="300" y1="174" x2="300" y2="218" class="devw"/>
+<line x1="300" y1="174" x2="300" y2="138" class="devw"/>
+<line x1="300" y1="218" x2="300" y2="256" class="devw"/>
+<line x1="291" y1="256" x2="309" y2="256" class="gnd"/>
+<line x1="294" y1="260" x2="306" y2="260" class="gnd"/>
+<line x1="297" y1="264" x2="303" y2="264" class="gnd"/>
+<path d="M299 206 l-10 -5 l0 10 z" fill="#6a4ea3"/>
+<text class="devlbl" x="316" y="198">U1</text>
+<text class="devlbl" x="316" y="212">CGH40010</text>
+<text class="val" x="316" y="225">GaN HEMT</text>
+<text class="val" x="244" y="170">G</text>
+<text class="val" x="305" y="151">D</text>
+<text class="val" x="285" y="250">S</text>
+<line x1="300" y1="138" x2="372" y2="138" class="w"/>
+<path d="M372 138 a6.0 6.0 0 0 1 12.0 0 a6.0 6.0 0 0 1 12.0 0 a6.0 6.0 0 0 1 12.0 0" class="w"/>
+<line x1="408" y1="138" x2="442" y2="138" class="w"/>
+<text class="lbl" x="390" y="116" text-anchor="middle">L2</text>
+<text class="val" x="390" y="128" text-anchor="middle">match</text>
+<line x1="442" y1="138" x2="442" y2="240" class="w"/>
+<line x1="434" y1="236" x2="450" y2="236" class="w"/>
+<line x1="434" y1="244" x2="450" y2="244" class="w"/>
+<line x1="442" y1="248" x2="442" y2="256" class="w"/>
+<line x1="433" y1="256" x2="451" y2="256" class="gnd"/>
+<line x1="436" y1="260" x2="448" y2="260" class="gnd"/>
+<line x1="439" y1="264" x2="445" y2="264" class="gnd"/>
+<text class="lbl" x="454" y="232">C2</text>
+<text class="val" x="454" y="244">match</text>
+<line x1="442" y1="138" x2="492" y2="138" class="w"/>
+<line x1="492" y1="130" x2="492" y2="146" class="w"/>
+<line x1="500" y1="130" x2="500" y2="146" class="w"/>
+<line x1="500" y1="138" x2="556" y2="138" class="w"/>
+<text class="lbl" x="496" y="116" text-anchor="middle">Cout</text>
+<text class="val" x="496" y="128" text-anchor="middle">DC blk</text>
+<text class="port" x="560" y="142">RF OUT</text>
+<text class="h2" x="560" y="157">to final</text>
+<text class="sec" x="408" y="98" text-anchor="middle">OUTPUT MATCH</text>
+<line x1="262" y1="196" x2="262" y2="266" class="bias"/>
+<polyline points="262,266 267,269.6666666666667 257,273.3333333333333 267,277.0 257,280.6666666666667 267,284.3333333333333 262,288" class="bias"/>
+<text class="biaslbl" x="270" y="278">Rg</text>
+<path d="M262 288 a4.0 4.0 0 0 1 0 8.0 a4.0 4.0 0 0 1 0 8.0 a4.0 4.0 0 0 1 0 8.0" class="bias"/>
+<text class="biaslbl" x="270" y="304">Lg</text>
+<line x1="130" y1="312" x2="262" y2="312" class="bias"/>
+<line x1="160" y1="312" x2="160" y2="324" class="bias"/>
+<line x1="153" y1="324" x2="167" y2="324" class="bias"/>
+<line x1="153" y1="330" x2="167" y2="330" class="bias"/>
+<line x1="160" y1="330" x2="160" y2="336" class="bias"/>
+<line x1="151" y1="336" x2="169" y2="336" class="gnd"/>
+<line x1="154" y1="340" x2="166" y2="340" class="gnd"/>
+<line x1="157" y1="344" x2="163" y2="344" class="gnd"/>
+<text class="biaslbl" x="160" y="306" text-anchor="middle">Cg1</text>
+<line x1="210" y1="312" x2="210" y2="324" class="bias"/>
+<line x1="203" y1="324" x2="217" y2="324" class="bias"/>
+<line x1="203" y1="330" x2="217" y2="330" class="bias"/>
+<line x1="210" y1="330" x2="210" y2="336" class="bias"/>
+<line x1="201" y1="336" x2="219" y2="336" class="gnd"/>
+<line x1="204" y1="340" x2="216" y2="340" class="gnd"/>
+<line x1="207" y1="344" x2="213" y2="344" class="gnd"/>
+<text class="biaslbl" x="210" y="306" text-anchor="middle">Cg2</text>
+<circle cx="130" cy="312" r="2.5" fill="#b88a2e"/>
+<text class="biaslbl" x="22" y="294">VGG −V</text>
+<text class="caut" x="22" y="306" fill="#7a5b1e">operate ≈−2.7…−3.0 V</text>
+<text class="caut" x="22" y="318" fill="#7a5b1e">cutoff ≤ −8 V in RX (keyed)</text>
+<text class="biaslbl" x="350" y="314">Negative gate bias + 28 V drain are supplied and</text>
+<text class="biaslbl" x="350" y="328">keyed by the control board — not generated here.</text>
+<rect class="cau" x="16" y="350" width="648" height="60" rx="6"/>
+<text class="cauh" x="28" y="370">⚠ GaN bias sequencing (hard rule — depletion-mode device conducts at VGS = 0)</text>
+<text class="caut" x="28" y="387">Power-up: apply VGG (−V, at/below pinch-off so U1 is OFF) FIRST, then VDD +28 V; trim VGG up to set IDQ while watching drain current.</text>
+<text class="caut" x="28" y="401">Power-down: remove VDD FIRST, then VGG. Never apply VDD with the gate at 0 V / floating. The control wrapper enforces this and keys bias TX-only.</text>
+<rect class="box" x="16" y="424" width="648" height="400" rx="6"/>
+<text class="h1" x="28" y="446" style="font-size:13px">Bill of materials (one driver board) — part class + vendor</text>
+<text class="th" x="28" y="468">Ref</text>
+<text class="th" x="118" y="468">Function</text>
+<text class="th" x="298" y="468">Value / setpoint</text>
+<text class="th" x="420" y="468">Type / vendor</text>
+<text class="th" x="628" y="468">Qty</text>
+<line x1="24" y1="474" x2="656" y2="474" class="div"/>
+<text class="td" x="28" y="490">U1</text>
+<text class="td" x="118" y="490">GaN HEMT</text>
+<text class="td" x="298" y="490">28 V, IDQ ≈100–150 mA</text>
+<text class="td" x="420" y="490">Wolfspeed/MACOM CGH40010F or -P</text>
+<text class="td" x="628" y="490">1</text>
+<text class="td" x="28" y="509">Cin,Cout</text>
+<text class="td" x="118" y="509">DC blocks</text>
+<text class="td" x="298" y="509">near-short at band</text>
+<text class="td" x="420" y="509">ATC 100B porcelain (value per band)</text>
+<text class="td" x="628" y="509">2</text>
+<text class="td" x="28" y="528">L1,C1</text>
+<text class="td" x="118" y="528">input match</text>
+<text class="td" x="298" y="528">per band (retune)</text>
+<text class="td" x="420" y="528">C0G chip / Coilcraft chip or air-wound</text>
+<text class="td" x="628" y="528">2</text>
+<text class="td" x="28" y="547">L2,C2</text>
+<text class="td" x="118" y="547">output match</text>
+<text class="td" x="298" y="547">per band (retune)</text>
+<text class="td" x="420" y="547">C0G chip / Coilcraft chip or air-wound</text>
+<text class="td" x="628" y="547">2</text>
+<text class="td" x="28" y="566">Rg</text>
+<text class="td" x="118" y="566">gate stability</text>
+<text class="td" x="298" y="566">≈10–47 Ω</text>
+<text class="td" x="420" y="566">thin-film chip 0402/0603</text>
+<text class="td" x="628" y="566">1</text>
+<text class="td" x="28" y="585">Lg</text>
+<text class="td" x="118" y="585">gate bias choke</text>
+<text class="td" x="298" y="585">high-Z across band</text>
+<text class="td" x="420" y="585">wideband conical (Coilcraft BCR) or λ/4 line</text>
+<text class="td" x="628" y="585">1</text>
+<text class="td" x="28" y="604">Ld</text>
+<text class="td" x="118" y="604">drain bias choke</text>
+<text class="td" x="298" y="604">high-Z across band</text>
+<text class="td" x="420" y="604">wideband conical (Coilcraft BCR) or λ/4 line</text>
+<text class="td" x="628" y="604">1</text>
+<text class="td" x="28" y="623">Cg1,Cg2</text>
+<text class="td" x="118" y="623">gate bias bypass</text>
+<text class="td" x="298" y="623">0.1 µF + 0.01 µF</text>
+<text class="td" x="420" y="623">X7R chip + bulk to gnd</text>
+<text class="td" x="628" y="623">2</text>
+<text class="td" x="28" y="642">Cd1–Cd3</text>
+<text class="td" x="118" y="642">drain bias bank</text>
+<text class="td" x="298" y="642">100 pF / 0.1 µF / 10–100 µF</text>
+<text class="td" x="420" y="642">C0G + X7R + tantalum (video BW)</text>
+<text class="td" x="628" y="642">3+</text>
+<text class="td" x="28" y="661">J1,J2</text>
+<text class="td" x="118" y="661">connectors</text>
+<text class="td" x="298" y="661">SMA</text>
+<text class="td" x="420" y="661">Amphenol 901-10513-1 edge-launch</text>
+<text class="td" x="628" y="661">2</text>
+<text class="td" x="28" y="680">PCB</text>
+<text class="td" x="118" y="680">substrate</text>
+<text class="td" x="298" y="680">—</text>
+<text class="td" x="420" y="680">Rogers RO4350B 20 mil</text>
+<text class="td" x="628" y="680">1</text>
+<text class="td" x="28" y="699">HW</text>
+<text class="td" x="118" y="699">thermal</text>
+<text class="td" x="298" y="699">—</text>
+<text class="td" x="420" y="699">F-flange screw-down + thermal pad</text>
+<text class="td" x="628" y="699">1</text>
+<line x1="24" y1="722" x2="656" y2="722" class="div"/>
+<text class="th" x="28" y="738">Per-band match &amp; DC-block starting points (retune on VNA / Wolfspeed LSM):</text>
+<text class="sec" x="28" y="754">Band</text>
+<text class="sec" x="120" y="754">Slice / final</text>
+<text class="sec" x="300" y="754">Gain (typ)</text>
+<text class="sec" x="420" y="754">DC block (start)</text>
+<text class="sec" x="560" y="754">Notes</text>
+<text class="td" x="28" y="770">2 m</text>
+<text class="td" x="120" y="770">RF8 / MRF101AN</text>
+<text class="td" x="300" y="770">≈20 dB</text>
+<text class="td" x="420" y="770">≈1 nF</text>
+<text class="td" x="560" y="770">easiest match</text>
+<text class="td" x="28" y="788">222</text>
+<text class="td" x="120" y="788">RF5 / MRF101AN</text>
+<text class="td" x="300" y="788">≈19 dB</text>
+<text class="td" x="420" y="788">≈680 pF</text>
+<text class="td" x="560" y="788">—</text>
+<text class="td" x="28" y="806">70 cm</text>
+<text class="td" x="120" y="806">RF4 / CGH40120F</text>
+<text class="td" x="300" y="806">≈18 dB</text>
+<text class="td" x="420" y="806">≈100 pF</text>
+<text class="td" x="560" y="806">—</text>
+<text class="td" x="28" y="824">902</text>
+<text class="td" x="120" y="824">RF3 / CGH40120F</text>
+<text class="td" x="300" y="824">≈16 dB</text>
+<text class="td" x="420" y="824">≈33–47 pF</text>
+<text class="td" x="560" y="824">touchiest — tight layout</text>
+<text class="cap2" x="28" y="852">One CGH40010 per band (4 builds). Run ≈100–150 mA IDQ (leaner than the 200 mA reference) to cut idle heat; ≤4 W out at 80 W worst case ≈ 30% of rating → clean IMD.</text>
+<text class="cap2" x="28" y="867">Full sourcing + bias detail: docs/driver.md. Reference: Wolfspeed/MACOM CGH40010F-AMP. Gain budget: diagrams/gain-budget.svg.</text>
+</svg>

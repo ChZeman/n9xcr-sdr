@@ -20,6 +20,7 @@ renders on its own in a browser; GitHub shows them in the file view.
 | `bpf-222-schematic.svg` | TX cleanup BPF for **222** (RF5, slice 158–237): same, with its BOM. |
 | `bpf-70cm-schematic.svg` | TX cleanup BPF for **70 cm** (RF4, slice 355–533): same, with its BOM. |
 | `bpf-902-schematic.svg` | TX cleanup BPF for **902** (RF3, slice 800–1200): same, with its BOM (high-Q porcelain caps, 0402). |
+| `driver-schematic.svg` | The **CGH40010 GaN driver** stage (one device, all bands): reference-amp topology (input match → GaN HEMT → output match), drain/gate bias tees, the GaN bias-sequencing rule, a per-board BOM, and a per-band match strip. The input/output match retunes per band; the bias network is common. See [`../docs/driver.md`](../docs/driver.md). |
 
 **Per-band BPF schematics + BOMs** (the `tx-chain.svg` BPF boxes link to these; these markdown links are clickable on GitHub):
 [2 m](bpf-2m-schematic.svg) · [222](bpf-222-schematic.svg) · [70 cm](bpf-70cm-schematic.svg) · [902](bpf-902-schematic.svg). Filter synthesis and the value tables live in [`../docs/filters.md`](../docs/filters.md).

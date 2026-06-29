@@ -55,6 +55,10 @@ See `diagrams/tx-chain.svg`.
   surface-mount** sapphire Giga-Trims (lowest parasitics, tune the board flat): `5602` 1–30 pF,
   `5202` 0.8–10 pF, `27273` 0.6–4.5 pF (902 C2), `5502` 1–20 pF — DigiKey 1956-1000/1001/1032/1008-ND.
   DigiKey's "Top Panel Mount" tag on some is a mislabel (Giga-Trims have no bushing). See `docs/parts-list.md`.
+- **Driver stage documented.** The CGH40010 GaN driver now has its own schematic + per-board BOM
+  (`diagrams/driver-schematic.svg`) and a consolidated doc (`docs/driver.md`): reference-amp
+  topology, ~100–150 mA IDQ, GaN bias-sequencing rule, and per-band match/retune. One schematic
+  (not 4) since the device + bias network are common and only the match retunes per band.
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;
@@ -77,6 +81,10 @@ See `diagrams/tx-chain.svg`.
 - **Per-doc region tags** still pending on the deep docs (`tx-chain.md`, `power-thermal.md`,
   `boards.md`, `antennas.md`) and the RX diagrams (`rx-chain.svg`, `rx-frontend.svg`), which remain
   the US/R2 worked example.
+- **Negative keyed gate bias (control board).** The CGH40010 driver is GaN on *every* band and the
+  70 cm / 902 finals are GaN too → all need a **negative**, keyed gate rail; the LDMOS finals
+  (MRF101AN) need a **positive** one. Confirm the chosen amp-control board does negative bias, or add
+  a small negative-bias/keying board. Gating open item for the driver stage (see `docs/driver.md`).
 - **BOM + PCB:** finish the consolidated Mouser / DigiKey BOM; order the custom PE42512A band-select
   board (DigiKey `1046-PE42512A-XCT-ND`, Cut Tape).
 - **Deferred (non-RF):** node-host sizing; head-end / web-UI software stack.

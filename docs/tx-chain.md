@@ -55,7 +55,7 @@ thermally-easy sweet spot: single-device finals, ~50–60 W dissipation per PA, 
   final downstream. One final spans several slices (broadband amps), so the chain count tracks bands
   built, not ports. (This replaced an earlier ADRF5040 SP4T on the TX path; 2× ADRF5040 SP4T remain on
   the RX path. A Skyworks SKY13xxx-class part is an option where that isolation isn't needed.)
-- **Driver:** Wolfspeed/MACOM **CGH40010** GaN HEMT — 10 W (13 W typ PSAT), DC–6 GHz, 28 V, ~18–20 dB gain at VHF/UHF, Class AB linear. Available solder-down pill (CGH40010P) or screw-down flange (CGH40010F); one part covers all bands. At the ~4 W worst-case drive (902 at 80 W) it runs at ~30 % of rating for clean IMD, and it is family-matched to the CGH40120F final. (The 8 W CGH60008D fits electrically but ships as bare die — not hand-solderable — so it is not used.)
+- **Driver:** Wolfspeed/MACOM **CGH40010** GaN HEMT — 10 W (13 W typ PSAT), DC–6 GHz, 28 V, ~18–20 dB gain at VHF/UHF, Class AB linear. Available solder-down pill (CGH40010P) or screw-down flange (CGH40010F); one part covers all bands. At the ~4 W worst-case drive (902 at 80 W) it runs at ~30 % of rating for clean IMD, and it is family-matched to the CGH40120F final. (The 8 W CGH60008D fits electrically but ships as bare die — not hand-solderable — so it is not used.) Full schematic, per-board BOM, bias setpoints and the GaN sequencing rule: [`driver.md`](driver.md).
 - **Finals 2 m + 222:** NXP **MRF101AN** — 100 W LDMOS, 1.8–250 MHz, linear to ~100 W at
   100 mA Idq; at 50 W it loafs for clean IMD. Use a VHF-tuned board (NXP 136–174 MHz reference
   circuit), not the HF-tuned eval deck. Avoid counterfeit eBay "100 W" (MRF9120) amps.

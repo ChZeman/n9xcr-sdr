@@ -14,7 +14,7 @@ Fabbing it removes the guesswork in matching and stability; it is not a from-scr
 |-------|--------|----------------|-----------|------:|
 | Pre-driver | onboard (PGA-102+) | on the 7020-SDR — no board to fab or buy | — | 0 |
 | TX band-select | PE42512A | **custom board to be laid out** from the SnapEDA/SnapMagic `PE42512A-X` footprint — no usable eval/breakout exists (the pSemi eval is a 12-SMA characterization fixture). See `bom.md` "Band-select build". | fab (custom, **not started**) | 1 (shared) |
-| Driver | CGH40010 | MACOM **CGH40010-AMP** reference amp (schematic + BOM, Rogers RO4350B 20 mil); the **CGH40010F-AMP** test board ships with the device installed | buy test board, or fab + retune | 4 (per band) |
+| Driver | CGH40010 | MACOM **CGH40010-AMP** reference amp (schematic + BOM, Rogers RO4350B 20 mil); the **CGH40010F-AMP** test board ships with the device installed. Schematic + BOM + bias/keying: [`driver.md`](driver.md), [`../diagrams/driver-schematic.svg`](../diagrams/driver-schematic.svg). | buy test board, or fab + retune | 4 (per band) |
 | Cleanup bandpass | — | small low-level bandpass ahead of each driver | fab / buy | per band |
 | Final, 2 m / 222 | MRF101AN | NXP **136–174 MHz reference circuit** (datasheet), retuned to band | fab + retune | 2 |
 | Final, 70 cm / 902 | CGH40120F | MACOM **0.8–1.3 GHz reference (03-000255)** for 902; broadband reference for 70 cm | fab + retune | 2 |
