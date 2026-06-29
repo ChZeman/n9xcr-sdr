@@ -142,6 +142,56 @@ DC-block values are starting points (near-short at the band); the actual input/o
 are set by the retune. As frequency rises the elements shrink and layout parasitics dominate — 902 is
 the fiddliest, same as it is for that band's BPF and final.
 
+## PCB and mechanical
+
+**One common layout, all bands.** The driver is a single PCB design, fabbed as identical boards and
+band-specialised only at populate/tune time. The device, bias network, DC-block bank, and stability
+parts are common to every band; the only per-band difference is the input/output match (the L/C that
+transforms the GaN to 50 Ω), which lives in fixed footprints that are bench-tuned, then stuffed at the
+measured value (see *Bench bring-up*). The copper never changes — only a handful of match-part values do.
+
+*Low-band exception:* on 2 m and 222 the input match runs large — the input inductor can exceed the chip
+series and is left air-wound, and the 2 m input cap can need a fixed-plus-trim pair. Same board, same
+pads; those positions just accept a wider component range, so the layout is sized so the worst case
+(2 m air-wound input) fits on every copy.
+
+**Board size — working estimate ≈ 50 × 75 mm (RO4350B 20 mil).** The circuit itself is small (the NXP
+MRF101 VHF reference tile is ~1.8 × 5.0 cm; the Wolfspeed CGH40010F demo board is similar), but a few
+fixed features set the real outline, in order of impact:
+
+- the **flange device + cutout** — the CGH40010F flange bolts to metal through a board cutout (see
+  mounting), wanting a centimetre-plus of board with metal around it;
+- the **two edge-launch SMAs** (J1/J2) at opposite ends, which set the length;
+- the **2 m air-wound input coil**, needing more room than a chip part (low-band exception above);
+- the **bias + DC-block bank** strip alongside the RF path.
+
+Net working number ≈ **50 × 75 mm** — larger than the bare reference tile because one common board carries
+the connectors, the bias bank, and the worst-case low-band match, and it panelises cleanly. Treat as an
+estimate: the exact outline falls out of layout once SMA spacing, the flange keep-out, and the air-wound
+coil footprint are placed. **Layout is the one piece of work that remains** — the electrical design
+(schematic, BOM, match topology) is complete and derived from the CGH40010F-AMP reference, so this is a
+layout job, not an architecture job.
+
+**Mounting and thermal.** The driver dissipates ~5–10 W continuously (a 10 W GaN run as a sub-watt-to-2 W
+driver; DC input minus RF out), so it needs a real metal thermal path — not a finned tower, but solid
+metal-to-metal contact:
+
+- **Flange through a board cutout to a spreader plate.** The CGH40010F flange must touch metal directly,
+  so the PCB gets a cutout under the device and the flange bolts straight to a spreader plate; the board
+  sits on the plate around it. Heat must not route through the laminate.
+- **Spreader plate → enclosure backplane.** Mount PCB + flange to the plate, then the plate to the
+  backplane. **Aluminium is sufficient for the driver** at <10 W — reserve copper for under the final,
+  where the heat is. (Optional: a small copper slug directly under the device, embedded in an aluminium
+  plate.)
+- **Two interfaces in series** (flange→plate, plate→backplane): thermal compound and real mechanical
+  pressure at each; flange torqued to spec. If the backplane is steel (a mediocre conductor), the plate
+  does most of the spreading — give it good contact area.
+- **Sealed-enclosure heat escape.** A sealed electrical enclosure traps heat: the plate spreads it but
+  the box must shed it. With the driver and the 50 W final in one enclosure, total continuous dissipation
+  reaches tens of watts and climbs over a long key-down (FT8 / FM) session — plan vents, a fan, or the
+  final's heatsink penetrating the enclosure wall to outside air. Driver and final share this thermal
+  environment; give the driver flange its own solid contact to that same mass, not a thin bracket.
+
 ## Bill of materials (one board)
 
 | Ref | Function | Value / setpoint | Type / vendor | Qty |

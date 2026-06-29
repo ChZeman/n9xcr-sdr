@@ -78,6 +78,11 @@ See `diagrams/tx-chain.svg`.
 - **Driver bias choke settled = Coilcraft 4310LC-132KEC** (1.3 µH wideband bias choke, one part all
   bands; Coilcraft-direct, not DigiKey — small separate order, qty 8 +spares). Driver scope now fully
   specified up to the 10 W stage. PR1102611408 100 pF consolidation (lines 25+29 → qty 6) applied.
+- **Driver PCB/mechanical captured in `docs/driver.md`.** One common layout all bands (per-band diff =
+  bench-tuned match only; 2 m/222 input may go air-wound). Working board size ≈ 50×75 mm on RO4350B.
+  Mounting: flange through a board cutout to a backplane-mounted spreader plate (aluminium for driver,
+  copper reserved for final); two thermal interfaces; sealed-enclosure heat-escape (vents/fan/wall) since
+  driver+final share the box. Layout is the remaining work; electrical design complete.
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;
