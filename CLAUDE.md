@@ -75,6 +75,9 @@ See `diagrams/tx-chain.svg`.
   10u/100u elec ECA-1HM100/101 = P5178/P5182-ND; SMA 901-10513-1 = ARF2504-ND). PR audit (PR1102611408):
   100 pF (490-1427-1-ND) split across two lines — condense to qty 6; Lg/Ld chokes not on that PR.
   Rule reinforced: ignore Six Flags item descriptions, trust the DigiKey supplier #.
+- **Driver bias choke settled = Coilcraft 4310LC-132KEC** (1.3 µH wideband bias choke, one part all
+  bands; Coilcraft-direct, not DigiKey — small separate order, qty 8 +spares). Driver scope now fully
+  specified up to the 10 W stage. PR1102611408 100 pF consolidation (lines 25+29 → qty 6) applied.
 - **Finals by frequency, not by band:** MRF101AN LDMOS (1.8-250 MHz -> 4 m / 2 m / 1.25 m);
   CGH40120F GaN (DC-1.5 GHz rated, ~1.3 GHz practical -> 70 cm / 33 cm / 23 cm). Driver is one
   CGH40010 (GaN, DC-6 GHz) per path. One final serves several bands because the amps are broadband;

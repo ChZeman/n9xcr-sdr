@@ -197,7 +197,7 @@ place once tuning converges (see *Bench bring-up*).
 | Ref | Value | Per board | Node total | Type |
 |-----|-------|----------:|-----------:|------|
 | Rg | 22 Ω | 1 | 4 | thick-film 0603 fine — Yageo RC0603FR-0722RL (stock 10/22/33 Ω to pick on bench) |
-| Lg, Ld | high-Z choke | 2 | 8 | wideband conical (Coilcraft conical / Piconics) **or** per-band chip choke, high SRF |
+| Lg, Ld | wideband bias choke | 2 | 8 | Coilcraft **4310LC-132KEC** — one broadband part, all bands (Coilcraft-direct); see **G** |
 | Cg1 | 0.1 µF | 1 | 4 | X7R 0603 50 V |
 | Cg2 | 0.01 µF | 1 | 4 | X7R 0603 50 V |
 | Cd1 | 100 pF | 1 | 4 | C0G 0603 50 V |
@@ -271,7 +271,7 @@ live stock at order time.
 | Cd1 | 100 pF C0G 0603 50 V | GRM1885C1H101JA01D | 490-1427-1-ND | 4 | same PN as 70 cm DC block |
 | Cd3a | 10 µF 50 V alum. electrolytic | Panasonic ECA-1HM100 | P5178-ND | 4 | not tantalum (derating + short-fail) |
 | Cd3b | 100 µF 50 V alum. electrolytic | Panasonic ECA-1HM101 | P5182-ND | 4 | |
-| Lg, Ld | wideband bias choke | Coilcraft 4310LC series | (value per bias-tee) | 8 | **not on PR1102611408 — order separately** |
+| Lg, Ld | wideband bias choke, 1.3 µH (>100 Ω 20 MHz–3 GHz, 4.2 A) | Coilcraft **4310LC-132KEC** | Coilcraft-direct (not DigiKey-stocked) | 8 (+2 spare) | **separate Coilcraft order — not on PR1102611408** |
 
 **Connectors**
 
@@ -378,7 +378,8 @@ efficiency node you want fixed in a set-and-forget node.
   time (don't assume from a snippet). See *Device selection* for the lifecycle rationale and fallbacks.
 - **ATC 100B porcelain DC blocks, RO4350B board** — DigiKey / a fab house (RO4350B is a JLCPCB/PCBWay
   material option); small-signal sections tolerate good FR-4, but the gain stage benefits from RO4350B.
-- **Conical chokes** (Coilcraft BCR / Piconics) or printed λ/4 bias lines — DigiKey / Coilcraft.
+- **Bias chokes (Lg/Ld)** — Coilcraft **4310LC-132KEC** wideband bias choke; **Coilcraft-direct** (factory
+  order, not DigiKey-stocked), so it rides alongside the DigiKey PR as a small separate order.
 - **Negative-bias control board** — see the open item above; this is the one piece not yet pinned.
 
 ## Open items
